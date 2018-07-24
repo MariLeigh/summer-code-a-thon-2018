@@ -1,0 +1,23 @@
+.item {
+    box-sizing: border-box;
+    width: 15%;
+    float: left;
+    padding: 5px;
+    margin-left: 5%;
+    -webkit-box-shadow: 0px 0px 25px 6px rgba(156, 156, 156, 1);
+    -moz-box-shadow: 0px 0px 25px 6px rgba(156, 156, 156, 1);
+    box-shadow: 0px 0px 25px 6px rgba(156, 156, 156, 1);
+}
+
+.notebook-img {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+button {
+    box-sizing: border-box;
+    width: 40%;
+    height: 25px;
+    float: right;
+
+}
