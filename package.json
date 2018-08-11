@@ -52,7 +52,8 @@
     "dotenv": "^2.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "swarm-js": "^0.1.37"
+    "swarm-js": "^0.1.37",
+    "web3": "^1.0.0-beta.35"
   },
   "scripts": {
     "start": "node scripts/start.js",

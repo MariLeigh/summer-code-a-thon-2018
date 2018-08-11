@@ -26,13 +26,14 @@ class App extends Component {
     getWeb3
     .then(results => {
       this.setState({
-        web3: results.web3
+        web3: results.web3,
+        address: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
       })
-
       // Instantiate contract once web3 provided.
-      this.instantiateContract()
+      // this.instantiateContract()
     })
-    .catch(() => {
+    .catch((e) => {
+      console.log(e)
       console.log('Error finding web3.')
     })
   }
@@ -76,7 +77,7 @@ class App extends Component {
             <a href="#" className="pure-menu-heading pure-menu-link">RemitMart</a>
             <a className="nav-link text-nowrap text-muted" id="eth-address">
             <i className="fa fa-user fa-fw"></i>
-            { this.state.web3 }
+            { this.state.address }
           </a>
         </nav>
 
