@@ -7,7 +7,9 @@ import './css/open-sans.css'
 import './css/pure-min.css'
 import './App.css'
 
+
 const swarm = require("swarm-js").at("http://swarm-gateways.net");
+
 
 class App extends Component {
   constructor(props) {
@@ -69,6 +71,7 @@ class App extends Component {
       })
     })
   }
+
 
   render() {
     return (
