@@ -6,6 +6,7 @@ import './css/oswald.css'
 import './css/open-sans.css'
 import './css/pure-min.css'
 import './App.css'
+import Vendor from './components/Vendor'
 
 
 const swarm = require("swarm-js").at("http://swarm-gateways.net");
@@ -96,6 +97,7 @@ class App extends Component {
             </div>
           </div>
         </main>
+        < Vendor />
       </div>
     );
   }

@@ -1,15 +1,34 @@
 import React, { Component } from 'react'
+import VendorSignup from './VendorSignup'
 
 class Vendor extends Component {
   constructor(props) {
     super(props)
     this.state = {
       step: 0,
-      message: "Sell Food"
+      message: "Sell Food",
+      name: '',
+      address: '',
+      address2: '',
+      zipcode: '',
+      city: '',
+      country: '',
+      ethaccount: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   nextStep() {
     this.setState({step: this.state.step+1})
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value })
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value)
+    event.preventDefault()
   }
   render() {
     return (
@@ -44,6 +63,39 @@ class Vendor extends Component {
               Sign up as a Vendor
             </button>
           </div>
+        }
+        {this.state.step === 2 &&
+        <div>
+          <h1>
+            Vendor Set up
+          </h1>
+          <h2>
+            1: Create RemitMart Account
+          </h2>
+          <p>
+            Connect your Ethereum wallet to enable payments, set location and delivery options
+          </p>
+          <h2>
+            2: List your items
+          </h2>
+          <p>
+            Add items to our marketplace
+          </p>
+          <h2>
+            3: Go to Dashboard
+          </h2>
+          <p>
+            View orders, confirm shipment, and accept payments
+          </p>
+          <button onClick={() => this.nextStep()}>
+            Start
+          </button>
+        </div>
+        }
+        {this.state.step === 3 &&
+        <div>
+          <VendorSignup />
+        </div>
         }
       </div>
     )

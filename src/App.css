@@ -5,6 +5,11 @@ body,
   font-family: 'Open Sans', sans-serif;
 }
 
+form {
+  display: grid;
+  grid-gap: 8px;
+}
+
 h1, h2, h3 {
   font-family: 'Oswald', 'Arial Narrow', sans-serif;
 }
