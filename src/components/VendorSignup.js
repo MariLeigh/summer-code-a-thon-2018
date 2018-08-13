@@ -21,9 +21,11 @@ class VendorSignup extends Component {
   }
 
   handleSubmit(event) {
-    alert('A vendor account was submitted: ' + JSON.stringify(this.state))
+    console.log('A vendor account was submitted: ' + JSON.stringify(this.state))
     event.preventDefault()
+    location = '/vendor/listitem'
   }
+
   render() {
     return (
       <div>
@@ -78,7 +80,7 @@ class VendorSignup extends Component {
                 onChange={(e) => this.handleChange('ethaccount', e)}
                 />
               </label>
-              <input type="submit" value="Submit" />
+              <input type="submit" value="Sign up" />
             </form>
           </div>
         }

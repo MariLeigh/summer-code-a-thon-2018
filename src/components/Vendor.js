@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import VendorSignup from './VendorSignup'
+import VendorListItem from './VendorListItem'
 
 class Vendor extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      step: 0,
+      step: props.step || 0,
       message: "Sell Food",
       name: '',
       address: '',
@@ -15,6 +16,7 @@ class Vendor extends Component {
       country: '',
       ethaccount: ''
     }
+    this.nextStep = this.nextStep.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -30,14 +32,11 @@ class Vendor extends Component {
     alert('A name was submitted: ' + this.state.value)
     event.preventDefault()
   }
+
   render() {
     return (
       <div>
-          {this.state.step === 0 &&
-            <button onClick={() => this.nextStep()}>Sell Food</button>
-          }
-        <div>{this.state.step}</div>
-        {this.state.step === 1 &&
+        {this.state.step === 0 &&
           <div>
             <h1>
               Be a RemitMart Vendor
@@ -59,12 +58,13 @@ class Vendor extends Component {
             </p>
             <iframe width="364.25" height="193.75" src="https://www.youtube.com/embed/6Gf_kRE4MJU" frameborder="0" allow="autoplay; encrypted-media" allowFullScreen>
             </iframe>
+            <br></br>
             <button onClick={() => this.nextStep()}>
-              Sign up as a Vendor
+              Next step
             </button>
           </div>
         }
-        {this.state.step === 2 &&
+        {this.state.step === 1 &&
         <div>
           <h1>
             Vendor Set up
@@ -92,11 +92,16 @@ class Vendor extends Component {
           </button>
         </div>
         }
-        {this.state.step === 3 &&
+        {this.state.step === 2 &&
         <div>
-          <VendorSignup />
+          <VendorSignup nextStep={this.nextStep}/>
         </div>
         }
+        {this.state.step === 3 &&
+        <div>
+          <VendorListItem address={this.props.address}/>
+        </div>
+      }
       </div>
     )
   }
