@@ -73,7 +73,7 @@ class VendorListItem extends Component {
                 onChange={(e) => this.handleChange('deliveryFee', e)}
               />
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Add Item" />
           </form>
         </div>
         }

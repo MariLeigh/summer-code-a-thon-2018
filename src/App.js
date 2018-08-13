@@ -9,6 +9,8 @@ import './css/pure-min.css'
 import './App.css'
 import Home from './components/Home'
 import Vendor from './components/Vendor'
+import Donor from './components/Donor'
+import Receiver from './components/Receiver'
 import VendorListItem from './components/VendorListItem'
 
 
@@ -96,8 +98,10 @@ class App extends Component {
               <BrowserRouter>
                 <div>
                   <Route exact path='/' component={Home} />
-                  <Route path='/vendor/signup' component={Vendor} />
-                  <Route path='/vendor/listitem' component={VendorListItem} />
+                  <Route path='/v/signup' component={Vendor} />
+                  <Route path='/v/listitem' component={VendorListItem} />
+                  <Route path='/d/signup' component={Donor} />
+                  <Route path='/r/signup' component={Receiver} />
                 </div>
               </BrowserRouter>
             </div>
