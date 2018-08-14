@@ -9,7 +9,8 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <Link to='/fulfillment'>Fulfillment Page</Link>
+                <div><Link to='/fulfillment'>Fulfillment Page</Link></div>
+                <div><Link to='/addNewItem'>Vendor add new-item page</Link></div>
                 <h1>Home</h1>
             </div>
         );
