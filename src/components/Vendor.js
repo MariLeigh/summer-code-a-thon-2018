@@ -7,6 +7,7 @@ class Vendor extends Component {
     super(props)
     this.state = {
       step: props.step || 0,
+      currentUser: props.currentUser,
       message: "Sell Food",
       name: '',
       address: '',
@@ -99,7 +100,7 @@ class Vendor extends Component {
         }
         {this.state.step === 3 &&
         <div>
-          <VendorListItem address={this.props.address}/>
+          <VendorListItem currentUser={this.state.currentUser}/>
         </div>
       }
       </div>

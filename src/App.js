@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
 import { BrowserRouter, Route } from 'react-router-dom'
+import swarm from './swarm.js'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -12,10 +13,7 @@ import Vendor from './components/Vendor'
 import Donor from './components/Donor'
 import Receiver from './components/Receiver'
 import VendorListItem from './components/VendorListItem'
-
-
-const swarm = require("swarm-js").at("http://swarm-gateways.net");
-
+import Market from './components/Market'
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +23,7 @@ class App extends Component {
     this.state = {
       storageValue: 0,
       web3: null,
-      address: ''
+      currentUser: ''
     }
   }
 
@@ -37,7 +35,7 @@ class App extends Component {
     .then(results => {
       this.setState({
         web3: results.web3,
-        address: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
+        currentUser: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
       })
       // Instantiate contract once web3 provided.
       // this.instantiateContract()
@@ -88,7 +86,7 @@ class App extends Component {
             <a href="#" className="pure-menu-heading pure-menu-link">RemitMart</a>
             <a className="nav-link text-nowrap text-muted" id="eth-address">
             <i className="fa fa-user fa-fw"></i>
-            { this.state.address }
+            { this.state.currentUser }
           </a>
         </nav>
 
@@ -98,10 +96,11 @@ class App extends Component {
               <BrowserRouter>
                 <div>
                   <Route exact path='/' component={Home} />
-                  <Route path='/v/signup' component={Vendor} />
+                  <Route path='/v/signup' component={Vendor} currentUser={this.state.currentUser} />
                   <Route path='/v/listitem' component={VendorListItem} />
                   <Route path='/d/signup' component={Donor} />
                   <Route path='/r/signup' component={Receiver} />
+                  <Route path='/market' render={props => <Market currentUser={this.state.currentUser} />} />
                 </div>
               </BrowserRouter>
             </div>

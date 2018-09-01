@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import swarm from '../swarm';
 
 class VendorListItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      vendor: this.props.address,
+      vendor: props.currentUser,
       item: '',
       description: '',
       price: '',
@@ -24,8 +25,12 @@ class VendorListItem extends Component {
   handleSubmit(event) {
     console.log('An item has been added to our marketplace: ' + JSON.stringify(this.state))
     event.preventDefault()
-    this.props.nextStep()
+    // console.log(this.state);
+    const file= JSON.stringify(this.state)
+        const fileHash = swarm.upload(file)
+        console.log("Uploaded file: Address: ", fileHash)
   }
+
   render() {
     return (
       <div>
