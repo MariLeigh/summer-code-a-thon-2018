@@ -1,6 +1,7 @@
 import React from 'react';
 import './addNewItemform.css';
-import swarm from '../../swarm'
+import swarm from '../../swarm';
+import web3 from 'web3';
 
 
 class AddNewItemForm extends React.Component {
@@ -13,7 +14,8 @@ class AddNewItemForm extends React.Component {
                 type: '',
                 description: '',
                 price: '',
-                number: ''
+                number: '',
+                imageHash: null
             }
         };
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -31,19 +33,51 @@ class AddNewItemForm extends React.Component {
         this.setState({newItem})
     }
 
-    captureFile(event){
-        event.preventDefault();
-        const file="hello";
-        this.setState({file: file});
-    }
+    captureFile(e) {
+        e.preventDefault();
+        const reader = new FileReader();
+        let newItem = Object.assign({}, this.state.newItem);
+        reader.onload = function (e) {
+            const data = e.target.result;
+            const unit8Array = new Uint8Array(data);
+            console.log(unit8Array);
+            try {
+                swarm.upload(unit8Array).then((fileHash) => {
+                    console.log("key: " + fileHash);
+                    newItem.imageHash = fileHash;
+                    //swarm.download(fileHash).then((file)=>console.log(file));
+                });
+
+            } catch (e) {
+                console.log(e);
+            }
+        };
+        reader.readAsArrayBuffer(e.target.files[0]);
+        this.setState({newItem});
+    };
 
     onSubmit(event){
+
         event.preventDefault();
-       const file="hello";
+
+        const data = web3.utils.stringToHex(JSON.stringify(this.state.newItem));
+        let fileHash;
         (async()=>{
             try{
-                const fileHash = await swarm.upload(file);
-                console.log("Uploaded file. Address:", fileHash);
+                fileHash = await swarm.createMutableResource({
+                    "name": "My 1st resource",
+                    "frequency": 10,
+                    "startTime": parseInt("" + (Date.now() / 1000), 10)
+                });
+                console.log("MRU_MANIFEST_KEY: " + fileHash);
+                await swarm.updateMutableResource({
+                    "data": data
+                }, fileHash)
+                //.then(
+                // ()=>
+                //  window.setTimeout(()=>(swarm.updateMutableResource({
+                //      "data": "0x87234d01"
+                //  }, fileHash)),10000));
             }catch (e) {
                 console.log(e);
             }
