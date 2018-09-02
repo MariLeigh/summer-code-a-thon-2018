@@ -9,20 +9,7 @@ class MarketItem extends Component {
       userType: props.userType,
       item: props
     }
-    this.requestItem = this.requestItem.bind(this)
-  }
-
-  requestItem(event) {
-    event.preventDefault()
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === event.target.value) {
-        if (items[i].requests) {
-          items[i].requests.push(this.props.currentUser)
-        } else {
-          items[i].requests = this.props.currentUser
-        }
-      }
-    }
+    // this.requestItem = this.requestItem.bind(this)
   }
 
   render () {
@@ -43,14 +30,9 @@ class MarketItem extends Component {
         <div> {this.state.item.id} </div>
         <div> {this.state.item.item} </div>
         <div className="itemImage">
-        <img src={this.state.item.itemUrl} alt="item:"></img>
+          <img src={this.state.item.itemUrl} alt="item:"></img>
         </div>
         <div> {this.state.item.description} </div>
-        {this.state.userType === 'receiver' &&
-        <div>
-        <button value={this.state.item.id} onClick={this.requestItem}>Request Item</button>
-        </div>
-      }
       </div>
     )
   }
