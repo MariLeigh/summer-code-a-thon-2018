@@ -18,9 +18,6 @@ import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
 import VendorFulfillmentPage from "./components/Vendor/VendorFulfillmentPage";
 
 
-const swarm = require("swarm-js").at("http://swarm-gateways.net");
-
-
 class App extends Component {
   constructor(props) {
     super(props)
