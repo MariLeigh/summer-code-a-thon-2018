@@ -1,16 +1,16 @@
-.Modal {
-    position: absolute;
-    top: 25%;
-    right: 25%;
-    width: 50%;
-    background-color: white;
-}
+/*.Modal {*/
+/*position: absolute;*/
+/*top: 25%;*/
+/*right: 25%;*/
+/*width: 50%;*/
+/*background-color: white;*/
+/*}*/
 
-.Overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-}
+/*.Overlay {*/
+/*background-color: rgba(0, 0, 0, 0.6);*/
+/*position: fixed;*/
+/*left: 0;*/
+/*right: 0;*/
+/*bottom: 0;*/
+/*top: 0;*/
+/*}*/

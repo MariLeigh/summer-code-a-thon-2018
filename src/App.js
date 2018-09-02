@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
-import getWeb3 from './utils/getWeb3'
-import { BrowserRouter, Route } from 'react-router-dom'
+//import getWeb3 from './utils/getWeb3'
+import {BrowserRouter, Route} from 'react-router-dom'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -12,6 +12,8 @@ import Vendor from './components/Vendor'
 import Donor from './components/Donor'
 import Receiver from './components/Receiver'
 import VendorListItem from './components/VendorListItem'
+import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
+import VendorFulfillmentPage from "./components/Vendor/VendorFulfillmentPage";
 
 
 const swarm = require("swarm-js").at("http://swarm-gateways.net");
@@ -32,20 +34,20 @@ class App extends Component {
   componentWillMount() {
     // Get network provider and web3 instance.
     // See utils/getWeb3 for more info.
-
-    getWeb3
-    .then(results => {
-      this.setState({
-        web3: results.web3,
-        address: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
-      })
-      // Instantiate contract once web3 provided.
-      // this.instantiateContract()
-    })
-    .catch((e) => {
-      console.log(e)
-      console.log('Error finding web3.')
-    })
+    //
+    // getWeb3
+    // .then(results => {
+    //   this.setState({
+    //     web3: results.web3,
+    //     address: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
+    //   })
+    //   // Instantiate contract once web3 provided.
+    //   // this.instantiateContract()
+    // })
+    // .catch((e) => {
+    //   console.log(e);
+    //   console.log('Error finding web3.')
+    // })
   }
 
   instantiateContract() {
@@ -75,7 +77,7 @@ class App extends Component {
         return simpleStorageInstance.get.call(accounts[0])
       }).then((result) => {
         // Update state with the result.
-        return this.setState({ storageValue: result.c[0] })
+        return this.setState({storageValue: result.c[0]})
       })
     })
   }
@@ -87,9 +89,9 @@ class App extends Component {
         <nav className="navbar pure-menu pure-menu-horizontal">
             <a href="#" className="pure-menu-heading pure-menu-link">RemitMart</a>
             <a className="nav-link text-nowrap text-muted" id="eth-address">
-            <i className="fa fa-user fa-fw"></i>
-            { this.state.address }
-          </a>
+              <i className="fa fa-user fa-fw"></i>
+              {this.state.address}
+            </a>
         </nav>
 
         <main className="container">
@@ -97,11 +99,14 @@ class App extends Component {
             <div className="pure-u-1-1">
               <BrowserRouter>
                 <div>
-                  <Route exact path='/' component={Home} />
-                  <Route path='/v/signup' component={Vendor} />
-                  <Route path='/v/listitem' component={VendorListItem} />
-                  <Route path='/d/signup' component={Donor} />
-                  <Route path='/r/signup' component={Receiver} />
+                  <Route exact path='/' component={Home}/>
+                  <Route path='/v/signup' component={Vendor}/>
+                  <Route path='/v/listitem' component={VendorListItem}/>
+                  <Route path='/d/signup' component={Donor}/>
+                  <Route path='/r/signup' component={Receiver}/>
+                  <Route path='/home' component={Home}/>
+                  <Route path='/fulfillment' component={VendorFulfillmentPage}/>
+                  <Route path='/addNewItem' component={VendorAddNewItemPage}/>
                 </div>
               </BrowserRouter>
             </div>
@@ -111,5 +116,4 @@ class App extends Component {
     );
   }
 }
-
 export default App

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 class VendorSignup extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class VendorSignup extends Component {
   handleSubmit(event) {
     console.log('A vendor account was submitted: ' + JSON.stringify(this.state))
     event.preventDefault()
-    location = '/v/listitem'
+    window.location = '/v/listitem'
   }
 
   render() {

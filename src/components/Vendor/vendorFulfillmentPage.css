@@ -1,16 +1,16 @@
-button {
-    height: 25px;
-    width: 30%;
-    background-color: white;
-}
+/*button {*/
+/*height: 25px;*/
+/*width: 30%;*/
+/*background-color: white;*/
+/*}*/
 
-.container {
-    display: grid;
-    grid-template-columns: 15% 15% 15% 15% 15% 15%;
-    grid-gap: 2%;
-    margin: 2%;
-}
+/*.container {*/
+/*display: grid;*/
+/*grid-template-columns: 15% 15% 15% 15% 15% 15%;*/
+/*grid-gap: 2%;*/
+/*margin: 2%;*/
+/*}*/
 
-.item1{
-    grid-column: 1/2;
-}
+/*.item1{*/
+/*grid-column: 1/2;*/
+/*}*/
