@@ -24,6 +24,7 @@ class ReceiverSignup extends Component {
   handleSubmit(event) {
     console.log('A receiver account was submitted: ' + JSON.stringify(this.state))
     event.preventDefault()
+
   }
 
   render() {

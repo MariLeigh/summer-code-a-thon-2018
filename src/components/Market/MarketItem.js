@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { items, users } from './dummyData'
+import { items, users } from '../dummyData'
 import './MarketItem.css'
 
 class MarketItem extends Component {

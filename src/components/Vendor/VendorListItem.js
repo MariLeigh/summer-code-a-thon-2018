@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import swarm from '../swarm';
+import swarm from '../../swarm';
 
 class VendorListItem extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MarketItem from './MarketItem'
 import './Market.css'
-import {items, users} from './dummyData'
+import {items, users} from '../dummyData'
 
 class Market extends Component {
   constructor(props) {
