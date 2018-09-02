@@ -99,5 +99,10 @@ exports.users = [
     'country': '',
     'description': '',
     'photoUrl': ''
+  },
+  {
+    'id': '4',
+    'wallet': '0x559c7dcd5f1fd32925569f9baabc77b039df9dcf',
+    'name': 'World'
   }
 ]

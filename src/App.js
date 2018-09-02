@@ -16,7 +16,7 @@ import VendorListItem from './components/VendorListItem'
 import Market from './components/Market'
 import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
 import VendorFulfillmentPage from "./components/Vendor/VendorFulfillmentPage";
-
+import { items, users } from './components/dummyData'
 
 class App extends Component {
   constructor(props) {
@@ -82,13 +82,18 @@ class App extends Component {
 
 
   render() {
+    const regUser = users.filter(u => u.wallet === this.state.currentUser)
+    const userName = regUser[0] ? regUser[0].name : this.state.currentUser
+
     return (
       <div className="App">
         <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="#" className="pure-menu-heading pure-menu-link">RemitMart</a>
+            <a href="/" className="pure-menu-heading pure-menu-link">RemitMart</a>
             <a className="nav-link text-nowrap text-muted" id="eth-address">
             <i className="fa fa-user fa-fw"></i>
-            { this.state.currentUser }
+            { userName && <span>Hello, { userName }</span> }
+            { !userName &&
+              <span>it looks like you don't have Metamask yet, please <a href='/'>SIGNUP</a></span>}
           </a>
         </nav>
 
