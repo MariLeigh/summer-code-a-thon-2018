@@ -66,12 +66,37 @@ exports.items = [
 exports.users = [
   {
     "id": "1",
+    "wallet": '0x559c7dcd5f1fd32925569f9baabc77b039df9dcs',
     'name': 'Alice',
     'address': '',
     'address2': '',
     'zipcode': '',
     'city': 'Seattle',
     'country': 'WA',
+    'description': 'Single mom with one child',
+    'photoUrl': ''
+  },
+  {
+    "id": "2",
+    "wallet": '0x559c7dcd5f1fd32925569f9baabc77b039df9ded',
+    'name': 'Bob',
+    'address': '',
+    'address2': '',
+    'zipcode': '',
+    'city': 'Portland',
+    'country': 'OR',
+    'description': 'Single dad with two children',
+    'photoUrl': ''
+  },
+  {
+    "id": "3",
+    "wallet": '0x559c7dcd5f1fd32925569f9baabc77b039df9dcr',
+    'name': 'Nancy',
+    'address': '',
+    'address2': '',
+    'zipcode': '',
+    'city': '',
+    'country': '',
     'description': '',
     'photoUrl': ''
   }
