@@ -1,0 +1,18 @@
+.sponsor-modal {
+  position: absolute;
+  background-color: rgba(0, 0, 0, .8);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.sponsor-modal > div {
+  max-width: 600px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20%;
+  background-color: white;
+  padding: 16px;
+  border-radius: 4px;
+  text-align: center;
+}

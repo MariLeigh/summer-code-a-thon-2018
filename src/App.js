@@ -18,7 +18,6 @@ import Market from './components/Market'
 class App extends Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.step = props.step || 0
     this.state = {
       storageValue: 0,
