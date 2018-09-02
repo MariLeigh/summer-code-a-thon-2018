@@ -1,0 +1,52 @@
+/*.addNewItemForm {*/
+    /*display: grid;*/
+    /*grid-template-areas:*/
+            /*'0 0'*/
+            /*'a b'*/
+            /*'c d'*/
+            /*'e f'*/
+            /*'g h'*/
+            /*'i i'*/
+            /*'j j';*/
+
+    /*padding-left: 200px;*/
+    /*padding-right: 200px;*/
+/*}*/
+/*.e1{*/
+    /*grid-area: 0;*/
+/*}*/
+/*.e2{*/
+    /*grid-area: a;*/
+/*}*/
+/*.e3{*/
+    /*grid-area: b;*/
+/*}*/
+/*.e4{*/
+    /*grid-area: c;*/
+/*}*/
+/*.e5{*/
+    /*grid-area: d;*/
+/*}*/
+/*.e6{*/
+    /*grid-area: e;*/
+/*}*/
+/*.e7{*/
+    /*grid-area: f;*/
+/*}*/
+/*.e8{*/
+    /*grid-area: g;*/
+/*}*/
+/*.e9{*/
+    /*grid-area: h;*/
+/*}*/
+/*.e10{*/
+    /*justify-self: center;*/
+    /*grid-area: i;*/
+/*}*/
+/*.e11{*/
+    /*justify-self: center;*/
+    /*grid-area: j;*/
+    /*padding: 20px;*/
+/*}*/
+
+

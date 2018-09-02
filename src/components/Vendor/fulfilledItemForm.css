@@ -1,0 +1,46 @@
+/*.fulfilledItemForm {*/
+/*display: grid;*/
+/*grid-template-areas:*/
+/*'a b'*/
+/*'c d'*/
+/*'e f'*/
+/*'g h'*/
+/*'i i';*/
+
+/*padding-left: 200px;*/
+/*padding-right: 200px;*/
+/*}*/
+/*h2{*/
+/*text-align: center;*/
+/*}*/
+/*.p1{*/
+/*grid-area: a;*/
+/*}*/
+/*.p2{*/
+/*grid-area: b;*/
+/*}*/
+/*.p3{*/
+/*grid-area: c;*/
+/*}*/
+/*.p4{*/
+/*grid-area: d;*/
+/*}*/
+/*.p5{*/
+/*grid-area: e;*/
+/*}*/
+/*.p6{*/
+/*grid-area: f;*/
+/*}*/
+/*.p7{*/
+/*grid-area: g;*/
+/*}*/
+/*.p8{*/
+/*grid-area: h;*/
+/*}*/
+/*.p9{*/
+/*justify-self: center;*/
+/*grid-area: i;*/
+/*padding: 20px;*/
+/*}*/
+
+

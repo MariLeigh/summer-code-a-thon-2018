@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
 import { BrowserRouter, Route } from 'react-router-dom'
@@ -14,6 +14,12 @@ import Donor from './components/Donor'
 import Receiver from './components/Receiver'
 import VendorListItem from './components/VendorListItem'
 import Market from './components/Market'
+import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
+import VendorFulfillmentPage from "./components/Vendor/VendorFulfillmentPage";
+
+
+const swarm = require("swarm-js").at("http://swarm-gateways.net");
+
 
 class App extends Component {
   constructor(props) {
@@ -72,7 +78,7 @@ class App extends Component {
         return simpleStorageInstance.get.call(accounts[0])
       }).then((result) => {
         // Update state with the result.
-        return this.setState({ storageValue: result.c[0] })
+        return this.setState({storageValue: result.c[0]})
       })
     })
   }
@@ -100,6 +106,9 @@ class App extends Component {
                   <Route path='/d/signup' component={Donor} />
                   <Route path='/r/signup' component={Receiver} />
                   <Route path='/market' render={props => <Market currentUser={this.state.currentUser} />} />
+                  <Route path='/home' component={Home}/>
+                  <Route path='/fulfillment' component={VendorFulfillmentPage}/>
+                  <Route path='/addNewItem' component={VendorAddNewItemPage}/>
                 </div>
               </BrowserRouter>
             </div>
@@ -109,5 +118,4 @@ class App extends Component {
     );
   }
 }
-
 export default App
