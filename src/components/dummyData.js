@@ -23,7 +23,6 @@ exports.items = [
     "location": "Seattle, WA",
     "deliveryRadius": "",
     "deliveryFee": "",
-    "requests": ["0x559c7dcd5f1fd32925569f9baabc77b039df9dcs"]
   },
   {
     "id": "3",
@@ -47,7 +46,8 @@ exports.items = [
     "quantity": "",
     "location": "Seattle, WA",
     "deliveryRadius": "",
-    "deliveryFee": ""
+    "deliveryFee": "",
+    "requests": ["0x559c7dcd5f1fd32925569f9baabc77b039df9dcs"]
   },
   {
     "id": "5",

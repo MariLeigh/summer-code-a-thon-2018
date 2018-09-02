@@ -8,9 +8,8 @@ class Market extends Component {
     super(props)
     this.state = {
       currentUser: props.currentUser,
-      userType: 'donor'
+      userType: ''
     }
-    this.requestItem = this.requestItem.bind(this)
     this.setUserType = this.setUserType.bind(this)
     this.displayItems = this.displayItems.bind(this)
   }
@@ -25,18 +24,7 @@ class Market extends Component {
       return {userType: type}
     })
   }
-  requestItem(event) {
-    event.preventDefault()
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === event.target.value) {
-        if (items[i].requests) {
-          items[i].requests.push(this.props.currentUser)
-        } else {
-          items[i].requests = this.props.currentUser
-        }
-      }
-    }
-  }
+
   render() {
 
     return (
@@ -66,13 +54,7 @@ class Market extends Component {
       }
       <div className="grid">
         {this.displayItems().map(item =>
-            <div>
-              <MarketItem key={item.id} {...item} userType={this.state.userType} />
-              {this.state.userType === 'receiver' &&
-              <div>
-                <button value={item.id} onClick={this.requestItem}>Request Item</button>
-              </div>}
-            </div>
+          <MarketItem key={item.id} {...item} userType={this.state.userType} />
         )}
       </div>
       </div>
