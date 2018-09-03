@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import queryString from 'query-string'
 import MarketItem from './MarketItem'
 import './Market.css'
 import {items, users} from '../dummyData'
@@ -8,12 +9,16 @@ class Market extends Component {
     super(props)
     this.state = {
       currentUser: props.currentUser,
-      userType: ''
+      userType: props.userType
     }
     this.setUserType = this.setUserType.bind(this)
     this.displayItems = this.displayItems.bind(this)
   }
 
+  componentDidMount() {
+    const query = queryString.parse(location.search)
+    if (query.type) this.setUserType(query.type)
+  }
 
   displayItems() {
     if (this.state.userType === 'donor') return items.filter(i => i.requests)

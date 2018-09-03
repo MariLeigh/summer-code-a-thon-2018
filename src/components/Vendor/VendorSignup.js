@@ -49,8 +49,9 @@ class VendorSignup extends Component {
       }
     }
     if (!match) {
+      updates.wallet = this.state.wallet
+      updates.id = users.length + 1
       users[users.length] = updates
-      users[users.length - 1].id = users.length
     }
     window.location = '/v/listitem'
   }

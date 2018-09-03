@@ -6,7 +6,7 @@ class Vendor extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      step: props.step || 2,
+      step: props.step || 0,
       currentUser: props.currentUser,
       message: "Sell Food",
       name: '',

@@ -1,16 +1,24 @@
 import React, { Component } from 'react'
+import { users } from '../dummyData'
 
 class DonorSignup extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      wallet: '',
       name: '',
-      city: '',
-      country: '',
-      ethaccount: ''
+      donorWallet: ''
     }
+    this.setUserType = props.setUserType
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState(({
+      wallet: nextProps.currentUser,
+      donorWallet: nextProps.currentUser
+    }))
   }
 
   handleChange(key, event) {
@@ -18,8 +26,24 @@ class DonorSignup extends Component {
   }
 
   handleSubmit(event) {
-    console.log('A donor account was submitted: ' + JSON.stringify(this.state))
+    // console.log('A donor account was submitted: ' + JSON.stringify(this.state))
     event.preventDefault()
+    let match = false
+    const updates = {}
+    if (this.state.donorWallet) updates.donorWallet = this.state.donorWallet
+    if (this.state.name) updates.name = this.state.name
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].wallet === this.state.wallet) {
+        users[i] = Object.assign(users[i], updates)
+        match = true
+      }
+    }
+    if (!match) {
+      updates.wallet = this.state.wallet
+      updates.id = users.length + 1
+      users[users.length] = updates
+    }
+    window.location = '/market?type=donor'
   }
 
   render() {
@@ -35,24 +59,10 @@ class DonorSignup extends Component {
               />
             </label>
             <label>
-              City:
+              Ethereum account/payment wallet:
                 <input type="text"
-                value={this.state.city}
-                onChange={(e) => this.handleChange('city', e)}
-              />
-            </label>
-            <label>
-              Country:
-                <input type="text"
-                value={this.state.country}
-                onChange={(e) => this.handleChange('country', e)}
-              />
-            </label>
-            <label>
-              Ethereum account:
-                <input type="text"
-                value={this.state.ethaccount}
-                onChange={(e) => this.handleChange('ethaccount', e)}
+                value={this.state.donorWallet}
+                onChange={(e) => this.handleChange('donorWallet', e)}
               />
             </label>
             <input type="submit" value="Sign up" />

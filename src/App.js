@@ -16,7 +16,7 @@ import VendorListItem from './components/Vendor/VendorListItem'
 import Market from './components/Market/Market'
 import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
 import VendorFulfillmentPage from "./components/Vendor/VendorFulfillmentPage";
-import { items, users } from './components/dummyData'
+import { users } from './components/dummyData'
 
 class App extends Component {
   constructor(props) {
@@ -80,7 +80,6 @@ class App extends Component {
     })
   }
 
-
   render() {
     const regUser = users.filter(u => u.wallet === this.state.currentUser)
     const userName = regUser[0] ? regUser[0].name : this.state.currentUser
@@ -105,7 +104,7 @@ class App extends Component {
                   <Route exact path='/' component={Home} />
                   <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser} />} />
                   <Route path='/v/listitem' component={VendorListItem} />
-                  <Route path='/d/signup' component={Donor} />
+                  <Route path='/d/signup' render={props => <Donor currentUser={this.state.currentUser} />} />
                   <Route path='/r/signup' component={Receiver} />
                   <Route path='/market' render={props => <Market currentUser={this.state.currentUser} />} />
                   <Route path='/home' component={Home}/>
