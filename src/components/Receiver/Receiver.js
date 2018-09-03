@@ -5,7 +5,8 @@ class Receiver extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      step: props.step || 0,
+      step: props.step || 2,
+      currentUser: props.currentUser,
       message: "Request food",
       name: '',
       ethaccount: ''
@@ -88,7 +89,7 @@ class Receiver extends Component {
         }
         {this.state.step === 2 &&
           <div>
-            <ReceiverSignup nextStep={this.nextStep} />
+            <ReceiverSignup currentUser={this.props.currentUser} nextStep={this.nextStep} />
           </div>
         }
       </div>

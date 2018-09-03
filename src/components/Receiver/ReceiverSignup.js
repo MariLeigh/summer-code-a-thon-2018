@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { users } from '../dummyData'
 
 class ReceiverSignup extends Component {
   constructor(props) {
@@ -16,6 +17,11 @@ class ReceiverSignup extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState(({
+      wallet: nextProps.currentUser
+    }))
+  }
 
   handleChange(key, event) {
     this.setState({ [key]: event.target.value })
@@ -24,7 +30,30 @@ class ReceiverSignup extends Component {
   handleSubmit(event) {
     console.log('A receiver account was submitted: ' + JSON.stringify(this.state))
     event.preventDefault()
-
+    let match = false
+    const updates = {}
+    if (this.state.name) updates.name = this.state.name
+    if (this.state.address) updates.address = this.state.address
+    if (this.state.address2) updates.address2 = this.state.address2
+    if (this.state.zipcode) updates.zipcode = this.state.zipcode
+    if (this.state.city) updates.city = this.state.city
+    if (this.state.country) updates.country = this.state.country
+    if (this.state.description) updates.description = this.state.description
+    if (this.state.photoUrl) updates.photoUrl = this.state.photoUrl
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].wallet === this.state.wallet) {
+        users[i] = Object.assign(users[i], updates)
+        match = true
+      }
+    }
+    if (!match) {
+      console.log(users)
+      updates.wallet = this.state.wallet
+      updates.id = users.length + 1
+      users[users.length] = updates
+      console.log(users)
+    }
+    window.location = '/market?type=receiver'
   }
 
   render() {

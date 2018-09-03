@@ -105,7 +105,7 @@ class App extends Component {
                   <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser} />} />
                   <Route path='/v/listitem' component={VendorListItem} />
                   <Route path='/d/signup' render={props => <Donor currentUser={this.state.currentUser} />} />
-                  <Route path='/r/signup' component={Receiver} />
+                  <Route path='/r/signup' render={props => <Receiver currentUser={this.state.currentUser} />} />
                   <Route path='/market' render={props => <Market currentUser={this.state.currentUser} />} />
                   <Route path='/home' component={Home}/>
                   <Route path='/fulfillment' component={VendorFulfillmentPage}/>
