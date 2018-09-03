@@ -58,7 +58,6 @@ class DonorSignup extends Component {
             <input type="submit" value="Sign up" />
           </form>
         </div>
-        }
       </div>
     )
   }

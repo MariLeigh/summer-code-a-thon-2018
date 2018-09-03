@@ -6,7 +6,7 @@ class Vendor extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      step: props.step || 0,
+      step: props.step || 2,
       currentUser: props.currentUser,
       message: "Sell Food",
       name: '',
@@ -95,12 +95,12 @@ class Vendor extends Component {
         }
         {this.state.step === 2 &&
         <div>
-          <VendorSignup nextStep={this.nextStep}/>
+          <VendorSignup currentUser={this.props.currentUser} nextStep={this.nextStep}/>
         </div>
         }
         {this.state.step === 3 &&
         <div>
-          <VendorListItem currentUser={this.state.currentUser}/>
+          <VendorListItem currentUser={this.props.currentUser}/>
         </div>
       }
       </div>

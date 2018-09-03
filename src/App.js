@@ -103,7 +103,7 @@ class App extends Component {
               <BrowserRouter>
                 <div>
                   <Route exact path='/' component={Home} />
-                  <Route path='/v/signup' component={Vendor} currentUser={this.state.currentUser} />
+                  <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser} />} />
                   <Route path='/v/listitem' component={VendorListItem} />
                   <Route path='/d/signup' component={Donor} />
                   <Route path='/r/signup' component={Receiver} />
