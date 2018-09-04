@@ -1,15 +1,18 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import ReceiverSignup from './ReceiverSignup'
+
+import {withRouter} from 'react-router-dom';
 
 class Receiver extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
+      currentUser: '',
       step: props.step || 0,
       message: "Request food",
       name: '',
       ethaccount: ''
-    }
+    };
     this.nextStep = this.nextStep.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -56,6 +59,12 @@ class Receiver extends Component {
             <button onClick={() => this.nextStep()}>
               Next step
             </button>
+            <button onClick={() => {
+              this.props.loginHandler("0x559c7dcd5f1fd32925569f9baabc77b039df9dcr");
+              this.props.history.push('/Market')
+            }}>
+              Sign in as testUser
+            </button>
           </div>
         }
         {this.state.step === 1 &&
@@ -96,4 +105,4 @@ class Receiver extends Component {
   }
 }
 
-export default Receiver
+export default withRouter(Receiver)

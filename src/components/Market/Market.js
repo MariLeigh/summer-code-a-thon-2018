@@ -1,22 +1,25 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import MarketItem from './MarketItem'
 import './Market.css'
-import {items, users} from '../dummyData'
+import {items} from '../dummyData'
+import '../dashboard.css'
+
+import {withRouter} from 'react-router-dom';
 
 class Market extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       currentUser: props.currentUser,
       userType: ''
-    }
-    this.setUserType = this.setUserType.bind(this)
-    this.displayItems = this.displayItems.bind(this)
+    };
+    this.setUserType = this.setUserType.bind(this);
+    this.displayItems = this.displayItems.bind(this);
   }
 
 
   displayItems() {
-    if (this.state.userType === 'donor') return items.filter(i => i.requests)
+    if (this.state.userType === 'donor') return items.filter(i => i.requests);
     return items
   }
   setUserType(type) {
@@ -26,9 +29,9 @@ class Market extends Component {
   }
 
   render() {
-
     return (
       <div>
+        <button className='dash-B' onClick={() => (this.props.history.push('r/dash'))}>Dashboard</button>
       <h1> Marketplace </h1>
       <div className="w3-bar w3-black">
         <button className="w3-bar-item w3-button" onClick={() => this.setUserType('')}>View all</button>
@@ -62,4 +65,4 @@ class Market extends Component {
   }
 }
 
-export default Market
+export default withRouter(Market);

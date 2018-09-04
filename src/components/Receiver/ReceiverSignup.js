@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+
 
 class ReceiverSignup extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      currentUser: props.currentUser,
+      isSigneup: false,
       name: '',
       address: '',
       address2: '',
@@ -12,9 +15,9 @@ class ReceiverSignup extends Component {
       country: '',
       description: '',
       photoUrl: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(key, event) {
@@ -22,8 +25,8 @@ class ReceiverSignup extends Component {
   }
 
   handleSubmit(event) {
-    console.log('A receiver account was submitted: ' + JSON.stringify(this.state))
-    event.preventDefault()
+    console.log('A receiver account was submitted: ' + JSON.stringify(this.state));
+    event.preventDefault();
 
   }
 
@@ -97,4 +100,4 @@ class ReceiverSignup extends Component {
   }
 }
 
-export default ReceiverSignup
+export default ReceiverSignup;

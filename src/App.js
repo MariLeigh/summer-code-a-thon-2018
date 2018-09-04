@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
-import getWeb3 from './utils/getWeb3'
-import { BrowserRouter, Route } from 'react-router-dom'
-import swarm from './swarm.js'
+//import getWeb3 from './utils/getWeb3'
+import {BrowserRouter, Route} from 'react-router-dom'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -16,36 +15,38 @@ import VendorListItem from './components/Vendor/VendorListItem'
 import Market from './components/Market/Market'
 import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
 import VendorFulfillmentPage from "./components/Vendor/VendorFulfillmentPage";
-import { items, users } from './components/dummyData'
+import ReceiverDash from './components/Receiver/Dashboard';
+import Nav from './components/Navbar'
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.step = props.step || 0
     this.state = {
       storageValue: 0,
       web3: null,
       currentUser: ''
-    }
+    };
+    this.login = this.login.bind(this);
   }
 
   componentWillMount() {
     // Get network provider and web3 instance.
     // See utils/getWeb3 for more info.
-
-    getWeb3
-    .then(results => {
-      this.setState({
-        web3: results.web3,
-        currentUser: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
-      })
-      // Instantiate contract once web3 provided.
-      // this.instantiateContract()
-    })
-    .catch((e) => {
-      console.log(e)
-      console.log('Error finding web3.')
-    })
+    //
+    // getWeb3
+    // .then(results => {
+    //   this.setState({
+    //     web3: results.web3,
+    //     currentUser: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
+    //   })
+    //   // Instantiate contract once web3 provided.
+    //   // this.instantiateContract()
+    // })
+    // .catch((e) => {
+    //   console.log(e)
+    //   console.log('Error finding web3.')
+    // })
   }
 
   instantiateContract() {
@@ -80,44 +81,39 @@ class App extends Component {
     })
   }
 
+  login(currentUser) {
+
+    this.setState({currentUser: currentUser});
+  }
 
   render() {
-    const regUser = users.filter(u => u.wallet === this.state.currentUser)
-    const userName = regUser[0] ? regUser[0].name : this.state.currentUser
-
     return (
-      <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="/" className="pure-menu-heading pure-menu-link">RemitMart</a>
-            <a className="nav-link text-nowrap text-muted" id="eth-address">
-            <i className="fa fa-user fa-fw"></i>
-            { userName && <span>Hello, { userName }</span> }
-            { !userName &&
-              <span>it looks like you don't have Metamask yet, please <a href='/'>SIGNUP</a></span>}
-          </a>
-        </nav>
-
+      <BrowserRouter>
+        <div className="App">
+          <Nav currentUser={this.state.currentUser}/>
         <main className="container">
           <div className="pure-g">
             <div className="pure-u-1-1">
-              <BrowserRouter>
                 <div>
                   <Route exact path='/' component={Home} />
-                  <Route path='/v/signup' component={Vendor} currentUser={this.state.currentUser} />
+                  <Route path='/v/signup' component={Vendor}/>
                   <Route path='/v/listitem' component={VendorListItem} />
                   <Route path='/d/signup' component={Donor} />
-                  <Route path='/r/signup' component={Receiver} />
+                  <Route path='/r/signup'
+                         render={() => <Receiver currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
                   <Route path='/market' render={props => <Market currentUser={this.state.currentUser} />} />
                   <Route path='/home' component={Home}/>
                   <Route path='/fulfillment' component={VendorFulfillmentPage}/>
                   <Route path='/addNewItem' component={VendorAddNewItemPage}/>
+                  <Route path='/r/dash' component={ReceiverDash}/>
                 </div>
-              </BrowserRouter>
             </div>
           </div>
         </main>
       </div>
+      </BrowserRouter>
     );
   }
 }
-export default App
+
+export default App;
