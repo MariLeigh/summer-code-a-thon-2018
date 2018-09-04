@@ -28,7 +28,7 @@ class ReceiverSignup extends Component {
   }
 
   handleSubmit(event) {
-    console.log('A receiver account was submitted: ' + JSON.stringify(this.state))
+    // console.log('A receiver account was submitted: ' + JSON.stringify(this.state))
     event.preventDefault()
     let match = false
     const updates = {}
@@ -47,11 +47,9 @@ class ReceiverSignup extends Component {
       }
     }
     if (!match) {
-      console.log(users)
       updates.wallet = this.state.wallet
       updates.id = users.length + 1
       users[users.length] = updates
-      console.log(users)
     }
     window.location = '/market?type=receiver'
   }

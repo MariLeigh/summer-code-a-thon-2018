@@ -59,7 +59,7 @@ class Market extends Component {
       }
       <div className="grid">
         {this.displayItems().map(item =>
-          <MarketItem key={item.id} {...item} userType={this.state.userType} />
+          <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser} />
         )}
       </div>
       </div>
