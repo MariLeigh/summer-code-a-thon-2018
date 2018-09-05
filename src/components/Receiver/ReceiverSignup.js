@@ -51,7 +51,7 @@ class ReceiverSignup extends Component {
       updates.id = users.length + 1
       users[users.length] = updates
     }
-    window.location = '/market?type=receiver'
+    window.location = '/market?type=r'
   }
 
   render() {

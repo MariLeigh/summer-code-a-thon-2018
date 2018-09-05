@@ -28,6 +28,10 @@ class DonorSignup extends Component {
   handleSubmit(event) {
     // console.log('A donor account was submitted: ' + JSON.stringify(this.state))
     event.preventDefault()
+    // if (!this.state.wallet) {
+    //   alert("Your metamask account is not signed in, unable to add user.")
+    //   return
+    // }
     let match = false
     const updates = {}
     if (this.state.donorWallet) updates.donorWallet = this.state.donorWallet
@@ -43,7 +47,7 @@ class DonorSignup extends Component {
       updates.id = users.length + 1
       users[users.length] = updates
     }
-    window.location = '/market?type=donor'
+    window.location = '/market?type=d'
   }
 
   render() {

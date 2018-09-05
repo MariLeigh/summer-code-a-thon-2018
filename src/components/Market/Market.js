@@ -17,11 +17,11 @@ class Market extends Component {
 
   componentDidMount() {
     const query = queryString.parse(location.search)
-    if (query.type) this.setUserType(query.type)
+    if (query.type && !this.state.userType) this.setUserType(query.type)
   }
 
   displayItems() {
-    if (this.state.userType === 'donor') return items.filter(i => i.requests)
+    if (this.state.userType === 'd') return items.filter(i => i.requests)
     return items
   }
   setUserType(type) {
@@ -37,11 +37,11 @@ class Market extends Component {
       <h1> Marketplace </h1>
       <div className="w3-bar w3-black">
         <button className="w3-bar-item w3-button" onClick={() => this.setUserType('')}>View all</button>
-        <button className="w3-bar-item w3-button" onClick={() => this.setUserType('receiver')}>Make a Request</button>
-        <button className="w3-bar-item w3-button" onClick={() => this.setUserType('donor')}>Be a Sponsor</button>
+        <button className="w3-bar-item w3-button" onClick={() => this.setUserType('r')}>Make a Request</button>
+        <button className="w3-bar-item w3-button" onClick={() => this.setUserType('d')}>Be a Sponsor</button>
       </div>
 
-      {this.state.userType === 'receiver' &&
+      {this.state.userType === 'r' &&
         <div>
           <h2> Browse all available items and choose one to request </h2>
           <p>
@@ -49,7 +49,7 @@ class Market extends Component {
           </p>
         </div>
       }
-      {this.state.userType === 'donor' &&
+      {this.state.userType === 'd' &&
         <div>
           <h2> Browse all requests and select who to help </h2>
           <p>

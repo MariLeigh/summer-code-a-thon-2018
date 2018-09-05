@@ -52,7 +52,7 @@ class MarketItem extends Component {
 
   render () {
     let retElm = []
-    if (this.state.item.userType === 'donor' && this.state.item.requests) {
+    if (this.state.item.userType === 'd' && this.state.item.requests) {
       this.state.item.requests.forEach(requester => {
         return users.filter(u => u.wallet === requester).forEach(user => {
           retElm.push(<div key={user.id}>
@@ -83,7 +83,7 @@ class MarketItem extends Component {
           <img src={this.state.item.itemUrl} alt="item:"></img>
         </div>
         <div> {this.state.item.description} </div>
-        {this.state.item.userType === 'receiver' &&
+        {this.state.item.userType === 'r' &&
           <div>
             <button value={this.state.item.id} onClick={this.firstRequest}>Request Item</button>
           </div>
@@ -103,7 +103,7 @@ class MarketItem extends Component {
             </div>
           </div>
         }
-        {this.state.item.userType === 'donor' && this.state.item.requests &&
+        {this.state.item.userType === 'd' && this.state.item.requests &&
           <div>
             <div> Price: {this.state.item.price} USD </div>
             <div>{retElm}</div>
