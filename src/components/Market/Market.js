@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import React, { Component } from 'react'
 import queryString from 'query-string'
 import MarketItem from './MarketItem'
 import './Market.css'
@@ -17,8 +16,6 @@ class Market extends Component {
     };
     this.setUserType = this.setUserType.bind(this);
     this.displayItems = this.displayItems.bind(this);
-      userType: props.userType
-    }
     this.setUserType = this.setUserType.bind(this)
     this.displayItems = this.displayItems.bind(this)
   }

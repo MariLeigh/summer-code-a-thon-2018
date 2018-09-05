@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
-//import getWeb3 from './utils/getWeb3'
+import getWeb3 from './utils/getWeb3'
 import {BrowserRouter, Route} from 'react-router-dom'
 import swarm from './swarm.js'
 
