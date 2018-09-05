@@ -105,7 +105,7 @@ class App extends Component {
                   <Route path='/home' component={Home}/>
                   <Route path='/fulfillment' component={VendorFulfillmentPage}/>
                   <Route path='/addNewItem' component={VendorAddNewItemPage}/>
-                  <Route path='/r/dash' component={ReceiverDash}/>
+                  <Route path='/r/dash' render={() => <ReceiverDash currentUser={this.state.currentUser}/>}/>
                 </div>
             </div>
           </div>

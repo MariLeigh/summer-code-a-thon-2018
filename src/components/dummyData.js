@@ -98,7 +98,9 @@ exports.users = [
     'city': '',
     'country': '',
     'description': '',
-    'photoUrl': ''
+    'photoUrl': '',
+    'in_progress_items': ['4'],
+    'completed_items': ['3', '1', '5']
   },
   {
     'id': '4',

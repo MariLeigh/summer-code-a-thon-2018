@@ -13,13 +13,12 @@ const Navbar = (props) => {
       }}>RemitMart</a>
       <a className="nav-link text-nowrap text-muted" id="eth-address">
         <i className="fa fa-user fa-fw"></i>
-        {props.currentUser}
-        {userName && <span>Hello, {userName}</span>}
+        <span className="userInfo">{userName && <span>Hello, {userName}</span>}
         {!userName &&
         <span>it looks like you don't have Metamask yet, please <a href='/' onClick={(event) => {
           event.preventDefault();
           props.history.push('/')
-        }}>SIGNUP</a></span>}
+        }}>SIGNUP</a></span>}</span>
       </a>
     </nav>
   );

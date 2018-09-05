@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import ReceiverSignup from './ReceiverSignup'
-
 import {withRouter} from 'react-router-dom';
 
 class Receiver extends Component {

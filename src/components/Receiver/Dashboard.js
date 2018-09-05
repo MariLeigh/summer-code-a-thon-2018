@@ -1,5 +1,7 @@
 import React from 'react'
-import '../dashboard.css'
+import '../Dash.css'
+import {items, users} from '../dummyData'
+import DashItem from '../DashItem'
 
 
 class Dashboard extends React.Component {
@@ -7,21 +9,51 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: props.currentUser
+      currentUser: props.currentUser,
+      inProgressItems: '',
+      completedItems: ''
     };
+    this.userInfo = this.userInfo.bind(this);
   }
 
+  userInfo() {
+    return users.filter((user) => user.wallet === this.state.currentUser)[0];
+  }
+
+  componentWillMount() {
+    const idArr1 = this.userInfo().in_progress_items;
+    const idArr2 = this.userInfo().completed_items;
+    this.setState({inProgressItems: this.searchItems(idArr1)});
+    this.setState({completedItems: this.searchItems(idArr2)});
+  }
+
+  searchItems(array) {
+    let result = [];
+    for (let i = 0; i < array.length; i++) {
+      items.forEach((item) => {
+        if (array[i] === item.id) {
+          result.push(item);
+        }
+      })
+    }
+    return result;
+  }
 
   render() {
     return (
       <div>
-        <h1>Orders in Progress</h1>
+        <h1 className='pageTitle'>Dashboard</h1>
+        <h1>Order in Progress</h1>
+        <div className="item-in-progress-grid">
+          {this.state.inProgressItems.map(item =>
+            <DashItem key={item.id} {...item} type="inProcess"/>
+          )}
+        </div>
+        <h1>Completed Orders</h1>
         <div className='dash-grid'>
-          <div>
-            map(item =>
-            {/*<MarketItem key={item.id} {...item} userType={this.state.userType} />*/}
-            )}
-          </div>
+          {this.state.completedItems.map(item =>
+            <DashItem key={item.id} {...item} type="completed"/>
+          )}
         </div>
       </div>
     )
