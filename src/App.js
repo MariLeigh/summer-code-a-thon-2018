@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 //import getWeb3 from './utils/getWeb3'
 import {BrowserRouter, Route} from 'react-router-dom'
+import swarm from './swarm.js'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -21,7 +22,7 @@ import Nav from './components/Navbar'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.step = props.step || 0
+    this.step = props.step || 0;
     this.state = {
       storageValue: 0,
       web3: null,
@@ -33,20 +34,20 @@ class App extends Component {
   componentWillMount() {
     // Get network provider and web3 instance.
     // See utils/getWeb3 for more info.
-    //
-    // getWeb3
-    // .then(results => {
-    //   this.setState({
-    //     web3: results.web3,
-    //     currentUser: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
-    //   })
-    //   // Instantiate contract once web3 provided.
-    //   // this.instantiateContract()
-    // })
-    // .catch((e) => {
-    //   console.log(e)
-    //   console.log('Error finding web3.')
-    // })
+
+    getWeb3
+    .then(results => {
+      this.setState({
+        web3: results.web3,
+        currentUser: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
+      })
+      // Instantiate contract once web3 provided.
+      // this.instantiateContract()
+    })
+    .catch((e) => {
+      console.log(e)
+      console.log('Error finding web3.')
+    })
   }
 
   instantiateContract() {
@@ -96,11 +97,11 @@ class App extends Component {
             <div className="pure-u-1-1">
                 <div>
                   <Route exact path='/' component={Home} />
-                  <Route path='/v/signup' component={Vendor}/>
-                  <Route path='/v/listitem' component={VendorListItem} />
-                  <Route path='/d/signup' component={Donor} />
                   <Route path='/r/signup'
                          render={() => <Receiver currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
+                  <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser} />} />
+                  <Route path='/v/listitem' render={props => <VendorListItem currentUser={this.state.currentUser} />} />
+                  <Route path='/d/signup' render={props => <Donor currentUser={this.state.currentUser} />} />
                   <Route path='/market' render={props => <Market currentUser={this.state.currentUser} />} />
                   <Route path='/home' component={Home}/>
                   <Route path='/fulfillment' component={VendorFulfillmentPage}/>

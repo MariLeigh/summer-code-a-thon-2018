@@ -8,6 +8,7 @@ body,
 form {
   display: grid;
   grid-gap: 8px;
+  justify-content: center;
 }
 
 h1, h2, h3 {
@@ -29,6 +30,10 @@ code {
   box-sizing: border-box;
   width: 100%;
   padding: 45px 20px;
+}
+
+.pure-g {
+  padding-top: 40px;
 }
 
 .pure-button-primary {

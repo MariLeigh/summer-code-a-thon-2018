@@ -6,6 +6,7 @@ class Donor extends Component {
     super(props)
     this.state = {
       step: props.step || 0,
+      currentUser: props.currentUser,
       message: "Donate",
       name: '',
       ethaccount: ''
@@ -88,7 +89,7 @@ class Donor extends Component {
         }
         {this.state.step === 2 &&
           <div>
-            <DonorSignup nextStep={this.nextStep} />
+          <DonorSignup setUserType={this.setUserType} currentUser={this.props.currentUser} nextStep={this.nextStep} />
           </div>
         }
       </div>

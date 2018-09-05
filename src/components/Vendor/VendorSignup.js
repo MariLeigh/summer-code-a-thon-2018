@@ -1,19 +1,28 @@
 import React, {Component} from 'react'
+import {users} from '../dummyData'
 
 class VendorSignup extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
+      wallet: '',
       address: '',
       address2: '',
       zipcode: '',
       city: '',
       country: '',
-      ethaccount: ''
+      vendorWallet: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState(({
+      wallet: nextProps.currentUser,
+      vendorWallet: nextProps.currentUser
+     }))
   }
 
   handleChange(key, event) {
@@ -21,8 +30,29 @@ class VendorSignup extends Component {
   }
 
   handleSubmit(event) {
-    console.log('A vendor account was submitted: ' + JSON.stringify(this.state))
     event.preventDefault()
+    // console.log('A vendor account was submitted: ' + JSON.stringify(this.state))
+
+    let match = false
+    const updates = {}
+    if (this.state.vendorWallet) updates.vendorWallet = this.state.vendorWallet
+    if (this.state.name) updates.name = this.state.name
+    if (this.state.address) updates.address = this.state.address
+    if (this.state.address2) updates.address2 = this.state.address2
+    if (this.state.zipcode) updates.zipcode = this.state.zipcode
+    if (this.state.city) updates.city = this.state.city
+    if (this.state.country) updates.country = this.state.country
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].wallet === this.state.wallet) {
+        users[i] = Object.assign(users[i], updates)
+        match = true
+      }
+    }
+    if (!match) {
+      updates.wallet = this.state.wallet
+      updates.id = users.length + 1
+      users[users.length] = updates
+    }
     window.location = '/v/listitem'
   }
 
@@ -74,16 +104,15 @@ class VendorSignup extends Component {
                 />
               </label>
               <label>
-                Ethereum account:
+                Ethereum account/payment wallet:
                 <input type="text"
-                value={this.state.ethaccount}
-                onChange={(e) => this.handleChange('ethaccount', e)}
+                value={this.state.vendorWallet}
+                onChange={(e) => this.handleChange('vendorWallet', e)}
                 />
               </label>
               <input type="submit" value="Sign up" />
             </form>
           </div>
-        }
       </div>
     )
   }

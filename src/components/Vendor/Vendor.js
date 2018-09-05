@@ -95,12 +95,12 @@ class Vendor extends Component {
         }
         {this.state.step === 2 &&
         <div>
-          <VendorSignup nextStep={this.nextStep}/>
+          <VendorSignup currentUser={this.props.currentUser} nextStep={this.nextStep}/>
         </div>
         }
         {this.state.step === 3 &&
         <div>
-          <VendorListItem currentUser={this.state.currentUser}/>
+          <VendorListItem currentUser={this.props.currentUser}/>
         </div>
       }
       </div>
