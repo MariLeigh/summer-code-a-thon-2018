@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import VendorSignup from './VendorSignup'
 import VendorListItem from './VendorListItem'
 

@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import React, { Component } from 'react'
 import queryString from 'query-string'
 import MarketItem from './MarketItem'
 import './Market.css'
@@ -17,11 +16,9 @@ class Market extends Component {
     };
     this.setUserType = this.setUserType.bind(this);
     this.displayItems = this.displayItems.bind(this);
-      userType: props.userType
-    }
-    this.setUserType = this.setUserType.bind(this)
-    this.displayItems = this.displayItems.bind(this)
+    userType: props.userType
   }
+
 
   componentDidMount() {
     const query = queryString.parse(location.search)
@@ -50,15 +47,15 @@ class Market extends Component {
           <button className="w3-bar-item w3-button" onClick={() => this.setUserType('d')}>Be a Sponsor</button>
         </div>
 
-      {this.state.userType === 'r' &&
+        {this.state.userType === 'r' &&
         <div>
           <h2> Browse all available items and choose one to request </h2>
           <p>
             Once you receive (and confirm receipt!) of your item, you'll be able to come back and request again
           </p>
         </div>
-      }
-      {this.state.userType === 'd' &&
+        }
+        {this.state.userType === 'd' &&
         <div>
           <h2> Browse all requests and select who to help </h2>
           <p>
@@ -66,15 +63,14 @@ class Market extends Component {
             delivered.
           </p>
         </div>
-      }
-      <div className="grid">
-        {this.displayItems().map(item =>
-          <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser} />
-        )}
-      </div>
+        }
+        <div className="grid">
+          {this.displayItems().map(item =>
+            <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser}/>
+          )}
+        </div>
       </div>
     )
   }
 }
-
 export default withRouter(Market);

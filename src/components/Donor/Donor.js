@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import DonorSignup from './DonorSignup'
 
 class Donor extends Component {
@@ -89,7 +89,7 @@ class Donor extends Component {
         }
         {this.state.step === 2 &&
           <div>
-          <DonorSignup setUserType={this.setUserType} currentUser={this.props.currentUser} nextStep={this.nextStep} />
+            <DonorSignup setUserType={this.setUserType} currentUser={this.props.currentUser} nextStep={this.nextStep}/>
           </div>
         }
       </div>

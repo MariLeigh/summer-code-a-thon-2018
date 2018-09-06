@@ -76,6 +76,7 @@ code {
   font-size: x-large;
   padding: 2px;
   padding-left: 24px;
+  padding-right: 24px;
 
 }
 
@@ -88,6 +89,12 @@ code {
   position: inherit;
   vertical-align: middle;
 }
+
+.userInfo-a {
+  padding: 5px;
+  padding-bottom: 10px;
+}
+
 
 .navbar .navbar-right {
   float: right;

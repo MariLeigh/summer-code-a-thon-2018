@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import swarm from '../../swarm';
-import { items } from '../dummyData'
+import React, {Component} from 'react'
+import {items} from '../dummyData'
 
 class VendorListItem extends Component {
   constructor(props) {
@@ -83,9 +82,9 @@ class VendorListItem extends Component {
             </label>
             <label>
               Image URL:
-                <input type="text"
-                value={this.state.photoUrl}
-                onChange={(e) => this.handleChange('photoUrl', e)}
+              <input type="text"
+                     value={this.state.photoUrl}
+                     onChange={(e) => this.handleChange('photoUrl', e)}
               />
             </label>
             <label>

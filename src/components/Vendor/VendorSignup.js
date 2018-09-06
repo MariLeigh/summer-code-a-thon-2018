@@ -22,7 +22,7 @@ class VendorSignup extends Component {
     this.setState(({
       wallet: nextProps.currentUser,
       vendorWallet: nextProps.currentUser
-     }))
+    }))
   }
 
   handleChange(key, event) {
@@ -106,8 +106,8 @@ class VendorSignup extends Component {
               <label>
                 Ethereum account/payment wallet:
                 <input type="text"
-                value={this.state.vendorWallet}
-                onChange={(e) => this.handleChange('vendorWallet', e)}
+                       value={this.state.vendorWallet}
+                       onChange={(e) => this.handleChange('vendorWallet', e)}
                 />
               </label>
               <input type="submit" value="Sign up" />

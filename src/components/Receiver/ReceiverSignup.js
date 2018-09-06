@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { users } from '../dummyData'
+import React, {Component} from 'react'
+import {users} from '../dummyData'
 
 
 class ReceiverSignup extends Component {
@@ -20,6 +20,7 @@ class ReceiverSignup extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   componentWillReceiveProps(nextProps) {
     this.setState(({
       wallet: nextProps.currentUser

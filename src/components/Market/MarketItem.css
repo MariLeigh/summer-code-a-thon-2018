@@ -16,6 +16,7 @@
   border-radius: 4px;
   text-align: center;
 }
+
 .request-modal {
   position: fixed;
   background-color: rgba(0, 0, 0, .8);
@@ -24,6 +25,7 @@
   bottom: 0;
   right: 0;
 }
+
 .request-modal > div {
   max-width: 600px;
   width: 80%;

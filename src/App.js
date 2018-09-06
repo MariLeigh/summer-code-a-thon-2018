@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 //import getWeb3 from './utils/getWeb3'
 import {BrowserRouter, Route} from 'react-router-dom'
-import swarm from './swarm.js'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -15,7 +14,6 @@ import Receiver from './components/Receiver/Receiver'
 import VendorListItem from './components/Vendor/VendorListItem'
 import Market from './components/Market/Market'
 import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
-import VendorFulfillmentPage from "./components/Vendor/VendorFulfillmentPage";
 import ReceiverDash from './components/Receiver/Dashboard';
 import Nav from './components/Navbar'
 
@@ -35,19 +33,19 @@ class App extends Component {
     // Get network provider and web3 instance.
     // See utils/getWeb3 for more info.
 
-    getWeb3
-    .then(results => {
-      this.setState({
-        web3: results.web3,
-        currentUser: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
-      })
-      // Instantiate contract once web3 provided.
-      // this.instantiateContract()
-    })
-    .catch((e) => {
-      console.log(e)
-      console.log('Error finding web3.')
-    })
+    // getWeb3
+    // .then(results => {
+    //   this.setState({
+    //     web3: results.web3,
+    //     currentUser: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
+    //   })
+    //   // Instantiate contract once web3 provided.
+    //   // this.instantiateContract()
+    // })
+    // .catch((e) => {gi
+    //   console.log(e)
+    //   console.log('Error finding web3.')
+    // })
   }
 
   instantiateContract() {
@@ -99,13 +97,11 @@ class App extends Component {
                   <Route exact path='/' component={Home} />
                   <Route path='/r/signup'
                          render={() => <Receiver currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
-                  <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser} />} />
-                  <Route path='/v/listitem' render={props => <VendorListItem currentUser={this.state.currentUser} />} />
-                  <Route path='/d/signup' render={props => <Donor currentUser={this.state.currentUser} />} />
+                  <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser}/>}/>
+                  <Route path='/v/listitem' render={props => <VendorListItem currentUser={this.state.currentUser}/>}/>
+                  <Route path='/d/signup' render={props => <Donor currentUser={this.state.currentUser}/>}/>
                   <Route path='/market' render={props => <Market currentUser={this.state.currentUser} />} />
-                  <Route path='/home' component={Home}/>
-                  <Route path='/fulfillment' component={VendorFulfillmentPage}/>
-                  <Route path='/addNewItem' component={VendorAddNewItemPage}/>
+                  ste path='/addNewItem' component={VendorAddNewItemPage}/>
                   <Route path='/r/dash' render={() => <ReceiverDash currentUser={this.state.currentUser}/>}/>
                 </div>
             </div>

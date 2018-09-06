@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { users } from '../dummyData'
+import React, {Component} from 'react'
+import {users} from '../dummyData'
 
 class DonorSignup extends Component {
   constructor(props) {
@@ -65,8 +65,8 @@ class DonorSignup extends Component {
             <label>
               Ethereum account/payment wallet:
                 <input type="text"
-                value={this.state.donorWallet}
-                onChange={(e) => this.handleChange('donorWallet', e)}
+                       value={this.state.donorWallet}
+                       onChange={(e) => this.handleChange('donorWallet', e)}
               />
             </label>
             <input type="submit" value="Sign up" />

@@ -6,15 +6,15 @@ class Receiver extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: props.step || 2,
+      step: props.step || 0,
       currentUser: props.currentUser,
       message: "Request food",
       name: '',
       ethaccount: ''
     };
-    this.nextStep = this.nextStep.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.nextStep = this.nextStep.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   nextStep() {
     this.setState({ step: this.state.step + 1 })
@@ -96,7 +96,7 @@ class Receiver extends Component {
         }
         {this.state.step === 2 &&
           <div>
-            <ReceiverSignup currentUser={this.props.currentUser} nextStep={this.nextStep} />
+            <ReceiverSignup currentUser={this.props.currentUser} nextStep={this.nextStep}/>
           </div>
         }
       </div>

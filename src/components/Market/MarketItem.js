@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { items, users } from '../dummyData'
+import React, {Component} from 'react'
+import {items, users} from '../dummyData'
 import './MarketItem.css'
 
 class MarketItem extends Component {
@@ -40,9 +40,10 @@ class MarketItem extends Component {
       selectedUser: users.filter(u => u.id === event.target.value)[0]
     })
   }
+
   firstRequest(event) {
     event.preventDefault()
-    this.setState({ requestModal: true })
+    this.setState({requestModal: true})
   }
 
   toggleModal(e) {
@@ -66,12 +67,24 @@ class MarketItem extends Component {
     let addressElm = []
     for (let i = 0; i < users.length; i++) {
       if (users[i].wallet === this.props.currentUser) {
-        if (users[i].name) { addressElm.push(<p>Name: {users[i].name}</p>)}
-        if (users[i].address) { addressElm.push(<p>Address: {users[i].address}</p>)}
-        if (users[i].address2) { addressElm.push(<p>Address2: {users[i].address2}</p>)}
-        if (users[i].zipcode) { addressElm.push(<p>Zip Code: {users[i].zipcode}</p>)}
-        if (users[i].city) { addressElm.push(<p>City: {users[i].city}</p>)}
-        if (users[i].country) { addressElm.push(<p>Country: {users[i].country}</p>)}
+        if (users[i].name) {
+          addressElm.push(<p>Name: {users[i].name}</p>)
+        }
+        if (users[i].address) {
+          addressElm.push(<p>Address: {users[i].address}</p>)
+        }
+        if (users[i].address2) {
+          addressElm.push(<p>Address2: {users[i].address2}</p>)
+        }
+        if (users[i].zipcode) {
+          addressElm.push(<p>Zip Code: {users[i].zipcode}</p>)
+        }
+        if (users[i].city) {
+          addressElm.push(<p>City: {users[i].city}</p>)
+        }
+        if (users[i].country) {
+          addressElm.push(<p>Country: {users[i].country}</p>)
+        }
       }
     }
 
@@ -84,23 +97,23 @@ class MarketItem extends Component {
         </div>
         <div> {this.state.item.description} </div>
         {this.state.item.userType === 'r' &&
-          <div>
-            <button value={this.state.item.id} onClick={this.firstRequest}>Request Item</button>
-          </div>
+        <div>
+          <button value={this.state.item.id} onClick={this.firstRequest}>Request Item</button>
+        </div>
         }
         {this.state.requestModal &&
-          <div className='request-modal' onClick={this.toggleModal}>
+        <div className='request-modal' onClick={this.toggleModal}>
+          <div>
+            <h2>Request for:</h2>
+            <p>Item: {this.state.item.item} </p>
+            <p>Description: {this.state.item.description} </p>
+            <h3>Delivery address:</h3>
+            {addressElm}
+            <h3>Reminder: Must confirm delivery</h3>
             <div>
-              <h2>Request for:</h2>
-              <p>Item: {this.state.item.item} </p>
-              <p>Description: {this.state.item.description} </p>
-              <h3>Delivery address:</h3>
-              { addressElm }
-              <h3>Reminder: Must confirm delivery</h3>
-              <div>
-                <button value={this.state.item.id} onClick={this.requestItem}>Submit</button>
-              </div>
+              <button value={this.state.item.id} onClick={this.requestItem}>Submit</button>
             </div>
+          </div>
           </div>
         }
         {this.state.item.userType === 'd' && this.state.item.requests &&

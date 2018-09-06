@@ -11,7 +11,7 @@ const Navbar = (props) => {
         event.preventDefault();
         props.history.push('/');
       }}>RemitMart</a>
-      <a className="nav-link text-nowrap text-muted" id="eth-address">
+      <a className="nav-link text-nowrap text-muted userInfo-a" id="eth-address">
         <i className="fa fa-user fa-fw"></i>
         <span className="userInfo">{userName && <span>Hello, {userName}</span>}
         {!userName &&
