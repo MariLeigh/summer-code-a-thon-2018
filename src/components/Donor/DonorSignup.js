@@ -1,17 +1,17 @@
-import React, {Component} from 'react'
-import {users} from '../dummyData'
+import React, {Component} from 'react';
+import {users} from '../dummyData';
 
 class DonorSignup extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       wallet: '',
       name: '',
       donorWallet: ''
-    }
-    this.setUserType = props.setUserType
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    };
+    this.setUserType = props.setUserType;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,25 +27,25 @@ class DonorSignup extends Component {
 
   handleSubmit(event) {
     // console.log('A donor account was submitted: ' + JSON.stringify(this.state))
-    event.preventDefault()
+    event.preventDefault();
     // if (!this.state.wallet) {
     //   alert("Your metamask account is not signed in, unable to add user.")
     //   return
     // }
-    let match = false
-    const updates = {}
-    if (this.state.donorWallet) updates.donorWallet = this.state.donorWallet
-    if (this.state.name) updates.name = this.state.name
+    let match = false;
+    const updates = {};
+    if (this.state.donorWallet) updates.donorWallet = this.state.donorWallet;
+    if (this.state.name) updates.name = this.state.name;
     for (let i = 0; i < users.length; i++) {
       if (users[i].wallet === this.state.wallet) {
-        users[i] = Object.assign(users[i], updates)
+        users[i] = Object.assign(users[i], updates);
         match = true
       }
     }
     if (!match) {
-      updates.wallet = this.state.wallet
-      updates.id = users.length + 1
-      users[users.length] = updates
+      updates.wallet = this.state.wallet;
+      updates.id = users.length + 1;
+      users[users.length] = updates;
     }
     window.location = '/market?type=d'
   }

@@ -11,7 +11,8 @@ class Dashboard extends React.Component {
     this.state = {
       currentUser: props.currentUser,
       inProgressItems: '',
-      completedItems: ''
+      completedItems: '',
+      userType: props.userType
     };
     this.userInfo = this.userInfo.bind(this);
   }
@@ -40,19 +41,23 @@ class Dashboard extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <h1 className='pageTitle'>Dashboard</h1>
-        <h1>Order in Progress</h1>
+        <h1>Transactions in Progress</h1>
         <div className="dash-grid">
           {this.state.inProgressItems.map(item =>
             <DashItem key={item.id} {...item} userType={this.props.userType} section="inProcess"/>
           )}
         </div>
-        <h1>Completed Orders</h1>
+        <h1>Completed Transactions</h1>
         <div className='dash-grid'>
-          {this.state.completedItems.map(item =>
-            <DashItem key={item.id} {...item} userType={this.props.userType} section="completed"/>
+          {this.state.completedItems.map((item, index) => {
+              if (index === 0)
+                return <DashItem section="donationInfo"/>;
+              return <DashItem key={item.id} {...item} userType={this.props.userType} section="completed"/>;
+            }
           )}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import DonorSignup from './DonorSignup'
+import {withRouter} from "react-router-dom";
 
 class Donor extends Component {
   constructor(props) {
@@ -57,6 +58,12 @@ class Donor extends Component {
             <button onClick={() => this.nextStep()}>
               Next step
             </button>
+            <button onClick={() => {
+              this.props.loginHandler("0x559c7dcd5f1fd32925569f9baabc77b039df9dcs");
+              this.props.history.push('/Market')
+            }}>
+              Sign in as testUser
+            </button>
           </div>
         }
         {this.state.step === 1 &&
@@ -97,4 +104,4 @@ class Donor extends Component {
   }
 }
 
-export default Donor
+export default withRouter(Donor)

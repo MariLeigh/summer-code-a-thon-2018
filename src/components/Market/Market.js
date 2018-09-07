@@ -12,16 +12,17 @@ class Market extends Component {
     super(props);
     this.state = {
       currentUser: props.currentUser,
-      userType: ''
+      userType: props.userType
     };
     this.setUserType = this.setUserType.bind(this);
     this.displayItems = this.displayItems.bind(this);
-    this.setUserType = this.setUserType.bind(this)
-    this.displayItems = this.displayItems.bind(this)
+    this.setUserType = this.setUserType.bind(this);
+    this.displayItems = this.displayItems.bind(this);
+    this.goToDashboard = this.goToDashboard.bind(this);
   }
 
   componentDidMount() {
-    const query = queryString.parse(location.search)
+    const query = queryString.parse(location.search);
     if (query.type && !this.state.userType) this.setUserType(query.type)
   }
 
@@ -36,10 +37,16 @@ class Market extends Component {
     })
   }
 
+  goToDashboard() {
+    this.state.userType === 'r' ? this.props.history.push('r/dash') :
+      this.state.userType === 'd' ? this.props.history.push('d/dash') :
+        this.props.history.push('v/dash');
+  }
+
   render() {
     return (
       <div>
-        <button className='dash-B' onClick={() => (this.props.history.push('r/dash'))}>Dashboard</button>
+        <button className='dash-B' onClick={this.goToDashboard}>Dashboard</button>
         <h1 className="pageTitle"> Marketplace </h1>
         <div className="w3-bar w3-black">
           <button className="w3-bar-item w3-button" onClick={() => this.setUserType('')}>View all</button>
@@ -47,15 +54,15 @@ class Market extends Component {
           <button className="w3-bar-item w3-button" onClick={() => this.setUserType('d')}>Be a Sponsor</button>
         </div>
 
-      {this.state.userType === 'r' &&
+        {this.state.userType === 'r' &&
         <div>
           <h2> Browse all available items and choose one to request </h2>
           <p>
             Once you receive (and confirm receipt!) of your item, you'll be able to come back and request again
           </p>
         </div>
-      }
-      {this.state.userType === 'd' &&
+        }
+        {this.state.userType === 'd' &&
         <div>
           <h2> Browse all requests and select who to help </h2>
           <p>
@@ -63,12 +70,12 @@ class Market extends Component {
             delivered.
           </p>
         </div>
-      }
-      <div className="grid">
-        {this.displayItems().map(item =>
-          <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser} />
-        )}
-      </div>
+        }
+        <div className="grid">
+          {this.displayItems().map(item =>
+            <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser}/>
+          )}
+        </div>
       </div>
     )
   }

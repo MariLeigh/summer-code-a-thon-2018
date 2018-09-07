@@ -15,6 +15,11 @@
   justify-content: center;
 }
 
+.content-grid {
+  grid-gap: 0px;
+  grid-template-rows: repeat(auto-fit, minmax(140px, 100%));
+}
+
 .propertyName {
   color: #233e5e;
 }
@@ -32,17 +37,39 @@
 
 .dash-img {
   width: 100%;
+  padding-bottom: 10px;
 }
 
+.important-item {
+  font-size: initial;
+}
 .conformation-B {
-  margin: 10px auto;
+  width: 200px;
+  margin: 0 auto;
 }
 
-.item-in-progress-grid {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(150px, 250px));
-  grid-gap: 16px;
-  justify-content: center;
+/*.item-in-progress {*/
+/*grid-template-columns: repeat(1, minmax(150px, 250px));*/
+/*}*/
+
+.donations-info-f {
+  background-color: #233e5e61;
+}
+
+.donations-info {
+  background-color: #f5deb32e;
+  position: absolute;
+  height: 70%;
+  top: 25%;
+  width: 94%;
+}
+
+.donations-amount-h1 {
+  position: relative;
+  top: 50%;
+  transform: translateY(-100%);
+  font-size: 4em;
+  color: #233e5e;
 }
 
 .description {

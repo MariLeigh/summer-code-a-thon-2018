@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
-import getWeb3 from './utils/getWeb3'
+//import getWeb3 from './utils/getWeb3'
 import {BrowserRouter, Route} from 'react-router-dom'
 
 import './css/oswald.css'
@@ -15,6 +15,7 @@ import VendorListItem from './components/Vendor/VendorListItem'
 import Market from './components/Market/Market'
 import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
 import ReceiverDash from './components/Receiver/Dashboard';
+import DonorDash from './components/Donor/Dashboard';
 import Nav from './components/Navbar'
 
 class App extends Component {
@@ -24,9 +25,11 @@ class App extends Component {
     this.state = {
       storageValue: 0,
       web3: null,
-      currentUser: ''
+      currentUser: '',
+      userType: ''
     };
     this.login = this.login.bind(this);
+    this.setUserType = this.setUserType.bind(this);
   }
 
   componentWillMount() {
@@ -85,6 +88,10 @@ class App extends Component {
     this.setState({currentUser: currentUser});
   }
 
+  setUserType(userType) {
+    this.setState({userType: userType});
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -94,15 +101,20 @@ class App extends Component {
           <div className="pure-g">
             <div className="pure-u-1-1">
                 <div>
-                  <Route exact path='/' component={Home} />
+                  <Route exact path='/' render={() => <Home setUserType={this.setUserType}/>}/>
                   <Route path='/r/signup'
                          render={() => <Receiver currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
                   <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser}/>}/>
                   <Route path='/v/listitem' render={props => <VendorListItem currentUser={this.state.currentUser}/>}/>
-                  <Route path='/d/signup' render={props => <Donor currentUser={this.state.currentUser}/>}/>
-                  <Route path='/market' render={props => <Market currentUser={this.state.currentUser} />} />
-                  ste path='/addNewItem' component={VendorAddNewItemPage}/>
-                  <Route path='/r/dash' render={() => <ReceiverDash currentUser={this.state.currentUser}/>}/>
+                  <Route path='/d/signup'
+                         render={props => <Donor currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
+                  <Route path='/market' render={props => <Market currentUser={this.state.currentUser}
+                                                                 userType={this.state.userType}/>}/>
+                  <Route path='/addNewItem' component={VendorAddNewItemPage}/>
+                  <Route path='/r/dash' render={() => <ReceiverDash currentUser={this.state.currentUser}
+                                                                    userType={this.state.userType}/>}/>
+                  <Route path='/d/dash' render={() => <DonorDash currentUser={this.state.currentUser}
+                                                                 userType={this.state.userType}/>}/>
                 </div>
             </div>
           </div>
