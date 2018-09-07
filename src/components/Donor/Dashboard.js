@@ -41,7 +41,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <h1 className='pageTitle'>Dashboard</h1>
@@ -53,11 +52,9 @@ class Dashboard extends React.Component {
         </div>
         <h1>Completed Transactions</h1>
         <div className='dash-grid'>
-          {this.state.completedItems.map((item, index) => {
-              if (index === 0)
-                return <DashItem section="donationInfo"/>;
-              return <DashItem key={item.id} {...item} userType={this.props.userType} section="completed"/>;
-            }
+          <DashItem section="donationInfo"/>
+          {this.state.completedItems.map((item, index) =>
+            <DashItem key={index} {...item} userType={this.props.userType} section="completed"/>
           )}
         </div>
       </div>

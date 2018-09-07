@@ -51,8 +51,8 @@ class Dashboard extends React.Component {
         </div>
         <h1>Completed Orders</h1>
         <div className='dash-grid'>
-          {this.state.completedItems.map(item =>
-            <DashItem key={item.id} {...item} userType={this.props.userType} section="completed"/>
+          {this.state.completedItems.map((item, index) =>
+            <DashItem key={index} {...item} userType={this.props.userType} section="completed"/>
           )}
         </div>
       </div>

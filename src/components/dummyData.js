@@ -20,7 +20,7 @@ exports.items = [
     "item": "Groceries - 1 week, feeds 3-5",
     "description": "1 week of groceries for 3-5 people. Includes fresh, local produce, grains, and meat.",
     "itemUrl": "https://www.midwestcommunity.org/wp-content/uploads/2018/02/Groceries-ThinkstockPhotos-836782690.jpg",
-    "price": "$30",
+    "price": "$50",
     "quantity": "",
     "location": "Seattle, WA",
     "deliveryRadius": "",
@@ -29,11 +29,11 @@ exports.items = [
   {
     "id": "3",
     "vendorWallet": "0x559c7dcd5f1fd32925569f9baabc77b039df9dcf",
-    "vendorName": "Camille",
+    "vendorName": "Elena",
     "item": "Vegan Groceries - 1 week, feeds 1-2",
     "description": "1 week of vegan groceries for 1 - 2 people. Includes fresh, local produce, grains, nuts and legumes.",
     "itemUrl": "https://www.midwestcommunity.org/wp-content/uploads/2018/02/Groceries-ThinkstockPhotos-836782690.jpg",
-    "price": "$10",
+    "price": "$60",
     "quantity": "",
     "location": "Seattle, WA",
     "deliveryRadius": "",
@@ -46,7 +46,7 @@ exports.items = [
     "item": "Vegan Groceries - 1 week, feeds 3-5",
     "description": "1 week of vegan groceries for 3-5 people. Includes fresh, local produce, grains, nuts and legumes",
     "itemUrl": "https://www.midwestcommunity.org/wp-content/uploads/2018/02/Groceries-ThinkstockPhotos-836782690.jpg",
-    "price": "$100",
+    "price": "$40",
     "quantity": "",
     "location": "Seattle, WA",
     "deliveryRadius": "",
@@ -56,17 +56,17 @@ exports.items = [
   {
     "id": "5",
     "vendorWallet": "0x559c7dcd5f1fd32925569f9baabc77b039df9dcf",
-    "vendor_name": "John",
+    "vendorName": "John",
     "item": "Groceries - 1 week",
     "description": "1 week of groceries for 1 - 2 people. Includes fresh, local produce, grains, and meat.",
     "itemUrl": "https://www.midwestcommunity.org/wp-content/uploads/2018/02/Groceries-ThinkstockPhotos-836782690.jpg",
-    "price": "$20",
+    "price": "$30",
     "quantity": "",
     "location": "Seattle, WA",
     "deliveryRadius": "",
     "deliveryFee": ""
   }
-]
+];
 
 exports.users = [
   {
@@ -81,7 +81,7 @@ exports.users = [
     'description': 'Single mom with one child',
     'photoUrl': '',
     'in_progress_items': ['2', '4'],
-    'completed_items': ['5', '1', '3', '2']
+    'completed_items': ['5', '1', '3', '2', '1']
   },
   {
     "id": "2",
@@ -107,11 +107,11 @@ exports.users = [
     'description': '',
     'photoUrl': '',
     'in_progress_items': ['4'],
-    'completed_items': ['3', '1', '5', '1', '3', '4', '1', '1', '1', '1']
+    'completed_items': ['3', '1', '5', '4', '3']
   },
   {
     'id': '4',
     'wallet': '0x559c7dcd5f1fd32925569f9baabc77b039df9dcf',
     'name': 'World'
   }
-]
+];
