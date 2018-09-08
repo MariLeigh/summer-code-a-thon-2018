@@ -58,6 +58,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
+
     // let withdrawNum = [{item:{price:0}}]
     // withdrawNum = withdrawNum.concat(this.getOrders('received'))
     // withdrawNum = withdrawNum.reduce((t, o) => {
@@ -69,13 +70,22 @@ class Dashboard extends React.Component {
     //   return t + tempVal
     // })
     // console.log(withdrawNum);
+
+    let vendItems = []
+    for (let i=0; i<items.length; i++) {
+      if (items[i].vendorWallet === this.state.currentUser) {
+        vendItems.push(items[i])
+      }
+    }
+
     return (
       <div>
+        <script src="https://use.fontawesome.com/ac442f7ad2.js"></script>
         <h1 className='pageTitle'>Dashboard</h1>
+        <h2>Action Items</h2>
         <div className='dash-container'>
-          <h1>Action Items</h1>
           <div className='dash-component'>
-            <h2>Orders Available to Accept</h2>
+            <h3>Orders Available to Accept</h3>
             <div>
             {this.getOrders('init').map(order =>
               <Order key={order.id} {...order} updateOrder={this.updateOrder}/>
@@ -83,7 +93,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div className='dash-component'>
-            <h2>Orders to Assemble and Ship</h2>
+            <h3>Orders to Assemble and Ship</h3>
             <div>
               {this.getOrders('toShip').map(order =>
                 <Order key={order.id} {...order} updateOrder={this.updateOrder} />
@@ -91,31 +101,49 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div className='dash-component'>
-            <h2>Update Inventory</h2>
+            <h3>Update Inventory<button id='edit-inventory'><i className="fa fa-edit"></i></button></h3>
+            <div className='component-content'>
+              {vendItems.map((item) =>
+                <div>
+                  <p>Name: {item.item}</p>
+                  <p>Price: {item.price}</p>
+                  <p>Quantity: {item.quantity}</p>
+                  <div className='item-img'>
+                    <img src={item.itemUrl} alt="item:"></img>
+                  </div>
+                  <p>Description: {item.description}</p>
+                </div>
+              )
+            }
+            </div>
           </div>
         </div>
+        <h2>Order History and Revenue</h2>
         <div className='dash-container'>
-          <h1>Order History and Revenue</h1>
           <div className='dash-component'>
-            <h2>Revenue</h2>
-            <div>
-              <h3>Grocery packets delivered:</h3>
-              <h1>{this.getShippedOrders().length}</h1>
-              <h3>Ready to withdraw</h3>
-              <h1>$150</h1>
+            <h3>Revenue</h3>
+            <div className='component-content rev'>
+              <p>Ready to withdraw:</p>
+              <p className='dollar'>$150
+                <span>
+                  <a className='transfer-link' href=''>transfer now</a>
+                </span>
+              </p>
               {/* <h1>{withdrawNum}</h1> */}
-              <h3>Total Revenue</h3>
-              <h1>{this.getOrders('complete')
+              <p>Total Revenue:</p>
+              <p className='dollar'>${this.getOrders('complete')
               .reduce((t,o) => t + o.item.price !== ""
-                ? parseInt(o.item.price.replace("$",""))
-                : 0
-              )}</h1>
+              ? parseInt(o.item.price.replace("$",""))
+              : 0
+            )}</p>
               {/* <h1>$50</h1> */}
+            <p>Grocery packets delivered:</p>
+            <p>{this.getShippedOrders().length}</p>
 
             </div>
           </div>
-          <div className='dash-component'>
-            <h2>Orders status</h2>
+          <div className='dash-component order-status'>
+            <h3>Orders status</h3>
             <div>
               {this.getShippedOrders().map(order =>
                 <Order key={order.id} {...order} updateOrder={this.updateOrder}/>

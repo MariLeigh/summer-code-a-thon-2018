@@ -1,7 +1,7 @@
 exports.items = [
   {
     "id": "1",
-    "vendorWallet": "0x559c7dcd5f1fd32925569f9baabc77b039df9dph",
+    "vendorWallet": "0x559c7dcd5f1fd32925569f9baabc77b039df9dp2",
     "vendorName": "Camilla",
     "item": "Groceries - 1 week, feeds 1-2",
     "description": "1 week of groceries for 1 - 2 people. Includes fresh, local produce, grains, and meat.",
@@ -21,7 +21,7 @@ exports.items = [
     "description": "1 week of groceries for 3-5 people. Includes fresh, local produce, grains, and meat.",
     "itemUrl": "https://www.midwestcommunity.org/wp-content/uploads/2018/02/Groceries-ThinkstockPhotos-836782690.jpg",
     "price": "$50",
-    "quantity": "",
+    "quantity": "43",
     "location": "Seattle, WA",
     "deliveryRadius": "",
     "deliveryFee": "",
