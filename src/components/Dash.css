@@ -84,3 +84,17 @@ h5 {
 ul {
   padding-bottom: 5%;
 }
+
+/* .order-item {
+  display: inline-flex;
+}
+.order-item > div {
+  padding: 8px;
+} */
+
+.order-item {
+  display: grid;
+  grid-gap: 16px;
+  padding: 16px;
+  grid-template-columns: 220px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}

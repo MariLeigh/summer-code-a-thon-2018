@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
-//import getWeb3 from './utils/getWeb3'
+// import getWeb3 from './utils/getWeb3'
 import {BrowserRouter, Route} from 'react-router-dom'
 
 import './css/oswald.css'
@@ -16,6 +16,7 @@ import Market from './components/Market/Market'
 import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
 import ReceiverDash from './components/Receiver/Dashboard';
 import DonorDash from './components/Donor/Dashboard';
+import VendorDash from './components/Vendor/Dashboard';
 import Nav from './components/Navbar'
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
     this.state = {
       storageValue: 0,
       web3: null,
-      currentUser: '',
+      currentUser: '0x559c7dcd5f1fd32925569f9baabc77b039df9dph',
       userType: ''
     };
     this.login = this.login.bind(this);
@@ -45,7 +46,7 @@ class App extends Component {
     //   // Instantiate contract once web3 provided.
     //   // this.instantiateContract()
     // })
-    // .catch((e) => {gi
+    // .catch((e) => {
     //   console.log(e)
     //   console.log('Error finding web3.')
     // })
@@ -104,7 +105,7 @@ class App extends Component {
                   <Route exact path='/' render={() => <Home setUserType={this.setUserType}/>}/>
                   <Route path='/r/signup'
                          render={() => <Receiver currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
-                  <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser}/>}/>
+                  <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
                   <Route path='/v/listitem' render={props => <VendorListItem currentUser={this.state.currentUser}/>}/>
                   <Route path='/d/signup'
                          render={props => <Donor currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
@@ -114,6 +115,8 @@ class App extends Component {
                   <Route path='/r/dash' render={() => <ReceiverDash currentUser={this.state.currentUser}
                                                                     userType={this.state.userType}/>}/>
                   <Route path='/d/dash' render={() => <DonorDash currentUser={this.state.currentUser}
+                                                                 userType={this.state.userType}/>}/>
+                  <Route path='/v/dash' render={() => <VendorDash currentUser={this.state.currentUser}
                                                                  userType={this.state.userType}/>}/>
                 </div>
             </div>
