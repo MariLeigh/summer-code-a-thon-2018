@@ -26,7 +26,7 @@ class App extends Component {
     this.state = {
       storageValue: 0,
       web3: null,
-      currentUser: '0x559c7dcd5f1fd32925569f9baabc77b039df9dph',
+      currentUser: '',
       userType: ''
     };
     this.login = this.login.bind(this);
