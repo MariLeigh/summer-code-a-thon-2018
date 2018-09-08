@@ -8,6 +8,7 @@ class Donor extends Component {
     this.state = {
       step: props.step || 0,
       currentUser: props.currentUser,
+      validAccounts: props.validAccounts,
       message: "Donate",
       name: '',
       ethaccount: ''
@@ -96,7 +97,9 @@ class Donor extends Component {
         }
         {this.state.step === 2 &&
           <div>
-            <DonorSignup setUserType={this.setUserType} currentUser={this.props.currentUser} nextStep={this.nextStep}/>
+            <DonorSignup setUserType={this.setUserType} currentUser={this.props.currentUser}
+                         loginHandler={this.props.loginHandler} validAccounts={this.state.validAccounts}
+                         nextStep={this.nextStep}/>
           </div>
         }
       </div>

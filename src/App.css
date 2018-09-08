@@ -32,6 +32,9 @@ code {
   padding: 45px 20px;
 }
 
+.acc-text-box {
+  width: 400px;
+}
 .pure-g {
   padding-top: 40px;
 }

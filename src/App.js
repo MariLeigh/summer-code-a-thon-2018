@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
-//import getWeb3 from './utils/getWeb3'
+import getWeb3 from './utils/getWeb3'
+//import web3 from './web3'
 import {BrowserRouter, Route} from 'react-router-dom'
 
 import './css/oswald.css'
@@ -17,6 +18,7 @@ import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
 import ReceiverDash from './components/Receiver/Dashboard';
 import DonorDash from './components/Donor/Dashboard';
 import Nav from './components/Navbar'
+import {users} from "./components/dummyData";
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +28,9 @@ class App extends Component {
       storageValue: 0,
       web3: null,
       currentUser: '',
-      userType: ''
+      userType: '',
+      userName: '',
+      validAccounts: ''
     };
     this.login = this.login.bind(this);
     this.setUserType = this.setUserType.bind(this);
@@ -35,20 +39,24 @@ class App extends Component {
   componentWillMount() {
     // Get network provider and web3 instance.
     // See utils/getWeb3 for more info.
-
-    // getWeb3
-    // .then(results => {
-    //   this.setState({
-    //     web3: results.web3,
-    //     currentUser: results.web3.eth.accounts.givenProvider.publicConfigStore._state.selectedAddress
-    //   })
-    //   // Instantiate contract once web3 provided.
-    //   // this.instantiateContract()
-    // })
-    // .catch((e) => {gi
-    //   console.log(e)
-    //   console.log('Error finding web3.')
-    // })
+    getWeb3.then(results => {
+      results.web3.eth.getAccounts().then(accounts => {
+        const regUser = users.filter(u => u.wallet === accounts[0]);
+        const userName = regUser[0] ? regUser[0].name : "New User";
+        this.setState({
+          web3: results.web3,
+          currentUser: accounts[0],
+          userName: userName,
+          validAccounts: accounts
+        })
+      });
+      // Instantiate contract once web3 provided.
+      // this.instantiateContract()
+    })
+      .catch((e) => {
+        console.log(e);
+        console.log('Error finding web3.');
+      })
   }
 
   instantiateContract() {
@@ -64,12 +72,12 @@ class App extends Component {
     simpleStorage.setProvider(this.state.web3.currentProvider)
 
     // Declaring this for later so we can chain functions on SimpleStorage.
-    var simpleStorageInstance
+    var simpleStorageInstance;
 
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
       simpleStorage.deployed().then((instance) => {
-        simpleStorageInstance = instance
+        simpleStorageInstance = instance;
 
         // Stores a given value, 5 by default.
         return simpleStorageInstance.set(5, {from: accounts[0]})
@@ -84,8 +92,9 @@ class App extends Component {
   }
 
   login(currentUser) {
-
-    this.setState({currentUser: currentUser});
+    const regUser = users.filter(u => u.wallet === currentUser);
+    const userName = regUser[0] ? regUser[0].name : "New User";
+    this.setState({currentUser: currentUser, userName: userName});
   }
 
   setUserType(userType) {
@@ -96,18 +105,23 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Nav currentUser={this.state.currentUser}/>
-        <main className="container">
-          <div className="pure-g">
-            <div className="pure-u-1-1">
+          <Nav userName={this.state.userName}/>
+          <main className="container">
+            <div className="pure-g">
+              <div className="pure-u-1-1">
                 <div>
                   <Route exact path='/' render={() => <Home setUserType={this.setUserType}/>}/>
                   <Route path='/r/signup'
-                         render={() => <Receiver currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
-                  <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser}/>}/>
-                  <Route path='/v/listitem' render={props => <VendorListItem currentUser={this.state.currentUser}/>}/>
+                         render={() => <Receiver currentUser={this.state.currentUser}
+                                                 validAccounts={this.state.validAccounts} loginHandler={this.login}/>}/>
+                  <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser}
+                                                                   validAccounts={this.state.validAccounts}
+                                                                   loginHandler={this.login}/>}/>
+                  <Route path='/v/listitem' render={props => <VendorListItem currentUser={this.state.currentUser}
+                                                                             web3={this.state.web3}/>}/>
                   <Route path='/d/signup'
-                         render={props => <Donor currentUser={this.state.currentUser} loginHandler={this.login}/>}/>
+                         render={props => <Donor currentUser={this.state.currentUser}
+                                                 validAccounts={this.state.validAccounts} loginHandler={this.login}/>}/>
                   <Route path='/market' render={props => <Market currentUser={this.state.currentUser}
                                                                  userType={this.state.userType}/>}/>
                   <Route path='/addNewItem' component={VendorAddNewItemPage}/>
@@ -116,10 +130,10 @@ class App extends Component {
                   <Route path='/d/dash' render={() => <DonorDash currentUser={this.state.currentUser}
                                                                  userType={this.state.userType}/>}/>
                 </div>
+              </div>
             </div>
-          </div>
-        </main>
-      </div>
+          </main>
+        </div>
       </BrowserRouter>
     );
   }

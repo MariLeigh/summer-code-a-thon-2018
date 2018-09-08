@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import {users} from '../dummyData';
+import {withRouter} from "react-router-dom";
 
 class DonorSignup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wallet: '',
+      currentUser: this.props.currentUser,
+      validAccounts: this.props.validAccounts,
+      wallet: this.props.currentUser,
       name: '',
-      donorWallet: ''
+      //   donorWallet: ''
     };
     this.setUserType = props.setUserType;
     this.handleChange = this.handleChange.bind(this);
@@ -16,8 +19,9 @@ class DonorSignup extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState(({
+      currentUser: nextProps.currentUser,
       wallet: nextProps.currentUser,
-      donorWallet: nextProps.currentUser
+      // donorWallet: nextProps.currentUser
     }))
   }
 
@@ -32,9 +36,21 @@ class DonorSignup extends Component {
     //   alert("Your metamask account is not signed in, unable to add user.")
     //   return
     // }
+    let validAccount = false;
+    for (let i = 0; i < this.state.validAccounts.length; i++) {
+      if (this.state.validAccounts[i] === this.state.wallet) {
+        validAccount = true;
+        console.log("This is a valid account.");
+      }
+    }
+    if (!validAccount) {
+      console.log("You can't use this account number. Make sure to import this account into your MetaMask wallet first.")
+      return
+    }
     let match = false;
     const updates = {};
-    if (this.state.donorWallet) updates.donorWallet = this.state.donorWallet;
+    if (this.state.wallet) updates.wallet = this.state.wallet;
+    //if (this.state.donorWallet) updates.donorWallet = this.state.donorWallet;
     if (this.state.name) updates.name = this.state.name;
     for (let i = 0; i < users.length; i++) {
       if (users[i].wallet === this.state.wallet) {
@@ -47,7 +63,9 @@ class DonorSignup extends Component {
       updates.id = users.length + 1;
       users[users.length] = updates;
     }
-    window.location = '/market?type=d'
+    this.props.loginHandler(this.state.wallet);
+    this.props.history.push('/market');
+    // window.location = '/market?type=d'
   }
 
   render() {
@@ -63,10 +81,10 @@ class DonorSignup extends Component {
               />
             </label>
             <label>
-              Ethereum account/payment wallet:
-                <input type="text"
-                       value={this.state.donorWallet}
-                       onChange={(e) => this.handleChange('donorWallet', e)}
+              Ethereum account:
+              <input className="acc-text-box" type="text"
+                     value={this.state.wallet}
+                     onChange={(e) => this.handleChange('wallet', e)}
               />
             </label>
             <input type="submit" value="Sign up" />
@@ -77,4 +95,4 @@ class DonorSignup extends Component {
   }
 }
 
-export default DonorSignup
+export default withRouter(DonorSignup)

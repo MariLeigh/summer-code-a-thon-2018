@@ -3,9 +3,10 @@ import {items} from '../dummyData'
 
 class VendorListItem extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       vendorWallet: props.currentUser,
+      web3: props.web3,
       item: '',
       description: '',
       price: '',
@@ -13,10 +14,11 @@ class VendorListItem extends Component {
       quantity: '',
       deliveryRadius: '',
       deliveryFee: ''
-    }
+    };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.addNewItem = this.addNewItem.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,6 +29,10 @@ class VendorListItem extends Component {
 
   handleChange(key, event) {
     this.setState({ [key]: event.target.value })
+  }
+
+  addNewItem(newItem) {
+
   }
 
   handleSubmit(event) {
@@ -46,6 +52,7 @@ class VendorListItem extends Component {
     if (this.state.deliveryFee) newItem.deliveryFee = this.state.deliveryFee
     newItem.id = items.length
     items[items.length] = newItem
+    this.addNewItem(newItem);
     // console.log('An item has been added to our marketplace: ' + JSON.stringify(this.state))
     // event.preventDefault()
     // console.log(this.state);

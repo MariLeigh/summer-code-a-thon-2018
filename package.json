@@ -69,7 +69,7 @@
     "reactjs-popup": "^1.1.4",
     "swarm-js": "github:rashinmajidi/swarm-js#test",
     "typeface-roboto": "0.0.54",
-    "web3": "^1.0.0-beta.35",
+    "web3": "^1.0.0-beta.36",
     "web3-utils": "^1.0.0-beta.35"
   },
   "scripts": {

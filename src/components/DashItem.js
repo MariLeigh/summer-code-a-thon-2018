@@ -16,7 +16,7 @@ class DashItem extends React.Component {
       <div className='dash-Item donations-info-f'>
         <div className='description'>
           <h4>You have donated</h4>
-          <div className="donations-info"><h1 className="donations-amount-h1">$150</h1></div>
+          <div className="donations-info"><h1 className="donations-amount-h1">$220</h1></div>
         </div>
       </div>}
         {this.props.section !== 'donationInfo' &&

@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {users} from '../dummyData'
-
+import {withRouter} from "react-router-dom";
 
 class ReceiverSignup extends Component {
   constructor(props) {
     super(props)
     this.state = {
       currentUser: props.currentUser,
-      isSigneup: false,
+      wallet: props.currentUser,
       name: '',
       address: '',
       address2: '',
@@ -23,7 +23,8 @@ class ReceiverSignup extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState(({
-      wallet: nextProps.currentUser
+      wallet: nextProps.currentUser,
+      currentUser: nextProps.currentUser
     }))
   }
 
@@ -35,7 +36,8 @@ class ReceiverSignup extends Component {
     // console.log('A receiver account was submitted: ' + JSON.stringify(this.state))
     event.preventDefault()
     let match = false
-    const updates = {}
+    const updates = {};
+    if (this.state.wallet) updates.wallet = this.state.wallet;
     if (this.state.name) updates.name = this.state.name
     if (this.state.address) updates.address = this.state.address
     if (this.state.address2) updates.address2 = this.state.address2
@@ -55,7 +57,9 @@ class ReceiverSignup extends Component {
       updates.id = users.length + 1
       users[users.length] = updates
     }
-    window.location = '/market?type=r'
+    this.props.loginHandler(this.state.wallet);
+    this.props.history.push('/market');
+    // window.location = '/market?type=r'
   }
 
   render() {
@@ -127,4 +131,4 @@ class ReceiverSignup extends Component {
   }
 }
 
-export default ReceiverSignup;
+export default withRouter(ReceiverSignup);

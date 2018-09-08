@@ -1,19 +1,22 @@
 import React, {Component} from 'react'
 import {users} from '../dummyData'
+import {withRouter} from "react-router-dom";
 
 class VendorSignup extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
+      currentUser: this.props.currentUser,
+      validAccounts: this.props.validAccounts,
       name: '',
-      wallet: '',
+      wallet: this.props.currentUser,
       address: '',
       address2: '',
       zipcode: '',
       city: '',
       country: '',
-      vendorWallet: ''
-    }
+      //vendorWallet: this.props.currentUser
+    };
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -21,39 +24,52 @@ class VendorSignup extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState(({
       wallet: nextProps.currentUser,
-      vendorWallet: nextProps.currentUser
+      currentUser: nextProps.currentUser
+      //   vendorWallet: nextProps.currentUser
     }))
   }
 
   handleChange(key, event) {
-    this.setState({ [key]: event.target.value })
+    this.setState({[key]: event.target.value})
   }
 
   handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
     // console.log('A vendor account was submitted: ' + JSON.stringify(this.state))
-
-    let match = false
-    const updates = {}
-    if (this.state.vendorWallet) updates.vendorWallet = this.state.vendorWallet
-    if (this.state.name) updates.name = this.state.name
-    if (this.state.address) updates.address = this.state.address
-    if (this.state.address2) updates.address2 = this.state.address2
-    if (this.state.zipcode) updates.zipcode = this.state.zipcode
-    if (this.state.city) updates.city = this.state.city
-    if (this.state.country) updates.country = this.state.country
+    let validAccount = false;
+    for (let i = 0; i < this.state.validAccounts.length; i++) {
+      if (this.state.validAccounts[i] === this.state.wallet) {
+        validAccount = true;
+        console.log("This is a valid account.");
+      }
+    }
+    if (!validAccount) {
+      console.log("You can't use this account number. Make sure to import this account into your MetaMask wallet first.")
+      return
+    }
+    let match = false;
+    const updates = {};
+    if (this.state.wallet) updates.wallet = this.state.wallet;
+    // if (this.state.vendorWallet) updates.vendorWallet = this.state.vendorWallet;
+    if (this.state.name) updates.name = this.state.name;
+    if (this.state.address) updates.address = this.state.address;
+    if (this.state.address2) updates.address2 = this.state.address2;
+    if (this.state.zipcode) updates.zipcode = this.state.zipcode;
+    if (this.state.city) updates.city = this.state.city;
+    if (this.state.country) updates.country = this.state.country;
     for (let i = 0; i < users.length; i++) {
       if (users[i].wallet === this.state.wallet) {
-        users[i] = Object.assign(users[i], updates)
+        users[i] = Object.assign(users[i], updates);
         match = true
       }
     }
     if (!match) {
-      updates.wallet = this.state.wallet
-      updates.id = users.length + 1
+      updates.wallet = this.state.wallet;
+      updates.id = users.length + 1;
       users[users.length] = updates
     }
-    window.location = '/v/listitem'
+    this.props.loginHandler(this.state.wallet);
+    this.props.history.push('/v/listitem');
   }
 
   render() {
@@ -104,10 +120,10 @@ class VendorSignup extends Component {
                 />
               </label>
               <label>
-                Ethereum account/payment wallet:
-                <input type="text"
-                       value={this.state.vendorWallet}
-                       onChange={(e) => this.handleChange('vendorWallet', e)}
+                Ethereum account:
+                <input className="acc-text-box" type="text"
+                       value={this.state.wallet}
+                       onChange={(e) => this.handleChange('wallet', e)}
                 />
               </label>
               <input type="submit" value="Sign up" />
@@ -118,4 +134,4 @@ class VendorSignup extends Component {
   }
 }
 
-export default VendorSignup
+export default withRouter(VendorSignup);
