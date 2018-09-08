@@ -88,7 +88,7 @@ ul {
 .order-item {
   grid-gap: 16px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* grid-template-columns: repeat(8, 1fr); */
   padding: 16px;
   background-color: white;
   border-radius: 4px;
@@ -136,14 +136,29 @@ ul {
 .dash-component.order-status {
   grid-column: 2/-1;
 }
+.dash-component.order-status .order-item {
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.dash-component.accept .order-item {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.dash-component.toShip .order-item {
+  grid-template-columns: repeat(6, 1fr);
+}
+
 .dash-component {
   height: 500px;
   overflow: scroll;
   background-color: lightgray;
   padding: 8px;
   border-radius: 4px;
+  position: relative;
 }
 
 #edit-inventory {
-  justify-content: right;
+  background: transparent;
+  position: absolute;
+  right: 10px;
 }

@@ -84,7 +84,7 @@ class Dashboard extends React.Component {
         <h1 className='pageTitle'>Dashboard</h1>
         <h2>Action Items</h2>
         <div className='dash-container'>
-          <div className='dash-component'>
+          <div className='dash-component accept'>
             <h3>Orders Available to Accept</h3>
             <div>
             {this.getOrders('init').map(order =>
@@ -92,7 +92,7 @@ class Dashboard extends React.Component {
             )}
             </div>
           </div>
-          <div className='dash-component'>
+          <div className='dash-component toShip'>
             <h3>Orders to Assemble and Ship</h3>
             <div>
               {this.getOrders('toShip').map(order =>
@@ -100,7 +100,7 @@ class Dashboard extends React.Component {
               )}
             </div>
           </div>
-          <div className='dash-component'>
+          <div className='dash-component inventory'>
             <h3>Update Inventory<button id='edit-inventory'><i className="fa fa-edit"></i></button></h3>
             <div className='component-content'>
               {vendItems.map((item) =>
@@ -120,7 +120,7 @@ class Dashboard extends React.Component {
         </div>
         <h2>Order History and Revenue</h2>
         <div className='dash-container'>
-          <div className='dash-component'>
+          <div className='dash-component revenue'>
             <h3>Revenue</h3>
             <div className='component-content rev'>
               <p>Ready to withdraw:</p>

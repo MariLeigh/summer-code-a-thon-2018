@@ -53,7 +53,7 @@ class Market extends Component {
           <button className="w3-bar-item w3-button" onClick={() => this.setUserType('r')}>Make a Request</button>
           <button className="w3-bar-item w3-button" onClick={() => this.setUserType('d')}>Be a Sponsor</button>
         </div>
-
+        <div className='market'>
         {this.state.userType === 'r' &&
         <div>
           <h2> Browse all available items and choose one to request </h2>
@@ -76,6 +76,7 @@ class Market extends Component {
             <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser}/>
           )}
         </div>
+      </div>
       </div>
     )
   }
