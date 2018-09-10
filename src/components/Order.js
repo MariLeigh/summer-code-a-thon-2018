@@ -15,6 +15,7 @@ class Order extends React.Component {
   acceptOrder() {
     this.state.order.updateOrder(this.state.order, 'toShip');
   }
+
   orderShipped() {
     this.state.order.updateOrder(this.state.order, 'shipped');
   }
@@ -38,20 +39,23 @@ class Order extends React.Component {
           {this.state.order.initDate}
         </div>
         {this.state.order.status === 'init' &&
-          <div><button onClick={() => this.acceptOrder()}>Accept</button></div>
+        <div>
+          <button onClick={() => this.acceptOrder()}>Accept</button>
+        </div>
         }
         {this.state.order.status === 'toShip' &&
-          <div><input placeholder='confirmation #'></input>
-          <button onClick={() => this.orderShipped()}>Shipped</button></div>
+        <div><input placeholder='confirmation #'></input>
+          <button onClick={() => this.orderShipped()}>Shipped</button>
+        </div>
         }
         {this.state.order.shippedDate &&
-          <div>Shipped: {this.state.order.shippedDate}</div>
+        <div>Shipped: {this.state.order.shippedDate}</div>
         }
         {this.state.order.receivedDate &&
-          <div>Received: {this.state.order.receivedDate}</div>
+        <div>Received: {this.state.order.receivedDate}</div>
         }
         {this.state.order.payDate &&
-          <div>Payment processed: {this.state.order.payDate}</div>
+        <div>Payment processed: {this.state.order.payDate}</div>
         }
       </div>
     )

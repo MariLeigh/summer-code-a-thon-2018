@@ -120,6 +120,7 @@ ul {
   max-width: 80%;
   margin: 0 auto;
 }
+
 .item-img > img {
   object-fit: contain;
   min-width: 100%;
@@ -133,9 +134,11 @@ ul {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 16px;
 }
+
 .dash-component.order-status {
   grid-column: 2/-1;
 }
+
 .dash-component.order-status .order-item {
   grid-template-columns: repeat(8, 1fr);
 }

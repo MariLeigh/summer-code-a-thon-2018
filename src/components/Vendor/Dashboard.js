@@ -1,7 +1,6 @@
 import React from 'react'
 import '../Dash.css'
-import { items, users, orders } from '../dummyData'
-import DashItem from '../DashItem'
+import {items, orders, users} from '../dummyData'
 import Order from '../Order'
 
 class Dashboard extends React.Component {
@@ -41,20 +40,22 @@ class Dashboard extends React.Component {
     // }
     // return result;
   }
+
   updateOrder(o, type) {
     let temp = this.state.userOrders;
-    temp[o.id-1].status = type;
+    temp[o.id - 1].status = type;
     this.setState({userOrders: temp})
   }
 
   getOrders(type) {
     return this.state.userOrders.filter(o => o.vendorWallet === this.state.currentUser && o.status === type)
   }
+
   getShippedOrders() {
     return this.state.userOrders.filter(o => o.vendorWallet === this.state.currentUser
       && (o.status === 'shipped'
-      || o.status === 'received'
-      || o.status === 'complete'))
+        || o.status === 'received'
+        || o.status === 'complete'))
   }
 
   render() {
@@ -72,7 +73,7 @@ class Dashboard extends React.Component {
     // console.log(withdrawNum);
 
     let vendItems = []
-    for (let i=0; i<items.length; i++) {
+    for (let i = 0; i < items.length; i++) {
       if (items[i].vendorWallet === this.state.currentUser) {
         vendItems.push(items[i])
       }
@@ -87,21 +88,23 @@ class Dashboard extends React.Component {
           <div className='dash-component accept'>
             <h3>Orders Available to Accept</h3>
             <div>
-            {this.getOrders('init').map(order =>
-              <Order key={order.id} {...order} updateOrder={this.updateOrder}/>
-            )}
+              {this.getOrders('init').map(order =>
+                <Order key={order.id} {...order} updateOrder={this.updateOrder}/>
+              )}
             </div>
           </div>
           <div className='dash-component toShip'>
             <h3>Orders to Assemble and Ship</h3>
             <div>
               {this.getOrders('toShip').map(order =>
-                <Order key={order.id} {...order} updateOrder={this.updateOrder} />
+                <Order key={order.id} {...order} updateOrder={this.updateOrder}/>
               )}
             </div>
           </div>
           <div className='dash-component inventory'>
-            <h3>Update Inventory<button id='edit-inventory'><i className="fa fa-edit"></i></button></h3>
+            <h3>Update Inventory
+              <button id='edit-inventory'><i className="fa fa-edit"></i></button>
+            </h3>
             <div className='component-content'>
               {vendItems.map((item) =>
                 <div>
@@ -114,7 +117,7 @@ class Dashboard extends React.Component {
                   <p>Description: {item.description}</p>
                 </div>
               )
-            }
+              }
             </div>
           </div>
         </div>
@@ -132,13 +135,13 @@ class Dashboard extends React.Component {
               {/* <h1>{withdrawNum}</h1> */}
               <p>Total Revenue:</p>
               <p className='dollar'>${this.getOrders('complete')
-              .reduce((t,o) => t + o.item.price !== ""
-              ? parseInt(o.item.price.replace("$",""))
-              : 0
-            )}</p>
+                .reduce((t, o) => t + o.item.price !== ""
+                  ? parseInt(o.item.price.replace("$", ""))
+                  : 0
+                )}</p>
               {/* <h1>$50</h1> */}
-            <p>Grocery packets delivered:</p>
-            <p>{this.getShippedOrders().length}</p>
+              <p>Grocery packets delivered:</p>
+              <p>{this.getShippedOrders().length}</p>
 
             </div>
           </div>

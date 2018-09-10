@@ -13,7 +13,6 @@ import Donor from './components/Donor/Donor'
 import Receiver from './components/Receiver/Receiver'
 import VendorListItem from './components/Vendor/VendorListItem'
 import Market from './components/Market/Market'
-import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
 import ReceiverDash from './components/Receiver/Dashboard';
 import DonorDash from './components/Donor/Dashboard';
 import VendorDash from './components/Vendor/Dashboard';
@@ -76,20 +75,20 @@ class App extends Component {
     // Declaring this for later so we can chain functions on SimpleStorage.
     var simpleStorageInstance;
     // Get accounts.
-      simpleStorage.deployed().then((instance) => {
-        simpleStorageInstance = instance;
-        // Stores a given value, 5 by default.
-        console.log(simpleStorageInstance);
-        this.setState({contract: simpleStorageInstance});
-        //return simpleStorageInstance.set(this.state.userInfo, {from: accounts[0]})
-        //  return simpleStorageInstance.set(5, {from: accounts[0]})
-      }).then((result) => {
-        // Get the value from the contract to prove it worked.
-        return simpleStorageInstance.get.call(this.state.currentUser)
-      }).then((result) => {
-        // Update state with the result.
-        return this.setState({storageValue: result.c[0]})
-      })
+    simpleStorage.deployed().then((instance) => {
+      simpleStorageInstance = instance;
+      // Stores a given value, 5 by default.
+      console.log(simpleStorageInstance);
+      this.setState({contract: simpleStorageInstance});
+      //return simpleStorageInstance.set(this.state.userInfo, {from: accounts[0]})
+      //  return simpleStorageInstance.set(5, {from: accounts[0]})
+    }).then((result) => {
+      // Get the value from the contract to prove it worked.
+      return simpleStorageInstance.get.call(this.state.currentUser)
+    }).then((result) => {
+      // Update state with the result.
+      return this.setState({storageValue: result.c[0]})
+    })
   }
 
   login(currentUser) {
@@ -107,6 +106,7 @@ class App extends Component {
     // this.state.contract.set(userInfo);
     this.setState({userInfo: userInfo});
   }
+
   render() {
     return (
       <BrowserRouter>
@@ -131,13 +131,12 @@ class App extends Component {
                                                  validAccounts={this.state.validAccounts} loginHandler={this.login}/>}/>
                   <Route path='/market' render={props => <Market currentUser={this.state.currentUser}
                                                                  userType={this.state.userType}/>}/>
-                  <Route path='/addNewItem' component={VendorAddNewItemPage}/>
                   <Route path='/r/dash' render={() => <ReceiverDash currentUser={this.state.currentUser}
                                                                     userType={this.state.userType}/>}/>
                   <Route path='/d/dash' render={() => <DonorDash currentUser={this.state.currentUser}
                                                                  userType={this.state.userType}/>}/>
                   <Route path='/v/dash' render={() => <VendorDash currentUser={this.state.currentUser}
-                                                                 userType={this.state.userType}/>}/>
+                                                                  userType={this.state.userType}/>}/>
                 </div>
               </div>
             </div>

@@ -11,15 +11,15 @@
        url('../fonts/Open-Sans-regular/Open-Sans-regular.woff') format('woff'),
        url('../fonts/Open-Sans-regular/Open-Sans-regular.ttf') format('truetype'),
        url('../fonts/Open-Sans-regular/Open-Sans-regular.svg#OpenSans') format('svg'); */
-/*
-src:   url('../fonts/Open_Sans/OpenSans-Light.ttf') format('truetype'),
-       url('../fonts/Open_Sans/OpenSans-Bold.ttf') format('truetype'),
-       url('../fonts/Open_Sans/OpenSans-LightItalic.ttf') format('truetype'),
-       url('../fonts/Open_Sans/OpenSans-BoldItalic.ttf') format('truetype'),
-       url('../fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype'),
-       url('../fonts/Open_Sans/OpenSans-ExtraBold.ttf') format('truetype'),
-       url('../fonts/Open_Sans/OpenSans-SemiBold.ttf') format('truetype'),
-       url('../fonts/Open_Sans/OpenSans-ExtraBoldItalic.ttf') format('truetype'),
-       url('../fonts/Open_Sans/OpenSans-SemiBoldItalic.ttf') format('truetype'),
-       url('../fonts/Open_Sans/OpenSans-Italic.ttf') format('truetype'); */
+  /*
+  src:   url('../fonts/Open_Sans/OpenSans-Light.ttf') format('truetype'),
+         url('../fonts/Open_Sans/OpenSans-Bold.ttf') format('truetype'),
+         url('../fonts/Open_Sans/OpenSans-LightItalic.ttf') format('truetype'),
+         url('../fonts/Open_Sans/OpenSans-BoldItalic.ttf') format('truetype'),
+         url('../fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype'),
+         url('../fonts/Open_Sans/OpenSans-ExtraBold.ttf') format('truetype'),
+         url('../fonts/Open_Sans/OpenSans-SemiBold.ttf') format('truetype'),
+         url('../fonts/Open_Sans/OpenSans-ExtraBoldItalic.ttf') format('truetype'),
+         url('../fonts/Open_Sans/OpenSans-SemiBoldItalic.ttf') format('truetype'),
+         url('../fonts/Open_Sans/OpenSans-Italic.ttf') format('truetype'); */
 }

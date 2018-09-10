@@ -11,6 +11,7 @@
   border-radius: 6px;
   display: inline-table;
 }
+
 .item:hover {
   background-color: rgba(240, 231, 231, 0.664);
   color: black;

@@ -124,7 +124,9 @@ class MarketItem extends Component {
         {this.state.item.userType === 'd' && this.state.item.requests &&
           <div>
             <div> Price: {this.state.item.price} USD </div>
-            <div className='requester-list-div'><button className='requester-list'>Requests for this item ({retElm.length})</button></div>
+            <div className='requester-list-div'>
+              <button className='requester-list'>Requests for this item ({retElm.length})</button>
+            </div>
             {this.state.requesterList &&
             <div>{retElm}</div>
             }

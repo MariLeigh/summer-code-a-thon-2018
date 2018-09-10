@@ -75,7 +75,7 @@ class Market extends Component {
             <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser}/>
           )}
         </div>
-      </div>
+        </div>
       </div>
     )
   }
