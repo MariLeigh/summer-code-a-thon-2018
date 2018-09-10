@@ -7,12 +7,30 @@
 
 .item {
   padding: 16px;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  display: inline-table;
 }
-
+.item:hover {
+  background-color: rgba(240, 231, 231, 0.664);
+  color: black;
+}
 .itemImage > img {
   object-fit: contain;
   min-width: 100%;
   max-width: 100%;
   min-height: 100%;
   max-height: 100%;
+}
+
+.market {
+  padding: 16px;
+}
+
+.requester-list-div {
+  padding: 8px;
+}
+
+.requester {
+  padding: 8px;
 }

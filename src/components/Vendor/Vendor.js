@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import VendorSignup from './VendorSignup'
 import VendorListItem from './VendorListItem'
+import { withRouter } from "react-router-dom";
 
 class Vendor extends Component {
   constructor(props) {
@@ -64,6 +65,12 @@ class Vendor extends Component {
             <button onClick={() => this.nextStep()}>
               Next step
             </button>
+            <button onClick={() => {
+            this.props.loginHandler("0x559c7dcd5f1fd32925569f9baabc77b039df9dph")
+              this.props.history.push('/v/dash')
+            }}>
+              Sign in as testUser
+              </button>
           </div>
         }
         {this.state.step === 1 &&
@@ -111,4 +118,4 @@ class Vendor extends Component {
   }
 }
 
-export default Vendor
+export default withRouter(Vendor)

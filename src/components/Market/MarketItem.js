@@ -9,6 +9,7 @@ class MarketItem extends Component {
       item: props,
       sponsorModal: false,
       requestModal: false,
+      requesterList: false,
       currentUser: props.currentUser
     }
     this.firstRequest = this.firstRequest.bind(this)
@@ -49,6 +50,8 @@ class MarketItem extends Component {
   toggleModal(e) {
     if (e.target.className === 'sponsor-modal') this.setState({sponsorModal: false})
     if (e.target.className === 'request-modal') this.setState({requestModal: false})
+    if (e.target.className === 'requester-list') this.setState({requesterList: !this.state.requesterList})
+    if (e.currentTarget.className === 'item' && this.state.requesterList === false) this.setState({requesterList: true})
   }
 
   render () {
@@ -56,9 +59,9 @@ class MarketItem extends Component {
     if (this.state.item.userType === 'd' && this.state.item.requests) {
       this.state.item.requests.forEach(requester => {
         return users.filter(u => u.wallet === requester).forEach(user => {
-          retElm.push(<div key={user.id}>
-            <span>{user.name}</span>:
-            <span>{user.description}</span>
+          retElm.push(<div key={user.id} className='requester'>
+            <span>{user.name}</span>: {user.city}, {user.state}
+            <div>{user.description}</div>
             <button value={user.id} onClick={this.sponsorItem}>Buy for {user.name}</button>
           </div>)
         })
@@ -82,6 +85,9 @@ class MarketItem extends Component {
         if (users[i].city) {
           addressElm.push(<p>City: {users[i].city}</p>)
         }
+        if (users[i].state) {
+          addressElm.push(<p>State: {users[i].state}</p>)
+        }
         if (users[i].country) {
           addressElm.push(<p>Country: {users[i].country}</p>)
         }
@@ -89,8 +95,7 @@ class MarketItem extends Component {
     }
 
     return (
-      <div className="item" key={this.state.item.id}>
-        <div> {this.state.item.id} </div>
+      <div className="item" key={this.state.item.id} onClick={this.toggleModal}>
         <div> {this.state.item.item} </div>
         <div className="itemImage">
           <img src={this.state.item.itemUrl} alt="item:"></img>
@@ -119,7 +124,10 @@ class MarketItem extends Component {
         {this.state.item.userType === 'd' && this.state.item.requests &&
           <div>
             <div> Price: {this.state.item.price} USD </div>
+            <div className='requester-list-div'><button className='requester-list'>Requests for this item ({retElm.length})</button></div>
+            {this.state.requesterList &&
             <div>{retElm}</div>
+            }
           </div>
         }
         {this.state.sponsorModal &&

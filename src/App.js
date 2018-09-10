@@ -16,6 +16,7 @@ import Market from './components/Market/Market'
 import VendorAddNewItemPage from "./components/Vendor/VendorAddNewItemPage";
 import ReceiverDash from './components/Receiver/Dashboard';
 import DonorDash from './components/Donor/Dashboard';
+import VendorDash from './components/Vendor/Dashboard';
 import Nav from './components/Navbar'
 import {users} from "./components/dummyData";
 
@@ -23,7 +24,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.step = props.step || 0;
-
     this.state = {
       storageValue: 0,
       contract: '',
@@ -68,6 +68,7 @@ class App extends Component {
      * Normally these functions would be called in the context of a
      * state management library, but for convenience I've placed them here.
      */
+
     const contract = require('truffle-contract')
     const simpleStorage = contract(SimpleStorageContract)
     simpleStorage.setProvider(this.state.web3.currentProvider)
@@ -134,6 +135,8 @@ class App extends Component {
                   <Route path='/r/dash' render={() => <ReceiverDash currentUser={this.state.currentUser}
                                                                     userType={this.state.userType}/>}/>
                   <Route path='/d/dash' render={() => <DonorDash currentUser={this.state.currentUser}
+                                                                 userType={this.state.userType}/>}/>
+                  <Route path='/v/dash' render={() => <VendorDash currentUser={this.state.currentUser}
                                                                  userType={this.state.userType}/>}/>
                 </div>
               </div>
