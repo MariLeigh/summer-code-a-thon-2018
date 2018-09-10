@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import queryString from 'query-string'
 import MarketItem from './MarketItem'
 import './Market.css'
 import {items} from '../dummyData'
@@ -22,8 +21,8 @@ class Market extends Component {
   }
 
   componentDidMount() {
-    const query = queryString.parse(location.search);
-    if (query.type && !this.state.userType) this.setUserType(query.type)
+    // const query = queryString.parse(window.location.search);
+    // if (query.type && !this.state.userType) this.setUserType(query.type)
   }
 
   displayItems() {

@@ -2,6 +2,7 @@
   "name": "remitmart",
   "version": "0.1.0",
   "private": true,
+  "main": "truffle.js",
   "devDependencies": {
     "babel-core": "6.17.0",
     "babel-loader": "6.2.7",
@@ -58,7 +59,9 @@
     "@material-ui/core": "^1.5.0",
     "dotenv": "^2.0.0",
     "elliptic": "^6.4.1",
+    "idna-uts46-hx": "^2.3.0",
     "ipfs-api": "^22.3.0",
+    "punycode": "^2.0.1",
     "query-string": "^6.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -69,8 +72,7 @@
     "reactjs-popup": "^1.1.4",
     "swarm-js": "github:rashinmajidi/swarm-js#test",
     "typeface-roboto": "0.0.54",
-    "web3": "^1.0.0-beta.36",
-    "web3-utils": "^1.0.0-beta.35"
+    "web3": "^1.0.0-beta.34"
   },
   "scripts": {
     "start": "node scripts/start.js",

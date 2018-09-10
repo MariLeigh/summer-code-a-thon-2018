@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
-//import web3 from './web3'
 import {BrowserRouter, Route} from 'react-router-dom'
 
 import './css/oswald.css'
@@ -24,8 +23,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.step = props.step || 0;
+
     this.state = {
       storageValue: 0,
+      contract: '',
       web3: null,
       currentUser: '',
       userType: '',
@@ -34,6 +35,7 @@ class App extends Component {
     };
     this.login = this.login.bind(this);
     this.setUserType = this.setUserType.bind(this);
+    this.addUserInfo = this.addUserInfo.bind(this);
   }
 
   componentWillMount() {
@@ -49,9 +51,9 @@ class App extends Component {
           userName: userName,
           validAccounts: accounts
         })
+        //this.instantiateContract();
       });
       // Instantiate contract once web3 provided.
-      // this.instantiateContract()
     })
       .catch((e) => {
         console.log(e);
@@ -66,29 +68,27 @@ class App extends Component {
      * Normally these functions would be called in the context of a
      * state management library, but for convenience I've placed them here.
      */
-
     const contract = require('truffle-contract')
     const simpleStorage = contract(SimpleStorageContract)
     simpleStorage.setProvider(this.state.web3.currentProvider)
 
     // Declaring this for later so we can chain functions on SimpleStorage.
     var simpleStorageInstance;
-
     // Get accounts.
-    this.state.web3.eth.getAccounts((error, accounts) => {
       simpleStorage.deployed().then((instance) => {
         simpleStorageInstance = instance;
-
         // Stores a given value, 5 by default.
-        return simpleStorageInstance.set(5, {from: accounts[0]})
+        console.log(simpleStorageInstance);
+        this.setState({contract: simpleStorageInstance});
+        //return simpleStorageInstance.set(this.state.userInfo, {from: accounts[0]})
+        //  return simpleStorageInstance.set(5, {from: accounts[0]})
       }).then((result) => {
         // Get the value from the contract to prove it worked.
-        return simpleStorageInstance.get.call(accounts[0])
+        return simpleStorageInstance.get.call(this.state.currentUser)
       }).then((result) => {
         // Update state with the result.
         return this.setState({storageValue: result.c[0]})
       })
-    })
   }
 
   login(currentUser) {
@@ -101,6 +101,11 @@ class App extends Component {
     this.setState({userType: userType});
   }
 
+  addUserInfo(userInfo) {
+    //Just to test if contract works.
+    // this.state.contract.set(userInfo);
+    this.setState({userInfo: userInfo});
+  }
   render() {
     return (
       <BrowserRouter>
@@ -118,6 +123,7 @@ class App extends Component {
                                                                    validAccounts={this.state.validAccounts}
                                                                    loginHandler={this.login}/>}/>
                   <Route path='/v/listitem' render={props => <VendorListItem currentUser={this.state.currentUser}
+                                                                             addUserInfo={this.addUserInfo}
                                                                              web3={this.state.web3}/>}/>
                   <Route path='/d/signup'
                          render={props => <Donor currentUser={this.state.currentUser}
