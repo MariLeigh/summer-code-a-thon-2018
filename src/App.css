@@ -2,7 +2,8 @@
 
 body,
 .pure-g [class*=pure-u] {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+  background: white;
 }
 
 form {
@@ -12,7 +13,7 @@ form {
 }
 
 h1, h2, h3 {
-  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-family: 'Roboto','Oswald', 'Arial Narrow', sans-serif;
 }
 
 .pageTitle {
@@ -29,14 +30,11 @@ code {
 .container {
   box-sizing: border-box;
   width: 100%;
-  padding: 45px 20px;
+  /* padding: 45px 20px; */
 }
 
 .acc-text-box {
   width: 400px;
-}
-.pure-g {
-  padding-top: 40px;
 }
 
 .pure-button-primary {
@@ -54,25 +52,59 @@ code {
 /* NAVBAR */
 
 .navbar {
-  position: fixed;
-  height: 41px;
-  padding: 5px;
-  background: #0c1a2b;
-  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  width: 100%;
+  height: 60px;
+  /* padding: 5px; */
+  background: #f4f4f4;
+  font-family: 'Roboto','Oswald', 'Arial Narrow', sans-serif;
   z-index: 1;
+  display: inline-table;
+  /* vertical-align: middle; */
+}
+.navbar > span {
+  vertical-align: middle;
+  padding: 8px;
 }
 
-.navbar a {
+.color-box {
+  background-color: #009E95;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  margin: 10px;
+  margin-top: 15px !important;
+}
+.nav-title {
+  position: relative;
+  float: left;
+  border-bottom: none !important;
+  text-decoration-line: none;
+  font-size: x-large;
+  padding: 6px;
+}
+
+.nav-link {
+  font-family: 'Roboto', 'Oswald';
+  text-decoration-line: none;
+  width: 100%;
+  align-content: initial;
+  padding: 6px;
+  vertical-align: -webkit-baseline-middle;
+  margin: 4px;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active {
+  border-bottom: #C4C4C4 solid 2px;
+}
+
+/* .navbar a {
   color: #fff;
-}
+} */
 
-.navbar a:active,
-.navbar a:focus,
-.navbar a:hover {
-  background: #233e5e;
-}
 
-.pure-menu-heading {
+/* .pure-menu-heading {
   position: absolute;
   left: 0px;
   top: 0px;
@@ -81,35 +113,18 @@ code {
   padding-left: 24px;
   padding-right: 24px;
 
-}
-
-.navbar .pure-menu-heading {
-  font-weight: bold;
-  text-transform: none;
-}
+} */
 
 .userInfo {
-  position: inherit;
-  vertical-align: middle;
-}
-
-.userInfo-a {
+  position: relative;
   padding: 5px;
   padding-bottom: 10px;
-}
-
-
-.navbar .navbar-right {
   float: right;
 }
 
 .navbar .uport-logo {
   height: 16px;
   margin-right: 10px;
-}
-
-.App {
-  text-align: center;
 }
 
 .App-logo {
@@ -119,7 +134,7 @@ code {
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  /* height: 150px; */
   padding: 20px;
   color: white;
 }

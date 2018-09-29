@@ -5,7 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 
 import './css/oswald.css'
 import './css/open-sans.css'
-import './css/pure-min.css'
+// import './css/pure-min.css'
 import './App.css'
 import Home from './components/Home'
 import Vendor from './components/Vendor/Vendor'
@@ -112,9 +112,9 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Nav userName={this.state.userName}/>
-          <main className="container">
-            <div className="pure-g">
-              <div className="pure-u-1-1">
+          {/* <main className="container"> */}
+            {/* <div className="pure-g"> */}
+              {/* <div className="pure-u-1-1"> */}
                 <div>
                   <Route exact path='/'
                     render={() => <Home
@@ -156,9 +156,9 @@ class App extends Component {
                       currentUser={this.state.currentUser}
                       userType={this.state.userType}/>}/>
                 </div>
-              </div>
-            </div>
-          </main>
+              {/* </div> */}
+            {/* </div> */}
+          {/* </main> */}
         </div>
       </BrowserRouter>
     );
