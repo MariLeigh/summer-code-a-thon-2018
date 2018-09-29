@@ -116,27 +116,45 @@ class App extends Component {
             <div className="pure-g">
               <div className="pure-u-1-1">
                 <div>
-                  <Route exact path='/' render={() => <Home setUserType={this.setUserType}/>}/>
+                  <Route exact path='/'
+                    render={() => <Home
+                      setUserType={this.setUserType}/>}/>
                   <Route path='/r/signup'
-                         render={() => <Receiver currentUser={this.state.currentUser}
-                                                 validAccounts={this.state.validAccounts} loginHandler={this.login}/>}/>
-                  <Route path='/v/signup' render={props => <Vendor currentUser={this.state.currentUser}
-                                                                   validAccounts={this.state.validAccounts}
-                                                                   loginHandler={this.login}/>}/>
-                  <Route path='/v/listitem' render={props => <VendorListItem currentUser={this.state.currentUser}
-                                                                             addUserInfo={this.addUserInfo}
-                                                                             web3={this.state.web3}/>}/>
+                    render={() => <Receiver
+                      currentUser={this.state.currentUser}
+                      validAccounts={this.state.validAccounts}
+                      loginHandler={this.login}/>}/>
+                  <Route path='/v/signup'
+                    render={props => <Vendor
+                      currentUser={this.state.currentUser}
+                      validAccounts={this.state.validAccounts}
+                      loginHandler={this.login}/>}/>
+                  <Route path='/v/listitem'
+                    render={props => <VendorListItem
+                      currentUser={this.state.currentUser}
+                      addUserInfo={this.addUserInfo}
+                      web3={this.state.web3}/>}/>
                   <Route path='/d/signup'
-                         render={props => <Donor currentUser={this.state.currentUser}
-                                                 validAccounts={this.state.validAccounts} loginHandler={this.login}/>}/>
-                  <Route path='/market' render={props => <Market currentUser={this.state.currentUser}
-                                                                 userType={this.state.userType}/>}/>
-                  <Route path='/r/dash' render={() => <ReceiverDash currentUser={this.state.currentUser}
-                                                                    userType={this.state.userType}/>}/>
-                  <Route path='/d/dash' render={() => <DonorDash currentUser={this.state.currentUser}
-                                                                 userType={this.state.userType}/>}/>
-                  <Route path='/v/dash' render={() => <VendorDash currentUser={this.state.currentUser}
-                                                                  userType={this.state.userType}/>}/>
+                    render={props => <Donor
+                      currentUser={this.state.currentUser}
+                      validAccounts={this.state.validAccounts}
+                      loginHandler={this.login}/>}/>
+                  <Route path='/market'
+                    render={props => <Market
+                      currentUser={this.state.currentUser}
+                      userType={this.state.userType}/>}/>
+                  <Route path='/r/dash'
+                    render={() => <ReceiverDash
+                      currentUser={this.state.currentUser}
+                      userType={this.state.userType}/>}/>
+                  <Route path='/d/dash'
+                    render={() => <DonorDash
+                      currentUser={this.state.currentUser}
+                      userType={this.state.userType}/>}/>
+                  <Route path='/v/dash'
+                    render={() => <VendorDash
+                      currentUser={this.state.currentUser}
+                      userType={this.state.userType}/>}/>
                 </div>
               </div>
             </div>
