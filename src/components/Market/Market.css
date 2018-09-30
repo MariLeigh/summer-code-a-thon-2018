@@ -6,10 +6,15 @@
 }
 
 .item {
-  padding: 16px;
+  /* padding: 16px; */
   border: 1px solid lightgrey;
-  border-radius: 6px;
-  display: inline-table;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  height: 250px;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 .item:hover {
@@ -18,10 +23,34 @@
 }
 .itemImage > img {
   object-fit: contain;
-  min-width: 100%;
-  max-width: 100%;
+  /* min-width: 100%; */
+  /* max-width: 100%; */
   min-height: 100%;
   max-height: 100%;
+  opacity: .8;
+}
+
+.itemImage {
+  position: relative;
+  overflow: hidden;
+}
+
+.itemInfo {
+  padding-left: 8px;
+  font-size: 12pt;
+  display: grid;
+  padding-right: 4px;
+}
+
+.itemInfo .top > div {
+  padding-bottom: 8px;
+}
+
+.itemInfo .head {
+  font-weight: 600;
+  font-size: 14pt;
+  padding-top: 12px;
+  padding-bottom: 6px;
 }
 
 .market {

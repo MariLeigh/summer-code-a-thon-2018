@@ -15,7 +15,7 @@ class Home extends React.Component {
           <div className="home-img-div">
             <img className="home-img" src="http://miriadna.com/desctopwalls/images/max/In-the-forest.jpg"></img>
             <div className="home-img-txt">
-              Inspiring message about people coming together to change communities
+              Welcome to RemitMart - where an opportunity awaits for each and every one of us to build a stronger community.
             </div>
             <div className='home-btn' onClick={() => {
               }}>Get Started
@@ -23,7 +23,7 @@ class Home extends React.Component {
           </div>
           <div className="call-to-action">
             <div className="cta-intro">
-              Some sort of interesting call to action message here // Join our community
+              What is going to make you better today?
             </div>
             <div className="cta-grid">
               <div className="cta-action" onClick={() => {

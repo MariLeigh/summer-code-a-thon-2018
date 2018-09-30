@@ -2,6 +2,10 @@ import React, {Component} from 'react'
 import VendorSignup from './VendorSignup'
 import VendorListItem from './VendorListItem'
 import {withRouter} from "react-router-dom";
+import MarketItem from '../Market/MarketItem'
+import { items } from '../dummyData'
+import '../../css/vendor.css'
+import '../Market/Market.css'
 
 class Vendor extends Component {
   constructor(props) {
@@ -17,14 +21,21 @@ class Vendor extends Component {
       zipcode: '',
       city: '',
       country: '',
-      ethaccount: ''
+      ethaccount: '',
+      userType: '',
+      signupModal: false
     }
     this.nextStep = this.nextStep.bind(this)
+    this.backStep = this.backStep.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.displayItems = this.displayItems.bind(this)
   }
   nextStep() {
     this.setState({step: this.state.step+1})
+  }
+  backStep() {
+    this.setState({step: this.state.step-1})
   }
 
   handleChange(event) {
@@ -36,44 +47,94 @@ class Vendor extends Component {
     event.preventDefault()
   }
 
+  displayItems() {
+    return items
+  }
+
+  firstToggle(event) {
+    event.preventDefault()
+    this.setState({ signupModal: true })
+  }
+
   render() {
     return (
       <div>
         {this.state.step === 0 &&
           <div>
+          <div className="v">
             <h1>
-              Be a RemitMart Vendor
+              Become a RemitMart Partner
             </h1>
             <p>
-              Sign up as a vendor to supply goods to those in need. You'll be able to list items for sale, and specify your distribution locations.
+              Join our partner community by supplying goods to those in need. You'll be able to list items for sale, and specify your distribution locations.
             </p>
+            <button className="primary-btn" onClick={() => this.nextStep()}>
+              Log into Metamask to get started
+            </button>
+            </div>
+            <div className="v-m">
+              <h2>Explore other partner's marketplace</h2>
+              <div className="grid">
+                {this.displayItems().map(item =>
+                  <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser} />
+                )}
+              </div>
+            </div>
+            <div className="get-started">
+              <button className="primary-btn" onClick={() => this.nextStep()}>
+                Get started with Metamask
+              </button>
+            </div>
+          </div>
+        }
+        {this.state.step === 1 &&
+        <div className='v'>
             <h2>
-              Install Metamask
+              Join Metamask to become our Partner
             </h2>
             <p>
-              MetaMask is a third-party extension/add-on available through Google Chrome and Mozilla Firefox; it is necessary to use our application.
+              MetaMask is a third-party extension/add-on available through Google Chrome and Mozilla Firefox. RemitMart is optimized for cryptocurrency and blockchain. Metamask works nicely with this technology, so to partner with us, please sign up for MetaMask.
             </p>
             <p>
               Your MetaMask account number will be how we identify you, please keep an extra copy of your account number and seed passphrase!
             </p>
-            <p>
-              Watch this video to learn how to install MetaMask:
-            </p>
-            <iframe width="364.25" height="193.75" src="https://www.youtube.com/embed/6Gf_kRE4MJU" frameborder="0" allow="autoplay; encrypted-media" allowFullScreen>
-            </iframe>
-            <br></br>
-            <button onClick={() => this.nextStep()}>
-              Next step
-            </button>
+            <div className='primary-btn' onClick={() => this.firstToggle()}>
+              I've logged into Metamask
+            </div>
             <button onClick={() => {
               this.props.loginHandler("0x559c7dcd5f1fd32925569f9baabc77b039df9dph")
               this.props.history.push('/v/dash')
             }}>
               Sign in as testUser
             </button>
+            <div className='metamask-vid'>
+            <h3>
+              To learn more about MetaMask, watch a short video:
+            </h3>
+            <iframe width="364.25" height="193.75" src="https://www.youtube.com/embed/6Gf_kRE4MJU" frameborder="0" allow="autoplay; encrypted-media" allowFullScreen>
+            </iframe>
+            </div>
+            <br></br>
+            <div className='back-btn' onClick={() => this.backStep()}>
+              Back to Partners page
+            </div>
+          {this.state.requestModal &&
+            <div className='signupModal' onClick={this.toggleModal}>
+              <div>
+                <h2>Request for:</h2>
+                <p>Item: {this.state.item.item} </p>
+                <p>Description: {this.state.item.description} </p>
+                <h3>Delivery address:</h3>
+                <h3>Reminder: Must confirm delivery</h3>
+                <div>
+                  <button value={this.state.item.id} onClick={this.requestItem}>Submit</button>
+                </div>
+              </div>
+            </div>
+          }
           </div>
         }
-        {this.state.step === 1 &&
+        {this.state.step === 2 &&
         <div>
           <h1>
             Vendor Set up
@@ -101,14 +162,14 @@ class Vendor extends Component {
           </button>
         </div>
         }
-        {this.state.step === 2 &&
+        {this.state.step === 3 &&
         <div>
           <VendorSignup setUserType={this.setUserType} currentUser={this.props.currentUser}
                         loginHandler={this.props.loginHandler} validAccounts={this.state.validAccounts}
                         nextStep={this.nextStep}/>
         </div>
         }
-        {this.state.step === 3 &&
+        {this.state.step === 4 &&
         <div>
           <VendorListItem currentUser={this.props.currentUser}/>
         </div>
