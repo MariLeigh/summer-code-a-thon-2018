@@ -17,7 +17,7 @@
 .home-img-txt {
   position: absolute;
   width: 70%;
-  top: 40%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: xx-large;
@@ -28,6 +28,12 @@
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background: #777777;
+  width: 250px;
+  font-size: 20px;
+  padding: 30px;
+  vertical-align: middle;
+  border-radius: 8px;
 }
 
 .call-to-action {
@@ -51,7 +57,7 @@
 }
 
 .cta-action:hover {
-  box-shadow: grey;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .cta-head {

@@ -17,10 +17,8 @@ class Home extends React.Component {
             <div className="home-img-txt">
               Inspiring message about people coming together to change communities
             </div>
-            <div className='home-btn'>
-              <button onClick={() => {
+            <div className='home-btn' onClick={() => {
               }}>Get Started
-              </button>
             </div>
           </div>
           <div className="call-to-action">

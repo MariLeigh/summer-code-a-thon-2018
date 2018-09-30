@@ -3,8 +3,8 @@ import React from 'react';
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar pure-menu pure-menu-horizontal">
-      <span><i className="nav-title color-box"></i><a href="/" className="nav-title pure-menu-heading pure-menu-link" onClick={(event) => {
+    <div className="nav">
+      <span><i className="nav-title color-box"></i><a href="/" className="nav-title" onClick={(event) => {
         event.preventDefault();
         props.history.push('/');
       }}>RemitMart</a></span>
@@ -34,7 +34,7 @@ const Navbar = (props) => {
           props.history.push('/')
         }}>SIGNUP</a></span>}</span>
       </a>
-    </nav>
+    </div>
   );
 };
 
