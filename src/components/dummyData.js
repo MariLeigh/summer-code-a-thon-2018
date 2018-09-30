@@ -119,7 +119,7 @@ exports.users = [
   },
   {
     'id': '4',
-    'wallet': '0x559c7dcd5f1fd32925569f9baabc77b039df9dcf',
+    'wallet': '0x559C7dcd5F1Fd32925569F9BaabC77b039dF9DCf',
     'name': 'World'
   },
   {

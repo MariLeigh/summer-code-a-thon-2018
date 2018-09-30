@@ -43,8 +43,8 @@ class App extends Component {
     // See utils/getWeb3 for more info.
     getWeb3.then(results => {
       results.web3.eth.getAccounts().then(accounts => {
-        const regUser = users.filter(u => u.wallet === accounts[0]);
-        const userName = regUser[0] ? regUser[0].name : "New User";
+        let regUser = users.filter(u => u.wallet === accounts[0]);
+        let userName = regUser[0] ? regUser[0].name : "New User";
         this.setState({
           web3: results.web3,
           currentUser: accounts[0],
@@ -79,7 +79,7 @@ class App extends Component {
     simpleStorage.deployed().then((instance) => {
       simpleStorageInstance = instance;
       // Stores a given value, 5 by default.
-      console.log(simpleStorageInstance);
+      // console.log(simpleStorageInstance);
       this.setState({contract: simpleStorageInstance});
       //return simpleStorageInstance.set(this.state.userInfo, {from: accounts[0]})
       //  return simpleStorageInstance.set(5, {from: accounts[0]})

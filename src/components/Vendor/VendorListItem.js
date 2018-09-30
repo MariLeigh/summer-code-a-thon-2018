@@ -33,8 +33,11 @@ class VendorListItem extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+    console.log('======')
     this.setState(({
-      vendorWallet: nextProps.currentUser
+      vendorWallet: nextProps.currentUser,
+      web3: nextProps.web3
     }))
   }
 
@@ -66,7 +69,8 @@ class VendorListItem extends Component {
   };
 
   uploadNewItem(newItem) {
-    const data = this.state.web3.utils.stringToHex(JSON.stringify(newItem));
+    // const data = this.state.web3.utils.stringToHex(JSON.stringify(newItem));
+    const data = JSON.stringify(newItem)
     let MRU_MANIFEST_KEY;
     // console.log("Addr "+this.state.vendorWallet);
     (async () => {
