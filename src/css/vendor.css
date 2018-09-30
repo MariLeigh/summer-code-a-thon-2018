@@ -88,7 +88,8 @@
 .createPackageText {
   font-size: 24px;
   max-width: 600px;
-  padding: 30px;
+  padding: 50px;
+  padding-top: 80px;
 }
 
 .packetGrid {
@@ -129,4 +130,8 @@ div.pDescription {
 .pDescription > textarea {
   height: 80% !important;
   font-size: 20px;
+}
+
+.create-pkt {
+  grid-column: 4/5;
 }

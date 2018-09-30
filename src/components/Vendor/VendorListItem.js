@@ -249,7 +249,7 @@ class VendorListItem extends Component {
                       onChange={(e) => this.handleChange('zip', e)}
               />
             </div>
-            <input type="submit" value="Create Packet"/>
+            <input className="primary-btn create-pkt" type="submit" value="Create Packet"/>
           </form>
         </div>
       </div>
