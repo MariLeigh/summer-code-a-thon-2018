@@ -33,7 +33,10 @@
 
 .get-started > .primary-btn {
   margin: 20px;
+  margin-left: 60px;
   width: 280px;
+  /* float: right; */
+  /* margin-right: 80px; */
 }
 
 .get-started {
