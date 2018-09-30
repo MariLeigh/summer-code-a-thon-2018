@@ -135,3 +135,29 @@ div.pDescription {
 .create-pkt {
   grid-column: 4/5;
 }
+
+.addItems {
+  opacity: 0.6;
+  padding-left: 24px;
+}
+.addItems:hover {
+  opacity: 1;
+}
+.crossIcon:before, .crossIcon:after {
+  position: absolute;
+  display: inline;
+  left: 60px;
+  content: ' ';
+  height: 24px;
+  width: 2px;
+  background-color: #333;
+}
+.crossIcon:before {
+  transform: rotate(90deg);
+}
+
+.addItemsTxt {
+  padding-left: 60px;
+  font-weight: 400;
+  padding-top: 4px;
+}

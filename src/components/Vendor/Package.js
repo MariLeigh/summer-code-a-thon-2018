@@ -26,6 +26,10 @@ class Package extends Component {
             addUserInfo={this.addUserInfo}
             web3={this.state.web3} />
         </div>
+        <div className="addItems">
+          <div className="crossIcon"></div>
+          <h4 className="addItemsTxt">Add items</h4>
+        </div>
       </div>
     )
   }
