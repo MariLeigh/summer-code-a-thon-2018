@@ -11,6 +11,7 @@ import Home from './components/Home'
 import Vendor from './components/Vendor/Vendor'
 import Donor from './components/Donor/Donor'
 import Receiver from './components/Receiver/Receiver'
+import Package from './components/Vendor/Package'
 import VendorListItem from './components/Vendor/VendorListItem'
 import Market from './components/Market/Market'
 import ReceiverDash from './components/Receiver/Dashboard';
@@ -130,7 +131,7 @@ class App extends Component {
                       validAccounts={this.state.validAccounts}
                       loginHandler={this.login}/>}/>
                   <Route path='/v/listitem'
-                    render={props => <VendorListItem
+                    render={props => <Package
                       currentUser={this.state.currentUser}
                       addUserInfo={this.addUserInfo}
                       web3={this.state.web3}/>}/>

@@ -11,7 +11,7 @@ class Vendor extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      step: props.step || 0,
+      step: props.step || 1,
       currentUser: props.currentUser,
       validAccounts: props.validAccounts,
       message: "Sell Food",
@@ -30,6 +30,8 @@ class Vendor extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.displayItems = this.displayItems.bind(this)
+    this.firstToggle = this.firstToggle.bind(this)
+    this.toggleModal = this.toggleModal.bind(this)
   }
   nextStep() {
     this.setState({step: this.state.step+1})
@@ -54,6 +56,10 @@ class Vendor extends Component {
   firstToggle(event) {
     event.preventDefault()
     this.setState({ signupModal: true })
+  }
+
+  toggleModal(e) {
+    if (e.target.className === 'fa fa-times close') this.setState({ signupModal: false })
   }
 
   render() {
@@ -98,7 +104,7 @@ class Vendor extends Component {
             <p>
               Your MetaMask account number will be how we identify you, please keep an extra copy of your account number and seed passphrase!
             </p>
-            <div className='primary-btn' onClick={() => this.firstToggle()}>
+            <div className='primary-btn' onClick={this.firstToggle}>
               I've logged into Metamask
             </div>
             <button onClick={() => {
@@ -118,17 +124,17 @@ class Vendor extends Component {
             <div className='back-btn' onClick={() => this.backStep()}>
               Back to Partners page
             </div>
-          {this.state.requestModal &&
-            <div className='signupModal' onClick={this.toggleModal}>
+          {this.state.signupModal &&
+            <div className='signupModal'>
+            <i className="fa fa-times close" onClick={this.toggleModal}></i>
               <div>
-                <h2>Request for:</h2>
-                <p>Item: {this.state.item.item} </p>
-                <p>Description: {this.state.item.description} </p>
-                <h3>Delivery address:</h3>
-                <h3>Reminder: Must confirm delivery</h3>
-                <div>
-                  <button value={this.state.item.id} onClick={this.requestItem}>Submit</button>
-                </div>
+                <h4>Thanks for signing in</h4>
+                <text>To complete the sign up, fill in some more information.</text>
+              <div className='signupForm'>
+                <VendorSignup setUserType={this.setUserType} currentUser={this.props.currentUser}
+                  loginHandler={this.props.loginHandler} validAccounts={this.state.validAccounts}
+                  nextStep={this.nextStep} />
+              </div>
               </div>
             </div>
           }

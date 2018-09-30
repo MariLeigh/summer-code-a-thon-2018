@@ -15,6 +15,7 @@ class VendorSignup extends Component {
       zipcode: '',
       city: '',
       country: '',
+      email: ''
       //vendorWallet: this.props.currentUser
     };
     this.handleChange = this.handleChange.bind(this)
@@ -77,14 +78,22 @@ class VendorSignup extends Component {
       <div>
           <div>
             <form onSubmit={this.handleSubmit}>
+
               <label>
-                  Name:
-                <input type="text"
+                Name
+              </label>
+              <input type="text"
                 value={this.state.name}
                 onChange={(e) => this.handleChange('name', e)}
-                />
-              </label>
+              />
               <label>
+                Email
+              </label>
+              <input type="text"
+                value={this.state.email}
+                onChange={(e) => this.handleChange('email', e)}
+              />
+              {/* <label>
                 Address:
                 <input type="text"
                 value={this.state.address}
@@ -111,22 +120,22 @@ class VendorSignup extends Component {
                 value={this.state.city}
                 onChange={(e) => this.handleChange('city', e)}
                 />
-              </label>
+              </label> */}
               <label>
-                Country:
-                <input type="text"
+                Country
+              </label>
+              <input type="text"
                 value={this.state.country}
                 onChange={(e) => this.handleChange('country', e)}
-                />
-              </label>
+              />
               <label>
-                Ethereum account:
-                <input className="acc-text-box" type="text"
+                Ethereum account
+              </label>
+              <input className="acc-text-box" type="text"
                        value={this.state.wallet}
                        onChange={(e) => this.handleChange('wallet', e)}
-                />
-              </label>
-              <input type="submit" value="Sign up" />
+              />
+              <input type="submit" className='primary-btn form-btn' value="List Available Items" />
             </form>
           </div>
       </div>

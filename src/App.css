@@ -13,7 +13,7 @@ body,
 form {
   display: grid;
   grid-gap: 8px;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 h1, h2, h3 {
@@ -28,7 +28,7 @@ code {
   display: block;
   margin: 20px 0 15px 0;
   padding: 10px;
-  background: #eee;
+  /* background: #eee; */
 }
 
 .container {
@@ -86,9 +86,11 @@ code {
   text-decoration-line: none;
   font-size: x-large;
   padding: 6px;
+  color: #000000 !important;
 }
 
 .nav-link {
+  color: #000000 !important;
   font-family: 'Roboto', 'Oswald';
   text-decoration-line: none;
   width: 100%;
@@ -101,7 +103,7 @@ code {
 .nav-link:hover,
 .nav-link:focus,
 .nav-link:active {
-  border-bottom: #C4C4C4 solid 2px;
+  border-bottom: #009E95 solid 4px;
 }
 
 /* .navbar a {
