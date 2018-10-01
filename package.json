@@ -70,7 +70,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "reactjs-popup": "^1.1.4",
-    "swarm-js": "github:rashinmajidi/swarm-js#test",
+    "swarm-js": "github:rashinmajidi/swarm-js",
     "typeface-roboto": "0.0.54",
     "web3": "^1.0.0-beta.34"
   },

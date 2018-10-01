@@ -47,25 +47,23 @@ class VendorListItem extends Component {
 
   captureFile(e) {
     e.preventDefault();
+    // create the reader and update the load function
     const reader = new FileReader();
-    let imageHash = '';
-    reader.onload = function (e) {
+    reader.onload = async (e) => {
       const data = e.target.result;
       const unit8Array = new Uint8Array(data);
       console.log(unit8Array);
       try {
-        swarm.upload(unit8Array).then((fileHash) => {
-          console.log("photoHash: " + fileHash);
-          imageHash = fileHash;
-          //swarm.download(fileHash).then((file)=>console.log(file));
-        });
-
+        const imageHash = await swarm.upload(unit8Array)
+        console.log("photoHash: " + imageHash);
+        console.log(this.state)
+        this.setState({imageHash});
       } catch (e) {
         console.log(e);
       }
     };
+    // read the file
     reader.readAsArrayBuffer(e.target.files[0]);
-    this.setState({imageHash: imageHash});
   };
 
   uploadNewItem(newItem) {
