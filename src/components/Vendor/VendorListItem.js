@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {items, users} from '../dummyData'
 import swarm from "../../swarm";
+import { withRouter } from "react-router-dom";
 
 
 class VendorListItem extends Component {
@@ -23,13 +24,15 @@ class VendorListItem extends Component {
       address2: '',
       city: '',
       state: '',
-      zip: ''
+      zip: '',
+      addedModal: false
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.uploadNewItem = this.uploadNewItem.bind(this);
-    this.captureFile = this.captureFile.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.uploadNewItem = this.uploadNewItem.bind(this)
+    this.captureFile = this.captureFile.bind(this)
+    this.toggleModal = this.toggleModal.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,6 +46,14 @@ class VendorListItem extends Component {
 
   handleChange(key, event) {
     this.setState({[key]: event.target.value})
+  }
+
+  toggleModal(e) {
+    console.log(e.target.className)
+    console.log('-------------')
+    console.log(e.target)
+    if (e.target.className === 'fa fa-times close') this.setState({ addedModal: false })
+    if (e.target.className === 'primary-btn less-btn addPackets') this.setState({ addedModal: false })
   }
 
   captureFile(e) {
@@ -126,6 +137,9 @@ class VendorListItem extends Component {
     const file= JSON.stringify(this.state)
         const fileHash = swarm.upload(file)
         console.log("Uploaded file: Address: ", fileHash)
+        if (fileHash) {
+          this.setState({ addedModal: true })
+        }
   }
 
   render() {
@@ -254,9 +268,29 @@ class VendorListItem extends Component {
             <input className="primary-btn create-pkt" type="submit" value="Create Packet"/>
           </form>
         </div>
+        {this.state.addedModal &&
+          <div className='signupModal'>
+            <i className="fa fa-times close" onClick={this.toggleModal}></i>
+            <div>
+              <h4>Success!</h4>
+            <text>Packet added: {this.state.item}</text>
+              <div className='addedPacket'>
+                <div className='primary-btn less-btn addPackets' onClick={this.toggleModal}>
+                  Add more packets
+                </div>
+                <div className='primary-btn' onClick={() => {
+                  this.props.loginHandler(this.props.currentUser)
+                  this.props.history.replace('/v/dash')
+                }}>
+                  Go to Dashboard
+                </div>
+              </div>
+            </div>
+          </div>
+        }
       </div>
     )
   }
 }
 
-export default VendorListItem
+export default withRouter(VendorListItem);

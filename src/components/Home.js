@@ -31,21 +31,21 @@ class Home extends React.Component {
                 this.props.history.push('/v/signup')
               }}>
                 <div className="cta-head">I want to partner</div>
-                <p>Contribute to your local community by donating a bag of groceries to feed a family near you</p>
+              <p>Place your items in the marketplace for purchase</p>
               </div>
               <div className="cta-action" onClick={() => {
                 this.props.setUserType('d');
                 this.props.history.push('/d/signup')
               }}>
                 <div className="cta-head">I want to donate</div>
-                <p>Contribute to your local community by donating a bag of groceries to feed a family near you</p>
+              <p>Buy groceries for a person in need</p>
               </div>
               <div className="cta-action" onClick={() => {
                 this.props.setUserType('r');
                 this.props.history.push('/r/signup')
               }}>
-                <div className="cta-head">I am looking to receive food</div>
-                <p>Contribute to your local community by donating a bag of groceries to feed a family near you</p>
+                <div className="cta-head">I am looking to ask</div>
+              <p>Request groceries to be purchased for you by someone in the community</p>
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@ class Home extends React.Component {
               <div className="story">
                 <h3>Our story</h3>
                 <p>
-                  Lorenipsum ...
+                  RemitMart started with a small community of female technologists, passionate about a potential solution that could connect people in need with people who can help without a personal connection. The goal is for the community to go wide, across the global, and we're eager to have you along for the ride.
                 </p>
               </div>
               <h4>Communities we've reached</h4>

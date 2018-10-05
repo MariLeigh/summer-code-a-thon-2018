@@ -19,6 +19,12 @@
   border-radius: 8px;
 }
 
+.less-btn {
+  border: 2px solid #777777 !important;
+  color: #777777 !important;
+  background: white !important;
+}
+
 .primary-btn {
   background: #009E95;
   margin: 8px;
@@ -50,7 +56,6 @@
   position: absolute;
   padding: 24px;
   width: 493px;
-  height: 440px;
   left: calc(50% - 600px/2 + 11.5px);
   top: 98px;
   border-radius: 6px;
@@ -163,4 +168,10 @@ div.pDescription {
   padding-left: 60px;
   font-weight: 400;
   padding-top: 4px;
+}
+
+.addedPacket {
+  display: flex;
+  text-align: center;
+  padding: 20px;
 }

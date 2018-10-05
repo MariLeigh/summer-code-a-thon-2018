@@ -134,6 +134,7 @@ class App extends Component {
                     render={props => <Package
                       currentUser={this.state.currentUser}
                       addUserInfo={this.addUserInfo}
+                      loginHandler={this.login}
                       web3={this.state.web3}/>}/>
                   <Route path='/d/signup'
                     render={props => <Donor

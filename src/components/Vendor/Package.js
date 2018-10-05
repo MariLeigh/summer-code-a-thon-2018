@@ -24,7 +24,8 @@ class Package extends Component {
         <div className="createPacket">
           <VendorListItem currentUser={this.props.currentUser}
             addUserInfo={this.addUserInfo}
-            web3={this.state.web3} />
+            web3={this.state.web3}
+            loginHandler={this.props.loginHandler} />
         </div>
         <div className="addItems">
           <div className="crossIcon"></div>
