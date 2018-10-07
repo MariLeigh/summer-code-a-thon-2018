@@ -37,6 +37,10 @@ code {
   /* padding: 45px 20px; */
 }
 
+.container-1 {
+  padding: 20px;
+}
+
 .acc-text-box {
   width: 400px;
 }

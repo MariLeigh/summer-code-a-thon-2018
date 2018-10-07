@@ -134,11 +134,11 @@ class Dashboard extends React.Component {
               </p>
               {/* <h1>{withdrawNum}</h1> */}
               <p>Total Revenue:</p>
-              <p className='dollar'>${this.getOrders('complete')
+              {/* <p className='dollar'>${this.getOrders('complete')
                 .reduce((t, o) => t + o.item.price !== ""
                   ? parseInt(o.item.price.replace("$", ""))
                   : 0
-                )}</p>
+                )}</p> */}
               {/* <h1>$50</h1> */}
               <p>Grocery packets delivered:</p>
               <p>{this.getShippedOrders().length}</p>

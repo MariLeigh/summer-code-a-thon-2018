@@ -13,9 +13,9 @@ class Home extends React.Component {
       <div>
         {/* <main className="container"> */}
           <div className="home-img-div">
-            <img className="home-img" src="http://miriadna.com/desctopwalls/images/max/In-the-forest.jpg"></img>
+          <img className="home-img" src="https://s3-alpha.figma.com/img/297b/d89c/03aee371f528151484c00843caab5ad8"></img>
             <div className="home-img-txt">
-              Welcome to RemitMart - where an opportunity awaits for each and every one of us to build a stronger community.
+              An opportunity awaits for each and every one of us to build a stronger community
             </div>
             <div className='home-btn' onClick={() => {
               }}>Get Started
