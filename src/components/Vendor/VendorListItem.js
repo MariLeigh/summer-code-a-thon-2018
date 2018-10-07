@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {items, users} from '../dummyData'
 import swarm from "../../swarm";
 import { withRouter } from "react-router-dom";
+import { join } from 'path';
 
 
 class VendorListItem extends Component {
@@ -25,7 +26,8 @@ class VendorListItem extends Component {
       city: '',
       state: '',
       zip: '',
-      addedItems: []
+      addedItems: [],
+      createVis: true
     };
 
     this.handleChange = this.handleChange.bind(this)
@@ -49,11 +51,14 @@ class VendorListItem extends Component {
   }
 
   toggleModal(e) {
-    console.log(e.target.className)
-    console.log('-------------')
-    console.log(e.target)
     if (e.target.className === 'fa fa-times close') this.setState({ addedModal: false })
-    if (e.target.className === 'primary-btn less-btn addPackets') this.setState({ addedModal: false })
+    if (e.target.className === 'primary-btn less-btn addPackets') this.setState({ addedModal: false }), this.props.addedItems(this.state.addedItems)
+    if (e.target.className === 'addItems') this.setState({ createVis: false })
+    if (e.target.className === 'addItems' && this.state.createVis === false) this.setState({ createVis: true })
+    if (e.target.id === 'addedCross') this.setState({ createVis: false })
+    if (e.target.id === 'addedCross' && this.state.createVis === false) this.setState({ createVis: true })
+    if (e.target.className === 'addItemsTxt') this.setState({ createVis: false })
+    if (e.target.className === 'addItemsTxt' && this.state.createVis === false) this.setState({ createVis: true })
   }
 
   captureFile(e) {
@@ -164,7 +169,8 @@ class VendorListItem extends Component {
   render() {
     return (
       <div>
-        <div className="packetGrid">
+        {this.state.createVis &&
+        <div className="packetGrid createPacket">
           <form id="list-item-form" onSubmit={this.handleSubmit}>
             <div className="pName left-half">
               <label>
@@ -287,6 +293,7 @@ class VendorListItem extends Component {
             <input className="primary-btn create-pkt" type="submit" value="Create Packet"/>
           </form>
         </div>
+        }
         {this.state.addedModal &&
           <div className='signupModal'>
             <i className="fa fa-times close" onClick={this.toggleModal}></i>
@@ -307,6 +314,10 @@ class VendorListItem extends Component {
             </div>
           </div>
         }
+        <div className="addItems" onClick={this.toggleModal}>
+          <div className="crossIcon" id="addedCross"></div>
+          <h4 className="addItemsTxt">Add items</h4>
+        </div>
       </div>
     )
   }

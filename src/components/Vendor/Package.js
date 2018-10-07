@@ -7,8 +7,10 @@ class Package extends Component {
     super(props);
     this.state = {
       vendorWallet: props.currentUser,
-      web3: props.web3
-    };
+      web3: props.web3,
+      addedItems: [],
+    }
+    this.handleAdded = this.handleAdded.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -17,19 +19,23 @@ class Package extends Component {
     }))
   }
 
+  handleAdded(added) {
+    console.log('========')
+    console.log(added)
+    this.setState({ addedItems: added })
+  }
+
+
   render() {
     return (
       <div>
         <div className="createPackageText">Create a packet of available groceries, specify how many it will feed in sub-info and describe typical package contents.</div>
-        <div className="createPacket">
+        <div>
           <VendorListItem currentUser={this.props.currentUser}
             addUserInfo={this.addUserInfo}
             web3={this.state.web3}
-            loginHandler={this.props.loginHandler} />
-        </div>
-        <div className="addItems">
-          <div className="crossIcon"></div>
-          <h4 className="addItemsTxt">Add items</h4>
+            loginHandler={this.props.loginHandler}
+            addedItems={this.handleAdded} />
         </div>
       </div>
     )
