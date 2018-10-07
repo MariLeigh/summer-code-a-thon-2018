@@ -13,7 +13,7 @@ class Home extends React.Component {
       <div>
         {/* <main className="container"> */}
           <div className="home-img-div">
-          <img className="home-img" src="https://s3-alpha.figma.com/img/297b/d89c/03aee371f528151484c00843caab5ad8"></img>
+          <img className="home-img hands-img" src="https://s3-alpha.figma.com/img/297b/d89c/03aee371f528151484c00843caab5ad8"></img>
             <div className="home-img-txt">
               An opportunity awaits for each and every one of us to build a stronger community
             </div>
@@ -58,6 +58,9 @@ class Home extends React.Component {
               </div>
               <h4>Communities we've reached</h4>
           </div>
+        <div className="home-img-div">
+          <img className="home-img" src="http://oi68.tinypic.com/2ceq6bk.jpg"></img>
+        </div>
         {/* </main> */}
       </div>
     );

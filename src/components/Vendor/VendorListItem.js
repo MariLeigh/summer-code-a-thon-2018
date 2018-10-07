@@ -25,7 +25,7 @@ class VendorListItem extends Component {
       city: '',
       state: '',
       zip: '',
-      addedModal: false
+      addedItems: []
     };
 
     this.handleChange = this.handleChange.bind(this)
@@ -36,8 +36,8 @@ class VendorListItem extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
-    console.log('======')
+    // console.log(nextProps)
+    // console.log('======')
     this.setState(({
       vendorWallet: nextProps.currentUser,
       web3: nextProps.web3
@@ -131,14 +131,33 @@ class VendorListItem extends Component {
     newItem.id = items.length;
     items[items.length] = this.state.newItem;
     this.uploadNewItem(newItem);
-    console.log('An item has been added to our marketplace: ' + JSON.stringify(this.state))
+    console.log('An item has been added to our marketplace: ' + JSON.stringify(newItem))
     event.preventDefault()
-    console.log(this.state);
+    // console.log(this.state);
     const file= JSON.stringify(this.state)
         const fileHash = swarm.upload(file)
         console.log("Uploaded file: Address: ", fileHash)
         if (fileHash) {
           this.setState({ addedModal: true })
+          let joinAdded = this.state.addedItems
+          joinAdded.push(newItem.id)
+          this.setState({ addedItems: joinAdded })
+          this.setState({
+            imageHash: '',
+            item: '',
+            subInfo: '',
+            description: '',
+            price: '',
+            photoUrl: '',
+            quantity: '',
+            deliveryRadius: '',
+            deliveryFee: '',
+            address: '',
+            address2: '',
+            city: '',
+            state: '',
+            zip: ''
+          })
         }
   }
 
@@ -146,7 +165,7 @@ class VendorListItem extends Component {
     return (
       <div>
         <div className="packetGrid">
-          <form onSubmit={this.handleSubmit}>
+          <form id="list-item-form" onSubmit={this.handleSubmit}>
             <div className="pName left-half">
               <label>
                 Name of Package
