@@ -127,22 +127,24 @@ class Dashboard extends React.Component {
           <div className='dash-component revenue'>
             <h3>Revenue</h3>
             <div className='component-content rev'>
-              <p>Ready to withdraw:</p>
-              <p className='dollar'>$150
-                <span>
+              <div className="component-el">Grocery packets delivered:</div>
+              <div className="dollar component-el">{this.getShippedOrders().length}</div>
+              <div className="component-el">Available balance:</div>
+              <div className='dollar component-el'>$150
+                {/* <span>
                   <a className='transfer-link' href=''>transfer now</a>
-                </span>
-              </p>
+                </span> */}
+              </div>
+              <div className="transfer-btn component-el">Transfer to my account</div>
               {/* <h1>{withdrawNum}</h1> */}
-              <p>Total Revenue:</p>
+              {/* <div className="component-el">Total Revenue:</div> */}
               {/* <p className='dollar'>${this.getOrders('complete')
                 .reduce((t, o) => t + o.item.price !== ""
                   ? parseInt(o.item.price.replace("$", ""))
                   : 0
                 )}</p> */}
               {/* <h1>$50</h1> */}
-              <p>Grocery packets delivered:</p>
-              <p>{this.getShippedOrders().length}</p>
+              {/* <div className="component-el">$50</div> */}
 
             </div>
           </div>
@@ -155,6 +157,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
         </div>
+        <div className="dash-fill-bottom"></div>
       </div>
     )
   }

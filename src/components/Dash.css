@@ -96,7 +96,7 @@ ul {
 }
 
 .component-content {
-  padding: 16px;
+  padding-left: 16px;
   background-color: white;
   border-radius: 4px;
   max-width: 100%;
@@ -108,8 +108,8 @@ ul {
 }
 
 .dollar {
-  font-size: 24px;
-  font-weight: bolder;
+  font-size: 36px !important;
+  font-weight: bold;
 }
 
 .transfer-link {
@@ -139,19 +139,20 @@ ul {
   grid-gap: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
-  padding-left: 24px;
-  padding-right: 16px;
+  padding-left: 36px;
+  padding-right: 36px;
   background: #EAEAEA;
 }
 
 .dash-title {
-  font-size: 1.6em;
-  font-weight: bold;
+  font-size: 30px;
+  line-height: 1.8em;
   padding-left: 40px;
 }
 
 .dash-title.in {
   background: #EAEAEA !important;
+  line-height: 1.6em !important;
 }
 
 .dash-component.order-status {
@@ -172,19 +173,45 @@ ul {
 }
 
 .dash-component {
-  height: 500px;
+  max-height: 320px;
   overflow: scroll;
   background-color: #FFFFFF;
   padding-left: 8px;
   padding-right: 8px;
-  margin: 12px;
   border-radius: 6px;
   position: relative;
   border-left: 8px solid #009E95;
+}
+
+.component-el {
+  margin-top: 8px;
+  margin-bottom: 6px;
+  font-size: 18px;
 }
 
 #edit-inventory {
   background: transparent;
   position: absolute;
   right: 10px;
+}
+
+.transfer-btn {
+  font-size: 20px;
+  line-height: 19px;
+  padding: 18px;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 100px;
+  border: 3px solid #CCCCCC;
+  color: #777777 !important;
+}
+
+.transfer-btn:hover {
+  background: #EAEAEA;
+  /* border: 3px solid #777777; */
+}
+
+.dash-fill-bottom {
+  min-height: 100px;
+  background: #EAEAEA;
 }
