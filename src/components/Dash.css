@@ -129,14 +129,34 @@ ul {
   max-height: 100%;
 }
 
+.announcements {
+  height: 60px;
+}
+
 .dash-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 24px;
+  padding-right: 16px;
+  background: #EAEAEA;
+}
+
+.dash-title {
+  font-size: 1.6em;
+  font-weight: bold;
+  padding-left: 40px;
+}
+
+.dash-title.in {
+  background: #EAEAEA !important;
 }
 
 .dash-component.order-status {
   grid-column: 2/-1;
+  border-left: 6px solid #FFFFFF !important;
 }
 
 .dash-component.order-status .order-item {
@@ -154,10 +174,13 @@ ul {
 .dash-component {
   height: 500px;
   overflow: scroll;
-  background-color: lightgray;
-  padding: 8px;
-  border-radius: 4px;
+  background-color: #FFFFFF;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 12px;
+  border-radius: 6px;
   position: relative;
+  border-left: 8px solid #009E95;
 }
 
 #edit-inventory {

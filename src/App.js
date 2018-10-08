@@ -3,6 +3,7 @@ import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
 import {BrowserRouter, Route} from 'react-router-dom'
 
+import './css/roboto.css'
 import './css/oswald.css'
 import './css/open-sans.css'
 // import './css/pure-min.css'
@@ -12,7 +13,7 @@ import Vendor from './components/Vendor/Vendor'
 import Donor from './components/Donor/Donor'
 import Receiver from './components/Receiver/Receiver'
 import Package from './components/Vendor/Package'
-import VendorListItem from './components/Vendor/VendorListItem'
+// import VendorListItem from './components/Vendor/VendorListItem'
 import Market from './components/Market/Market'
 import ReceiverDash from './components/Receiver/Dashboard';
 import DonorDash from './components/Donor/Dashboard';

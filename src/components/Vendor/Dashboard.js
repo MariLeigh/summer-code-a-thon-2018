@@ -82,11 +82,12 @@ class Dashboard extends React.Component {
     return (
       <div>
         <script src="https://use.fontawesome.com/ac442f7ad2.js"></script>
-        <h1 className='pageTitle'>Dashboard</h1>
-        <h2>Action Items</h2>
+        {/* <h1 className='pageTitle'>Dashboard</h1> */}
+        <div className="announcements"></div>
+        <div className="dash-title">Action Items</div>
         <div className='dash-container'>
           <div className='dash-component accept'>
-            <h3>Orders Available to Accept</h3>
+            <h3>Orders to accept</h3>
             <div>
               {this.getOrders('init').map(order =>
                 <Order key={order.id} {...order} updateOrder={this.updateOrder}/>
@@ -94,7 +95,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div className='dash-component toShip'>
-            <h3>Orders to Assemble and Ship</h3>
+            <h3>Orders to assemble and ship</h3>
             <div>
               {this.getOrders('toShip').map(order =>
                 <Order key={order.id} {...order} updateOrder={this.updateOrder}/>
@@ -102,7 +103,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div className='dash-component inventory'>
-            <h3>Update Inventory
+            <h3>Items available in marketplace
               <button id='edit-inventory'><i className="fa fa-edit"></i></button>
             </h3>
             <div className='component-content'>
@@ -121,7 +122,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
         </div>
-        <h2>Order History and Revenue</h2>
+        <div className="dash-title in">Order History and Revenue</div>
         <div className='dash-container'>
           <div className='dash-component revenue'>
             <h3>Revenue</h3>
