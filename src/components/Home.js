@@ -23,7 +23,8 @@ class Home extends React.Component {
           </div>
           <div className="call-to-action">
             <div className="cta-intro">
-              What is going to make you better today?
+            <h2>Join our community</h2>
+            <p>What is going to make you better today?</p>
             </div>
             <div className="cta-grid">
               <div className="cta-action" onClick={() => {

@@ -48,6 +48,13 @@
   padding: 20px;
 }
 
+.cta-intro {
+  padding-left: 20px;
+}
+.cta-intro p {
+  padding-left: 20px;
+}
+
 .cta-grid {
   display: grid;
   grid-template-columns: repeat(3, 33%);
@@ -72,5 +79,10 @@
 }
 
 .our-story {
+  padding-left: 40px;
+}
+
+.our-story p {
   padding-left: 20px;
+  max-width: 700px;
 }
