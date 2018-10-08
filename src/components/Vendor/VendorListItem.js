@@ -35,6 +35,7 @@ class VendorListItem extends Component {
     this.uploadNewItem = this.uploadNewItem.bind(this)
     this.captureFile = this.captureFile.bind(this)
     this.toggleModal = this.toggleModal.bind(this)
+    this.resetItemState = this.resetItemState.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -51,8 +52,13 @@ class VendorListItem extends Component {
   }
 
   toggleModal(e) {
-    if (e.target.className === 'fa fa-times close') this.setState({ addedModal: false })
-    if (e.target.className === 'primary-btn less-btn addPackets') this.setState({ addedModal: false }), this.props.addedItems(this.state.addedItems)
+    if (e.target.className === 'fa fa-times close') this.setState({ addedModal: false }), this.resetItemState()
+    if (e.target.className === 'primary-btn less-btn addPackets') {
+      this.setState({ addedModal: false }),
+      this.props.addedItems(this.state.addedItems),
+      this.resetItemState(),
+      this.setState({ createVis: true })
+    }
     if (e.target.className === 'addItems') this.setState({ createVis: false })
     if (e.target.className === 'addItems' && this.state.createVis === false) this.setState({ createVis: true })
     if (e.target.id === 'addedCross') this.setState({ createVis: false })
@@ -136,6 +142,7 @@ class VendorListItem extends Component {
     newItem.id = items.length;
     items[items.length] = this.state.newItem;
     this.uploadNewItem(newItem);
+    items.push(newItem)
     console.log('An item has been added to our marketplace: ' + JSON.stringify(newItem))
     event.preventDefault()
     // console.log(this.state);
@@ -147,23 +154,28 @@ class VendorListItem extends Component {
           let joinAdded = this.state.addedItems
           joinAdded.push(newItem.id)
           this.setState({ addedItems: joinAdded })
-          this.setState({
-            imageHash: '',
-            item: '',
-            subInfo: '',
-            description: '',
-            price: '',
-            photoUrl: '',
-            quantity: '',
-            deliveryRadius: '',
-            deliveryFee: '',
-            address: '',
-            address2: '',
-            city: '',
-            state: '',
-            zip: ''
-          })
+          this.setState({ createVis: false })
+          this.props.addedItems(joinAdded)
         }
+  }
+
+  resetItemState() {
+    this.setState({
+      imageHash: '',
+      item: '',
+      subInfo: '',
+      description: '',
+      price: '',
+      photoUrl: '',
+      quantity: '',
+      deliveryRadius: '',
+      deliveryFee: '',
+      address: '',
+      address2: '',
+      city: '',
+      state: '',
+      zip: ''
+    })
   }
 
   render() {
