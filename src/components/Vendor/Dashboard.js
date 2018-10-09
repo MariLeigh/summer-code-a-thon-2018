@@ -2,6 +2,7 @@ import React from 'react'
 import '../Dash.css'
 import {items, orders, users} from '../dummyData'
 import Order from '../Order'
+import VendItem from './VendItem'
 
 class Dashboard extends React.Component {
 
@@ -104,21 +105,11 @@ class Dashboard extends React.Component {
           </div>
           <div className='dash-component inventory'>
             <h3>Items available in marketplace
-              <button id='edit-inventory'><i className="fa fa-edit"></i></button>
             </h3>
-            <div className='component-content'>
+            <div>
               {vendItems.map((item) =>
-                <div>
-                  <p>Name: {item.item}</p>
-                  <p>Price: {item.price}</p>
-                  <p>Quantity: {item.quantity}</p>
-                  <div className='item-img'>
-                    <img src={item.itemUrl} alt="item:"></img>
-                  </div>
-                  <p>Description: {item.description}</p>
-                </div>
-              )
-              }
+                <VendItem key={item.id} {...item} />
+              )}
             </div>
           </div>
         </div>

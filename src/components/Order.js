@@ -7,7 +7,7 @@ class Order extends React.Component {
     super(props);
     this.state = {
       order: props,
-      itemDetails: false
+      receiverDetails: false
     }
     this.acceptOrder = this.acceptOrder.bind(this)
     this.orderShipped = this.orderShipped.bind(this)
@@ -23,19 +23,19 @@ class Order extends React.Component {
   }
 
   toggleDetails(e) {
-    if (e.target.className === 'fa fa-angle-down') this.setState({ itemDetails: true })
-    if (e.target.className === 'fa fa-angle-up') this.setState({ itemDetails: false })
+    if (e.target.className === 'fa fa-angle-down receiver') this.setState({ receiverDetails: true })
+    if (e.target.className === 'fa fa-angle-up receiver') this.setState({ receiverDetails: false })
   }
 
   render() {
     return (
       <div>
         <div className='order-item'>
-          { !this.state.itemDetails &&
-            <div className="expand-arrow"><i onClick={this.toggleDetails} className="fa fa-angle-down"></i></div>
+          { !this.state.receiverDetails &&
+            <div className="expand-arrow"><i onClick={this.toggleDetails} className="fa fa-angle-down receiver"></i></div>
           }
-          { this.state.itemDetails &&
-            <div className="expand-arrow"><i onClick={this.toggleDetails} className="fa fa-angle-up"></i></div>
+          { this.state.receiverDetails &&
+            <div className="expand-arrow"><i onClick={this.toggleDetails} className="fa fa-angle-up receiver"></i></div>
           }
 
           <div className='item-name'>
@@ -43,12 +43,17 @@ class Order extends React.Component {
           </div>
           {this.state.order.status === 'init' &&
           <div>
-            <button onClick={() => this.acceptOrder()}>Accept</button>
+            <div className="small-pri-btn" onClick={() => this.acceptOrder()}>Accept</div>
+          </div>
+          }
+          {this.state.order.status === 'init' &&
+          <div>
+            <div className="small-sec-btn">Deny</div>
           </div>
           }
           {this.state.order.status === 'toShip' &&
           <div><input placeholder='confirmation #'></input>
-            <button onClick={() => this.orderShipped()}>Shipped</button>
+            <div className="small-pri-btn conf" onClick={() => this.orderShipped()}>Shipped</div>
           </div>
           }
           {this.state.order.shippedDate &&
@@ -61,8 +66,8 @@ class Order extends React.Component {
           <div>Payment processed: {this.state.order.payDate}</div>
           }
         </div>
-        { this.state.itemDetails &&
-          <div className="item-details">
+        { this.state.receiverDetails &&
+          <div className="receiver-details">
             <div className="detail-grid">
               <div className='receiver-name'>
                 {this.state.order.receiver.name}
