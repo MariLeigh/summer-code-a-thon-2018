@@ -161,15 +161,15 @@ ul {
 }
 
 .dash-component.order-status .order-item {
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .dash-component.accept .order-item {
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .dash-component.toShip .order-item {
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .dash-component {
@@ -214,4 +214,33 @@ ul {
 .dash-fill-bottom {
   min-height: 100px;
   background: #EAEAEA;
+}
+
+.fa-angle-down {
+  font-size: 28px !important;
+}
+.fa-angle-up {
+  font-size: 28px !important;
+}
+
+.fa-angle-down:hover {
+  opacity: .5;
+}
+
+.fa-angle-up:hover {
+  opacity: .5;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item-details {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.item-details div {
+  padding-bottom: 2px;
 }

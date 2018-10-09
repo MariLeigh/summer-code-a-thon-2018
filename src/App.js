@@ -29,7 +29,7 @@ class App extends Component {
       storageValue: 0,
       contract: '',
       web3: null,
-      currentUser: '',
+      currentUser: '0x559c7dcd5f1fd32925569f9baabc77b039df9dph',
       userType: '',
       userName: '',
       validAccounts: ''
