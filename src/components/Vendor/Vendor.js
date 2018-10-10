@@ -33,6 +33,12 @@ class Vendor extends Component {
     this.firstToggle = this.firstToggle.bind(this)
     this.toggleModal = this.toggleModal.bind(this)
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState(({
+      validAccounts: nextProps.validAccounts,
+      currentUser: nextProps.currentUser
+    }))
+  }
   nextStep() {
     this.setState({step: this.state.step+1})
   }
@@ -171,7 +177,7 @@ class Vendor extends Component {
         {this.state.step === 3 &&
         <div>
           <VendorSignup setUserType={this.setUserType} currentUser={this.props.currentUser}
-                        loginHandler={this.props.loginHandler} validAccounts={this.state.validAccounts}
+                        loginHandler={this.props.loginHandler} validAccounts={this.props.validAccounts}
                         nextStep={this.nextStep}/>
         </div>
         }

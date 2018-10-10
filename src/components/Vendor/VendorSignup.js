@@ -25,7 +25,8 @@ class VendorSignup extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState(({
       wallet: nextProps.currentUser,
-      currentUser: nextProps.currentUser
+      currentUser: nextProps.currentUser,
+      validAccounts: nextProps.validAccounts
       //   vendorWallet: nextProps.currentUser
     }))
   }
@@ -45,6 +46,7 @@ class VendorSignup extends Component {
       }
     }
     if (!validAccount) {
+      console.log(this.state)
       console.log("You can't use this account number. Make sure to import this account into your MetaMask wallet first.")
       return
     }

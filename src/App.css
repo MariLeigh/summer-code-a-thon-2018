@@ -64,7 +64,7 @@ code {
   height: 60px;
   /* padding: 5px; */
   background: #f4f4f4;
-  font-family: 'Roboto','Oswald', 'Arial Narrow', sans-serif;
+  font-family: 'Roboto','Oswald', 'Arial Narrow', sans-serif !important;
   z-index: 1;
   display: inline-table;
   color: #000000 !important;

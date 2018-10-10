@@ -142,6 +142,13 @@ class Dashboard extends React.Component {
           <div className='dash-component order-status'>
             <h3>Orders status</h3>
             <div>
+              {/* <div className="order-item date-labels">
+                <div></div>
+                <div></div>
+                <div>Shipped</div>
+                <div>Received</div>
+                <div>Payment processed</div>
+              </div> */}
               {this.getShippedOrders().map(order =>
                 <Order key={order.id} {...order} updateOrder={this.updateOrder}/>
               )}

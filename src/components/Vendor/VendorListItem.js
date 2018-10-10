@@ -140,13 +140,13 @@ class VendorListItem extends Component {
     if (this.state.deliveryRadius) newItem.deliveryRadius = this.state.deliveryRadius
     if (this.state.deliveryFee) newItem.deliveryFee = this.state.deliveryFee
     newItem.id = items.length;
-    items[items.length] = this.state.newItem;
+    // items[items.length] = this.state.newItem;
     this.uploadNewItem(newItem);
-    items.push(newItem)
+    // items.push(newItem)
     console.log('An item has been added to our marketplace: ' + JSON.stringify(newItem))
     event.preventDefault()
     // console.log(this.state);
-    const file= JSON.stringify(this.state)
+    const file= JSON.stringify(newItem)
         const fileHash = swarm.upload(file)
         console.log("Uploaded file: Address: ", fileHash)
         if (fileHash) {
@@ -209,6 +209,7 @@ class VendorListItem extends Component {
                 Description (160 char max)
               </label>
               <textarea type="text"
+                placeholder="e.g. This basket includes 1 pound of coffee, half pound of sugar, 4 cans of black beans, 2 cans of green beans, 2 pounds of quinoa, 2 pounds of pasta, 2 jars of pasta sauce, 1 bag of crackers, 2 cans of peaches, 2 cans of pears, 6 granola bars, and 1 package of chocolate chip cookies."
                 value={this.state.description}
                 onChange={(e) => this.handleChange('description', e)}
               />
