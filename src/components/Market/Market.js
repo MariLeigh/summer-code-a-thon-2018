@@ -45,12 +45,12 @@ class Market extends Component {
   render() {
     return (
       <div>
-        <button className='dash-B' onClick={this.goToDashboard}>Dashboard</button>
+        {/* <button className='dash-B' onClick={this.goToDashboard}>Dashboard</button> */}
         <h1 className="pageTitle"> Marketplace </h1>
         <div className="w3-bar w3-black">
-          <button className="w3-bar-item w3-button" onClick={() => this.setUserType('')}>View all</button>
+          {/* <button className="w3-bar-item w3-button" onClick={() => this.setUserType('')}>View all</button>
           <button className="w3-bar-item w3-button" onClick={() => this.setUserType('r')}>Make a Request</button>
-          <button className="w3-bar-item w3-button" onClick={() => this.setUserType('d')}>Be a Sponsor</button>
+          <button className="w3-bar-item w3-button" onClick={() => this.setUserType('d')}>Be a Sponsor</button> */}
         </div>
         <div className='market'>
         {this.state.userType === 'r' &&

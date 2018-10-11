@@ -29,7 +29,7 @@ class App extends Component {
       storageValue: 0,
       contract: '',
       web3: null,
-      currentUser: '0x559c7dcd5f1fd32925569f9baabc77b039df9dph',
+      currentUser: '0x559C7dcd5F1Fd32925569F9BaabC77b039dF9DCf',
       userType: '',
       userName: '',
       validAccounts: ''
@@ -46,11 +46,13 @@ class App extends Component {
       results.web3.eth.getAccounts().then(accounts => {
         let regUser = users.filter(u => u.wallet === accounts[0]);
         let userName = regUser[0] ? regUser[0].name : "New User";
+        let type = regUser[0] ? regUser[0].type : []
         this.setState({
           web3: results.web3,
           currentUser: accounts[0],
           userName: userName,
-          validAccounts: accounts
+          validAccounts: accounts,
+          type: type
         })
         //this.instantiateContract();
       });
@@ -96,7 +98,8 @@ class App extends Component {
   login(currentUser) {
     const regUser = users.filter(u => u.wallet === currentUser);
     const userName = regUser[0] ? regUser[0].name : "New User";
-    this.setState({currentUser: currentUser, userName: userName});
+    const type = regUser[0] ? regUser[0].type : []
+    this.setState({currentUser: currentUser, userName: userName, userType: type});
   }
 
   setUserType(userType) {
@@ -113,7 +116,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Nav userName={this.state.userName}/>
+          <Nav userName={this.state.userName}
+            type={this.state.type}/>
           {/* <main className="container"> */}
             {/* <div className="pure-g"> */}
               {/* <div className="pure-u-1-1"> */}

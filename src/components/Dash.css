@@ -159,15 +159,15 @@ ul {
 }
 
 .dash-component.order-status .order-item {
-  grid-template-columns: 1fr 4fr 2fr 2fr 2fr;
+  grid-template-columns: 1fr 8fr 5fr 5fr 5fr;
 }
 
 .dash-component.accept .order-item {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 6fr 3fr 3fr;
 }
 
 .dash-component.toShip .order-item {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 6fr 4fr;
 }
 
 .dash-component {

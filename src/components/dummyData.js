@@ -120,7 +120,8 @@ exports.users = [
   {
     'id': '4',
     'wallet': '0x559C7dcd5F1Fd32925569F9BaabC77b039dF9DCf',
-    'name': 'World'
+    'name': 'World',
+    // 'type': ['v']
   },
   {
     'id': '5',
