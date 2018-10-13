@@ -45,14 +45,20 @@ class App extends Component {
     getWeb3.then(results => {
       results.web3.eth.getAccounts().then(accounts => {
         let regUser = users.filter(u => u.wallet === accounts[0]);
-        let userName = regUser[0] ? regUser[0].name : "New User";
-        let type = regUser[0] ? regUser[0].type : []
+        console.log(regUser)
+        console.log('=========')
+        if (regUser[0]) {
+          let userName = regUser[0] ? regUser[0].name : "New User";
+          let type = regUser[0] ? regUser[0].type : []
+          this.setState({
+            userName: userName,
+            type: type
+          })
+        }
         this.setState({
           web3: results.web3,
           currentUser: accounts[0],
-          userName: userName,
           validAccounts: accounts,
-          type: type
         })
         //this.instantiateContract();
       });

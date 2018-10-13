@@ -7,6 +7,7 @@ class DonorSignup extends Component {
     super(props);
     this.state = {
       currentUser: this.props.currentUser,
+      type: ['d'],
       validAccounts: this.props.validAccounts,
       wallet: this.props.currentUser,
       name: '',
@@ -49,6 +50,7 @@ class DonorSignup extends Component {
     }
     let match = false;
     const updates = {};
+    if (this.state.type) updates.type = this.state.type;
     if (this.state.wallet) updates.wallet = this.state.wallet;
     //if (this.state.donorWallet) updates.donorWallet = this.state.donorWallet;
     if (this.state.name) updates.name = this.state.name;

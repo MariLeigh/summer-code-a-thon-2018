@@ -91,6 +91,7 @@ code {
   font-size: x-large;
   padding: 6px;
   color: #000000 !important;
+  top: 8px;
 }
 
 .nav-link {
@@ -108,6 +109,21 @@ code {
 .nav-link:focus,
 .nav-link:active {
   border-bottom: #009E95 solid 4px;
+}
+
+.nav-right {
+  float: right;
+  display: inline-flex;
+  line-height: 44px;
+}
+
+.nav-signin-btn {
+  border: 1px solid #777777;
+  border-radius: 40px;
+  height: 40px;
+  width: 100px;
+  line-height: 36px;
+  text-align: center;
 }
 
 /* .navbar a {

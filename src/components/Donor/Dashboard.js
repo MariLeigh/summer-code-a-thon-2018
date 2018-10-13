@@ -24,21 +24,21 @@ class Dashboard extends React.Component {
   componentWillMount() {
     const idArr1 = this.userInfo().in_progress_items;
     const idArr2 = this.userInfo().completed_items;
-    this.setState({inProgressItems: this.searchItems(idArr1)});
-    this.setState({completedItems: this.searchItems(idArr2)});
+    // this.setState({inProgressItems: this.searchItems(idArr1)});
+    // this.setState({completedItems: this.searchItems(idArr2)});
   }
 
-  searchItems(array) {
-    let result = [];
-    for (let i = 0; i < array.length; i++) {
-      items.forEach((item) => {
-        if (array[i] === item.id) {
-          result.push(item);
-        }
-      })
-    }
-    return result;
-  }
+  // searchItems(array) {
+  //   let result = [];
+  //   for (let i = 0; i < array.length; i++) {
+  //     items.forEach((item) => {
+  //       if (array[i] === item.id) {
+  //         result.push(item);
+  //       }
+  //     })
+  //   }
+  //   return result;
+  // }
 
   render() {
     return (
@@ -46,16 +46,16 @@ class Dashboard extends React.Component {
         <h1 className='pageTitle'>Dashboard</h1>
         <h1>Transactions in Progress</h1>
         <div className="dash-grid">
-          {this.state.inProgressItems.map(item =>
+          {/* {this.state.inProgressItems.map(item =>
             <DashItem key={item.id} {...item} userType={this.props.userType} section="inProcess"/>
-          )}
+          )} */}
         </div>
         <h1>Completed Transactions</h1>
         <div className='dash-grid'>
-          <DashItem section="donationInfo"/>
+          {/* <DashItem section="donationInfo"/>
           {this.state.completedItems.map((item, index) =>
             <DashItem key={index} {...item} userType={this.props.userType} section="completed"/>
-          )}
+          )} */}
         </div>
       </div>
     )

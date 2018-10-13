@@ -10,6 +10,7 @@ class VendorSignup extends Component {
       validAccounts: this.props.validAccounts,
       name: '',
       wallet: this.props.currentUser,
+      type: ['v'],
       address: '',
       address2: '',
       zipcode: '',
@@ -52,6 +53,7 @@ class VendorSignup extends Component {
     }
     let match = false;
     const updates = {};
+    if (this.state.type) updates.type = this.state.type;
     if (this.state.wallet) updates.wallet = this.state.wallet;
     // if (this.state.vendorWallet) updates.vendorWallet = this.state.vendorWallet;
     if (this.state.name) updates.name = this.state.name;

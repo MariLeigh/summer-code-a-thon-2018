@@ -8,6 +8,7 @@ class ReceiverSignup extends Component {
     this.state = {
       currentUser: props.currentUser,
       wallet: props.currentUser,
+      type: ['r'],
       name: '',
       address: '',
       address2: '',
@@ -37,6 +38,7 @@ class ReceiverSignup extends Component {
     event.preventDefault()
     let match = false
     const updates = {};
+    if (this.state.type) updates.type = this.state.type;
     if (this.state.wallet) updates.wallet = this.state.wallet;
     if (this.state.name) updates.name = this.state.name
     if (this.state.address) updates.address = this.state.address
