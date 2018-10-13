@@ -81,7 +81,7 @@ class Vendor extends Component {
               Join our partner community by supplying goods to those in need. You'll be able to list items for sale, and specify your distribution locations.
             </p>
             <button className="primary-btn" onClick={() => this.nextStep()}>
-              Log into Metamask to get started
+              Log into MetaMask to get started
             </button>
             </div>
             <div className="v-m">
@@ -94,16 +94,16 @@ class Vendor extends Component {
             </div>
             <div className="get-started">
               <button className="primary-btn" onClick={() => this.nextStep()}>
-                Get started with Metamask
+                Get started with MetaMask
               </button>
             </div>
           </div>
         }
         {this.state.step === 1 &&
         <div className='v'>
-            <h2>
-              Join Metamask to become our Partner
-            </h2>
+            <h1>
+              Join MetaMask to become our Partner
+            </h1>
             <p>
               MetaMask is a third-party extension/add-on available through Google Chrome and Mozilla Firefox. RemitMart is optimized for cryptocurrency and blockchain. Metamask works nicely with this technology, so to partner with us, please sign up for MetaMask.
             </p>
@@ -133,15 +133,27 @@ class Vendor extends Component {
           {this.state.signupModal &&
             <div className='signupModal'>
             <i className="fa fa-times close" onClick={this.toggleModal}></i>
-              <div>
-                <h4>Thanks for signing in</h4>
-                <text>To complete the sign up, fill in some more information.</text>
-              <div className='signupForm'>
-                <VendorSignup setUserType={this.setUserType} currentUser={this.props.currentUser}
-                  loginHandler={this.props.loginHandler} validAccounts={this.state.validAccounts}
-                  nextStep={this.nextStep} />
-              </div>
-              </div>
+              {!this.state.currentUser &&
+                <div>
+                  <h4 className="p-title">Sign into MetaMask</h4>
+                  <p>Click on the MetaMask icon in the upper right to sign in.</p>
+                  <div className="signupModal-bottom">
+                <span>Don't have MetaMask, <a href="https://chrome.google.com/webstore/detail/nkbihfbeogaeaoehlefnkodbefgpgknn">install it now</a>.</span>
+                    <div className="primary-btn next-btn">Next</div>
+                    </div>
+                </div>
+              }
+              {this.state.currentUser &&
+                <div>
+                  <h4 className="p-title">Thanks for signing in</h4>
+                  <text>To complete the sign up, fill in some more information.</text>
+                <div className='signupForm'>
+                  <VendorSignup setUserType={this.setUserType} currentUser={this.props.currentUser}
+                    loginHandler={this.props.loginHandler} validAccounts={this.state.validAccounts}
+                    nextStep={this.nextStep} />
+                </div>
+                </div>
+              }
             </div>
           }
           </div>

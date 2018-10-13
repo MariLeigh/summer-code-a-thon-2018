@@ -127,6 +127,7 @@ exports.users = [
     'id': '5',
     'wallet': '0x559c7dcd5f1fd32925569f9baabc77b039df9dph',
     'name': 'Aaron',
+    'type': ['v'],
     'address': '1700 E Union St',
     'zipcode': '98122',
     'city': 'Seattle',

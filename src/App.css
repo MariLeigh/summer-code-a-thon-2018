@@ -186,3 +186,8 @@ code {
     transform: rotate(360deg);
   }
 }
+
+.p-title {
+  font-size: 30px;
+  line-height: 1px;
+}

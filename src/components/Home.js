@@ -23,7 +23,7 @@ class Home extends React.Component {
           </div>
           <div className="call-to-action">
             <div className="cta-intro">
-            <h2>Join our community</h2>
+            <h2 className="home-title">Join our community</h2>
             <p>What is going to make you better today?</p>
             </div>
             <div className="cta-grid">
@@ -52,12 +52,12 @@ class Home extends React.Component {
           </div>
           <div className="our-story">
               <div className="story">
-                <h3>Our story</h3>
+                <h3 className="home-title">Our story</h3>
                 <p>
                   RemitMart started with a small community of female technologists, passionate about a potential solution that could connect people in need with people who can help without a personal connection. The goal is for the community to go wide, across the global, and we're eager to have you along for the ride.
                 </p>
               </div>
-              <h4>Communities we've reached</h4>
+              <h4 className="home-title">Communities we've reached</h4>
           </div>
         <div className="home-img-div">
           <img className="home-img" src="http://oi68.tinypic.com/2ceq6bk.jpg"></img>

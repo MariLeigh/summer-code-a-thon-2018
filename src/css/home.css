@@ -1,7 +1,6 @@
 .home-img-div {
   width: 100%;
   position: relative;
-  margin-top: 40px;
   text-align: center;
   color: white;
   margin-bottom: 40px;
@@ -23,7 +22,7 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 36px;
+  font-size: 40px;
   line-height: 52px;
 }
 
@@ -59,12 +58,11 @@
   display: grid;
   grid-template-columns: repeat(3, 33%);
   grid-column-gap: 12px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
 }
 
 .cta-action {
-  padding: 6px;
+  padding: 16px;
   border-left: 8px solid #009E95 !important;
   background: white;
   border-radius: 8px;
@@ -76,6 +74,7 @@
 
 .cta-head {
   font-weight: 500;
+  padding-bottom: 8px;
 }
 
 .our-story {
@@ -85,4 +84,10 @@
 .our-story p {
   padding-left: 20px;
   max-width: 700px;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.home-title {
+  font-size: 30px;
 }

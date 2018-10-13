@@ -1,7 +1,14 @@
 
 .v {
   padding-bottom: 20px;
-  padding-left: 20px;
+  padding-left: 44px;
+  padding-top: 20px;
+}
+
+.v > p {
+  width: 800px;
+  line-height: 40px;
+  font-size: 26px;
 }
 
 .v-m {
@@ -9,6 +16,7 @@
   padding: 10px;
   padding-left: 50px;
   padding-bottom: 100px;
+  margin-top: 24px;
 }
 
 .back-btn {
@@ -29,19 +37,21 @@
 .primary-btn {
   background: #009E95;
   margin: 8px;
-  border-radius: 8px;
+  border-radius: 100px;
   color: white;
-  width: 250px;
   font-size: 20px;
   font-weight: 300;
-  padding: 10px;
+  padding: 18px;
+  padding-left: 32px;
+  padding-right: 32px;
   vertical-align: middle;
+  width: 359px;
+  text-align: center;
 }
 
 .get-started > .primary-btn {
   margin: 20px;
   margin-left: 60px;
-  width: 280px;
   /* float: right; */
   /* margin-right: 80px; */
 }
@@ -180,4 +190,9 @@ div.pDescription {
 .invalidMsg {
   color: red;
   width: 360px;
+}
+
+.next-btn {
+  width: 80px !important;
+  float: right;
 }

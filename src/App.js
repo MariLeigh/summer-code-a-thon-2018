@@ -101,7 +101,10 @@ class App extends Component {
     const regUser = users.filter(u => u.wallet === currentUser);
     const userName = regUser[0] ? regUser[0].name : "New User";
     const type = regUser[0] ? regUser[0].type : []
-    this.setState({currentUser: currentUser, userName: userName, userType: type});
+    console.log(regUser)
+    console.log('=======reguserabove')
+    console.log(regUser[0].type)
+    this.setState({currentUser: currentUser, userName: userName, type: type});
   }
 
   setUserType(userType) {
