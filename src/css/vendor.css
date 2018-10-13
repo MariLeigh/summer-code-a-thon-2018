@@ -176,3 +176,8 @@ div.pDescription {
   text-align: center;
   padding: 20px;
 }
+
+.invalidMsg {
+  color: red;
+  width: 360px;
+}

@@ -16,7 +16,7 @@ class VendorSignup extends Component {
       zipcode: '',
       city: '',
       country: '',
-      email: ''
+      email: '',
       //vendorWallet: this.props.currentUser
     };
     this.handleChange = this.handleChange.bind(this)
@@ -49,6 +49,7 @@ class VendorSignup extends Component {
     if (!validAccount) {
       console.log(this.state)
       console.log("You can't use this account number. Make sure to import this account into your MetaMask wallet first.")
+      this.setState({ invalidAcctMsg: true })
       return
     }
     let match = false;
@@ -82,6 +83,11 @@ class VendorSignup extends Component {
       <div>
           <div>
             <form onSubmit={this.handleSubmit}>
+              { this.state.invalidAcctMsg &&
+              <div className="invalidMsg">
+                Something went wrong. Is your Ethereum account address correct? Is Metamask connected?
+              </div>
+              }
 
               <label>
                 Name
