@@ -1,3 +1,27 @@
+.explore-msg {
+  background: #FFFFFF;
+  height: 82px;
+  border-top: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  padding-left: 60px;
+  line-height: 46px;
+
+}
+
+.fill-footer {
+  height: 100px;
+  bottom: 0;
+}
+
+.market-container {
+  background: #f4f4f4;
+  padding-top: 20px;
+}
+
+.exploreTitle {
+  padding-left: 60px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
