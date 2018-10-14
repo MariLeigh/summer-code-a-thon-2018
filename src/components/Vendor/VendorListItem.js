@@ -147,9 +147,11 @@ class VendorListItem extends Component {
     event.preventDefault()
     // console.log(this.state);
     const file= JSON.stringify(newItem)
-        const fileHash = swarm.upload(file)
-        console.log("Uploaded file: Address: ", fileHash)
-        if (fileHash) {
+        // const fileHash = swarm.upload(file)
+        // console.log("Uploaded file: Address: ", fileHash)
+        // USING IF FILE ONLY FOR DEMO, SHOULD USE SWARM UPLOAD AND VERIFY THAT FILEHASH IS CREATED
+        if (file) {
+        // if (fileHash) {
           this.setState({ addedModal: true })
           let joinAdded = this.state.addedItems
           joinAdded.push(newItem.id)
@@ -321,7 +323,7 @@ class VendorListItem extends Component {
                   this.props.loginHandler(this.props.currentUser)
                   this.props.history.replace('/v/dash')
                 }}>
-                  Go to Dashboard
+                  Explore marketplace
                 </div>
               </div>
             </div>

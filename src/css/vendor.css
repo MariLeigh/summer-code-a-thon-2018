@@ -71,6 +71,7 @@
   top: 98px;
   border-radius: 6px;
   background: #FFFFFF;
+  z-index: 1;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -182,7 +183,6 @@ div.pDescription {
 }
 
 .addedPacket {
-  display: flex;
   text-align: center;
   padding: 20px;
 }
