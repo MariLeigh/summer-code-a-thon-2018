@@ -182,7 +182,8 @@ ul {
 }
 
 .status-type {
-  float: right;
+  padding-top: 6px;
+  font-weight: bold;
 }
 
 .dash-component {
