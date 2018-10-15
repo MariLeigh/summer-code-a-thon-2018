@@ -52,18 +52,25 @@ class Order extends React.Component {
           </div>
           }
           {this.state.order.status === 'toShip' &&
-          <div><input placeholder='confirmation #'></input>
+          <div>
+            {/* <input placeholder='confirmation #'></input> */}
             <div className="small-pri-btn conf" onClick={() => this.orderShipped()}>Shipped</div>
           </div>
           }
-          {this.state.order.shippedDate &&
-          <div>Shipped: {this.state.order.shippedDate}</div>
+          {this.state.order.status === 'shipped' &&
+            <div className="status-type">
+              Awaiting delivery confirmation
+            </div>
           }
-          {this.state.order.receivedDate &&
-          <div>Received: {this.state.order.receivedDate}</div>
+          {this.state.order.status === 'received' &&
+            <div className="status-type">
+              Funds available
+            </div>
           }
-          {this.state.order.payDate &&
-          <div>Payment processed: {this.state.order.payDate}</div>
+          {this.state.order.status === 'complete' &&
+            <div className="status-type">
+              Paid
+            </div>
           }
         </div>
         { this.state.receiverDetails &&
@@ -87,6 +94,17 @@ class Order extends React.Component {
             </div>
             <div className='receiver-location'>
               {this.state.order.receiver.city}, {this.state.order.receiver.state}, {this.state.order.receiver.zipcode}
+            </div>
+            <div>
+              {this.state.order.shippedDate &&
+              <div>Shipped: {this.state.order.shippedDate}</div>
+              }
+              {this.state.order.receivedDate &&
+              <div>Received: {this.state.order.receivedDate}</div>
+              }
+              {this.state.order.payDate &&
+              <div>Payment processed: {this.state.order.payDate}</div>
+              }
             </div>
           </div>
         }

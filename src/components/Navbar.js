@@ -30,7 +30,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="nav">
-        <span><i className="nav-title color-box"></i><a href="/" className="nav-title" onClick={(event) => {
+        <span><img src={require("../images/logo.svg")} className="nav-title nav-logo"></img><a href="/" className="nav-title nav-name" onClick={(event) => {
           event.preventDefault();
           this.props.history.push('/');
         }}>RemitMart</a></span>

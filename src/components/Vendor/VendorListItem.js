@@ -244,9 +244,10 @@ class VendorListItem extends Component {
             </div>
             <div className="pDistance">
               <label>
-                Delivery distance <i className="fa fa-question-circle"></i>
+                Max delivery distance <i className="fa fa-question-circle"></i>
               </label>
               <input type="text"
+                      placeholder="e.g. 5 miles"
                       value={this.state.deliveryRadius}
                       onChange={(e) => this.handleChange('deliveryRadius', e)}
               />

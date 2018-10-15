@@ -74,26 +74,28 @@ class Vendor extends Component {
         {this.state.step === 0 &&
           <div>
           <div className="v">
-            <h1>
+            <h1 className="fin-title">
               Become a RemitMart Partner
             </h1>
             <p>
               Join our partner community by supplying goods to those in need. You'll be able to list items for sale, and specify your distribution locations.
             </p>
-            <button className="primary-btn" onClick={() => this.nextStep()}>
-              Log into MetaMask to get started
-            </button>
+            <div>
+              <button className="gradient-btn" onClick={() => this.nextStep()}>
+                Log into MetaMask to get started
+              </button>
+            </div>
             </div>
             <div className="v-m">
-              <h2>Explore other partner's marketplace</h2>
+              <h2>Explore marketplace</h2>
               <div className="grid">
                 {this.displayItems().map(item =>
                   <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser} />
                 )}
               </div>
             </div>
-            <div className="get-started">
-              <button className="primary-btn" onClick={() => this.nextStep()}>
+            <div className="get-started top-btm">
+              <button className="fin-btn meta-btn" onClick={() => this.nextStep()}>
                 Get started with MetaMask
               </button>
             </div>
@@ -101,8 +103,8 @@ class Vendor extends Component {
         }
         {this.state.step === 1 &&
         <div className='v'>
-            <h1>
-              Join MetaMask to become our Partner
+            <h1 className="fin-title">
+              Partner with us by joining MetaMask
             </h1>
             <p>
               MetaMask is a third-party extension/add-on available through Google Chrome and Mozilla Firefox. RemitMart is optimized for cryptocurrency and blockchain. Metamask works nicely with this technology, so to partner with us, please sign up for MetaMask.
@@ -110,26 +112,34 @@ class Vendor extends Component {
             <p>
               Your MetaMask account number will be how we identify you, please keep an extra copy of your account number and seed passphrase!
             </p>
-            <div className='primary-btn' onClick={this.firstToggle}>
+            <button className='gradient-btn' onClick={this.firstToggle}>
               I've logged into Metamask
-            </div>
-            <button onClick={() => {
-              this.props.loginHandler("0x559c7dcd5f1fd32925569f9baabc77b039df9dph")
-              this.props.history.push('/v/dash')
-            }}>
-              Sign in as testUser
             </button>
             <div className='metamask-vid'>
             <h3>
               To learn more about MetaMask, watch a short video:
             </h3>
-            <iframe width="364.25" height="193.75" src="https://www.youtube.com/embed/6Gf_kRE4MJU" frameborder="0" allow="autoplay; encrypted-media" allowFullScreen>
+            <iframe width="728.5" height="387.5" src="https://www.youtube.com/embed/6Gf_kRE4MJU" frameborder="0" allow="autoplay; encrypted-media" allowFullScreen>
             </iframe>
             </div>
             <br></br>
             <div className='back-btn' onClick={() => this.backStep()}>
               Back to Partners page
             </div>
+            <div>
+              <button onClick={() => {
+                this.props.loginHandler("0x559c7dcd5f1fd32925569f9baabc77b039df9dph")
+                this.props.history.push('/v/dash')
+              }}>
+                View Aaron's dash
+              </button>
+              <button onClick={() => {
+                this.props.loginHandler("0x559c7dcd5f1fd32925569f9baabc77b039df9dph")
+                this.props.history.push('/v/listitem')
+              }}>
+                Create packet as Aaron
+              </button>
+              </div>
           {this.state.signupModal &&
             <div className='signupModal'>
             <i className="fa fa-times close" onClick={this.toggleModal}></i>

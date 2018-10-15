@@ -145,7 +145,7 @@ class VendorSignup extends Component {
                        value={this.state.wallet}
                        onChange={(e) => this.handleChange('wallet', e)}
               />
-              <input type="submit" className='primary-btn form-btn' value="List Available Items" />
+              <input type="submit" className='form-btn' value="List Available Items" />
             </form>
           </div>
       </div>

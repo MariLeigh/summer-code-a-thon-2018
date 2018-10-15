@@ -1,31 +1,47 @@
 
 .v {
   padding-bottom: 20px;
-  padding-left: 44px;
   padding-top: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.v > h1 {
+  font-size: 50px;
 }
 
 .v > p {
-  width: 800px;
+  width: 80%;
   line-height: 40px;
   font-size: 26px;
+  display: inline-block;
+  padding-bottom: 16px;
 }
 
 .v-m {
-  background: #f4f4f4;
+  background: #F4F8FB;
   padding: 10px;
   padding-left: 50px;
   padding-bottom: 100px;
+  padding-top: 24px;
   margin-top: 24px;
 }
 
+.v-m > h2 {
+  padding-bottom: 24px;
+}
+
 .back-btn {
-  border: 2px solid #777777;
+  border: 2px solid #00569E;;
   width: 180px;
-  font-size: 18px;
+  font-size: 16px;
   padding: 10px;
   vertical-align: middle;
-  border-radius: 8px;
+  border-radius: 100px;
+  margin-top: 24px;
+  margin-left: 60px;
+  color: #00569E;
+  font-weight: bold;
 }
 
 .less-btn {
@@ -35,7 +51,7 @@
 }
 
 .primary-btn {
-  background: #009E95;
+  background: linear-gradient(240.07deg, #3393B1 10.05%, #00569E 90.6%);
   margin: 8px;
   border-radius: 100px;
   color: white;
@@ -47,6 +63,12 @@
   vertical-align: middle;
   width: 359px;
   text-align: center;
+}
+
+.meta-btn {
+  border: 2px solid #00569E;
+  font-size: 16px;
+  width: 277px;
 }
 
 .get-started > .primary-btn {
@@ -65,6 +87,7 @@
 
 .signupModal {
   position: absolute;
+  text-align: left;
   padding: 24px;
   width: 493px;
   left: calc(50% - 600px/2 + 11.5px);
@@ -83,7 +106,7 @@
 }
 
 .createPacket {
-  background: #EAEAEA;
+  background: #F4F8FB;
 }
 
 .createPacket input[type="text"] {
@@ -103,6 +126,12 @@
 
 .form-btn {
   float: right;
+  background: linear-gradient(240.07deg, #3393B1 10.05%, #00569E 90.6%);
+  border-radius: 100px;
+  color: white;
+  font-size: 16px;
+  width: 191px;
+  height: 40px;
 }
 
 .createPackageText {
@@ -110,6 +139,7 @@
   max-width: 600px;
   padding: 50px;
   padding-top: 80px;
+  text-align: left;
 }
 
 .packetGrid {
@@ -159,6 +189,7 @@ div.pDescription {
 .addItems {
   opacity: 0.6;
   padding-left: 24px;
+  text-align: left;
 }
 .addItems:hover {
   opacity: 1;

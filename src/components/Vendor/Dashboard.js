@@ -85,10 +85,11 @@ class Dashboard extends React.Component {
         <script src="https://use.fontawesome.com/ac442f7ad2.js"></script>
         {/* <h1 className='pageTitle'>Dashboard</h1> */}
         <div className="announcements"></div>
-        <div className="dash-title">Action Items</div>
+        <div className="dash-back">
+        <div className="dash-title in">Action Items</div>
         <div className='dash-container'>
           <div className='dash-component accept'>
-            <h3>Orders to accept</h3>
+            <h3 className="fin-title">Approvals</h3>
             <div>
               {this.getOrders('init').map(order =>
                 <Order key={order.id} {...order} updateOrder={this.updateOrder}/>
@@ -96,7 +97,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div className='dash-component toShip'>
-            <h3>Orders to assemble and ship</h3>
+              <h3 className="fin-title">Assemble and ship</h3>
             <div>
               {this.getOrders('toShip').map(order =>
                 <Order key={order.id} {...order} updateOrder={this.updateOrder}/>
@@ -104,7 +105,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div className='dash-component inventory'>
-            <h3>Items available in marketplace
+            <h3 className="fin-title">Items in marketplace
             </h3>
             <div>
               {vendItems.map((item) =>
@@ -116,12 +117,12 @@ class Dashboard extends React.Component {
         <div className="dash-title in">Order History and Revenue</div>
         <div className='dash-container'>
           <div className='dash-component revenue'>
-            <h3>Revenue</h3>
+              <h3 className="fin-title">Revenue</h3>
             <div className='component-content rev'>
               <div className="component-el">Grocery packets delivered:</div>
-              <div className="dollar component-el">{this.getShippedOrders().length}</div>
+              <div className="dollar component-el fin-title">{this.getShippedOrders().length}</div>
               <div className="component-el">Available balance:</div>
-              <div className='dollar component-el'>$150
+              <div className='dollar component-el fin-title'>$150
                 {/* <span>
                   <a className='transfer-link' href=''>transfer now</a>
                 </span> */}
@@ -140,7 +141,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div className='dash-component order-status'>
-            <h3>Orders status</h3>
+              <h3 className="fin-title">Delivery status</h3>
             <div>
               {/* <div className="order-item date-labels">
                 <div></div>
@@ -155,7 +156,8 @@ class Dashboard extends React.Component {
             </div>
           </div>
         </div>
-        <div className="dash-fill-bottom"></div>
+        {/* <div className="dash-fill-bottom"></div> */}
+        </div>
       </div>
     )
   }
