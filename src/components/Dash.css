@@ -132,6 +132,35 @@ ul {
   height: 60px;
 }
 
+.dash-user {
+  display: grid;
+  grid-template-columns: 5fr 30fr 40fr;
+  text-align: left;
+  font-size: 20px;
+  padding-bottom: 24px;
+}
+
+.dash-user-info {
+  padding-left: 24px;
+}
+
+.dash-user-name {
+  font-size: 50px;
+  font-weight: bold;
+  color: #333333;
+  padding-top: 20px;
+}
+
+.dash-mission-statement {
+  padding-top: 24px;
+  max-width: 428px;
+}
+
+.dash-user-img-div {
+  float: left;
+  padding-left: 56px;
+}
+
 .dash-back {
   background: #F4F8FB;
   padding-top: 24px;
@@ -170,7 +199,7 @@ ul {
 }
 
 .dash-component.order-status .order-item {
-  grid-template-columns: 1fr 9fr 9fr;
+  grid-template-columns: 1fr 15fr 15fr;
 }
 
 .dash-component.accept .order-item {

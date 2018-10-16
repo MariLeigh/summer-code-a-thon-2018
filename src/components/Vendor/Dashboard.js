@@ -85,6 +85,14 @@ class Dashboard extends React.Component {
         <script src="https://use.fontawesome.com/ac442f7ad2.js"></script>
         {/* <h1 className='pageTitle'>Dashboard</h1> */}
         <div className="announcements"></div>
+        <div className="dash-user">
+          <div className="dash-user-img-div"><img className="dash-user-icon" src={require("../../images/user_icon.png")}></img></div>
+          <div className="dash-user-info">
+            <div className="dash-user-name">Goods.inc</div>
+            Member since August 17, 2018
+          </div>
+          <div className="dash-mission-statement">Goods.inc mission is to provide locally sourced organic foods and supplies for communities across the United States.</div>
+        </div>
         <div className="dash-back">
         <div className="dash-title in">Action Items</div>
         <div className='dash-container'>

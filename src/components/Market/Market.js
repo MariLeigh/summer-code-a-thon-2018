@@ -20,6 +20,12 @@ class Market extends Component {
     this.goToDashboard = this.goToDashboard.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState(({
+      currentUser: nextProps.currentUser
+    }))
+  }
+
   componentDidMount() {
     // const query = queryString.parse(window.location.search);
     // if (query.type && !this.state.userType) this.setUserType(query.type)

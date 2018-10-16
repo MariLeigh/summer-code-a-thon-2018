@@ -64,7 +64,7 @@ class Order extends React.Component {
           }
           {this.state.order.status === 'received' &&
             <div className="status-type">
-              Funds available
+              Funds available <btn className="sml-fin-btn">Collect payment</btn>
             </div>
           }
           {this.state.order.status === 'complete' &&

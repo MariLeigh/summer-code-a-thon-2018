@@ -16,9 +16,16 @@ class Donor extends Component {
     this.nextStep = this.nextStep.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.backStep = this.backStep.bind(this)
+    this.firstToggle = this.firstToggle.bind(this)
+    this.toggleModal = this.toggleModal.bind(this)
   }
   nextStep() {
     this.setState({ step: this.state.step + 1 })
+  }
+
+  backStep() {
+    this.setState({ step: this.state.step - 1 })
   }
 
   handleChange(event) {
@@ -30,69 +37,100 @@ class Donor extends Component {
     event.preventDefault()
   }
 
+  firstToggle(event) {
+    event.preventDefault()
+    this.setState({ signupModal: true })
+  }
+
+  toggleModal(e) {
+    if (e.target.className === 'fa fa-times close') this.setState({ signupModal: false })
+  }
+
   render() {
     return (
       <div>
         {this.state.step === 0 &&
           <div>
-            <h1>
-              Be a RemitMart Donor
+            <div className="v">
+              <h1 className="fin-title">
+                Help others receive food
+              </h1>
+              <p>
+                Join our community by donating expenses for groceries. Browse profiles and read stories of the families that will benefit from your kindness.
+              </p>
+              <div>
+                <button className="gradient-btn" onClick={() => this.nextStep()}>
+                  Log into MetaMask to get started
+                </button>
+              </div>
+            </div>
+            <div className="v-m">
+              <h2>Discover stories</h2>
+              <div className="grid">
+                {/* {this.displayItems().map(item =>
+                  <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser} />
+                )} */}
+              </div>
+            </div>
+            <div className="get-started top-btm">
+              <button className="fin-btn meta-btn" onClick={() => this.nextStep()}>
+                Get started with MetaMask
+                </button>
+            </div>
+          </div>
+        }
+
+        {this.state.step === 1 &&
+          <div className='v'>
+            <h1 className="fin-title">
+              Donate by joining MetaMask
             </h1>
             <p>
-              Sign up as a vendor to supply goods to those in need. You'll be able to list items for sale, and specify your distribution locations.
-            </p>
-            <h2>
-              Install Metamask
-            </h2>
-            <p>
-              MetaMask is a third-party extension/add-on available through Google Chrome and Mozilla Firefox; it is necessary to use our application.
+              MetaMask is a third-party extension/add-on available through Google Chrome and Mozilla Firefox. RemitMart is optimized for cryptocurrency and blockchain. Metamask works nicely with this technology, so to partner with us, please sign up for MetaMask.
             </p>
             <p>
               Your MetaMask account number will be how we identify you, please keep an extra copy of your account number and seed passphrase!
             </p>
-            <p>
-              Watch this video to learn how to install MetaMask:
-            </p>
-            <iframe width="364.25" height="193.75" src="https://www.youtube.com/embed/6Gf_kRE4MJU" frameborder="0" allow="autoplay; encrypted-media" allowFullScreen>
-            </iframe>
+            <button className='gradient-btn' onClick={this.firstToggle}>
+              I've logged into Metamask
+            </button>
+            <div className='metamask-vid'>
+              <h3>
+                To learn more about MetaMask, watch a short video:
+            </h3>
+              <iframe width="728.5" height="387.5" src="https://www.youtube.com/embed/6Gf_kRE4MJU" frameborder="0" allow="autoplay; encrypted-media" allowFullScreen>
+              </iframe>
+            </div>
             <br></br>
-            <button onClick={() => this.nextStep()}>
-              Next step
-            </button>
-            <button onClick={() => {
-              this.props.loginHandler("0x559c7dcd5f1fd32925569f9baabc77b039df9dcs");
-              this.props.history.push('/Market')
-            }}>
-              Sign in as testUser
-            </button>
-          </div>
-        }
-        {this.state.step === 1 &&
-          <div>
-            <h1>
-              Donor Set up
-          </h1>
-            <h2>
-              1: Create RemitMart Account
-          </h2>
-            <p>
-              Connect your Ethereum wallet to enable payments.
-          </p>
-            <h2>
-              2: View Worldwide Marketplace
-          </h2>
-            <p>
-              Browse our marketplace and select items to provide for those in need.
-          </p>
-            <h2>
-              3: Go to Dashboard
-          </h2>
-            <p>
-              View status of donations.
-          </p>
-            <button onClick={() => this.nextStep()}>
-              Start
-          </button>
+            <div className='back-btn' onClick={() => this.backStep}>
+              Back
+            </div>
+            {this.state.signupModal &&
+              <div className='signupModal'>
+                <i className="fa fa-times close" onClick={this.toggleModal}></i>
+                {!this.state.currentUser &&
+                  <div>
+                    <h4 className="p-title">Sign into MetaMask</h4>
+                    <p>Click on the MetaMask icon in the upper right to sign in.</p>
+                    <div className="signupModal-bottom">
+                      <span>Don't have MetaMask, <a href="https://chrome.google.com/webstore/detail/nkbihfbeogaeaoehlefnkodbefgpgknn">install it now</a>.</span>
+                      <div className="primary-btn next-btn">Next</div>
+                    </div>
+                  </div>
+                }
+                {this.state.currentUser &&
+                  <div>
+                    <h4 className="p-title">Thanks for signing in</h4>
+                    <text>To complete the sign up, fill in some more information.</text>
+                    <div className='signupForm'>
+                      <DonorSignup setUserType={this.setUserType} currentUser={this.props.currentUser}
+                        loginHandler={this.props.loginHandler} validAccounts={this.state.validAccounts}
+                        nextStep={this.nextStep} />
+                    </div>
+                  </div>
+                }
+              </div>
+            }
           </div>
         }
         {this.state.step === 2 &&

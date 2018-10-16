@@ -46,6 +46,7 @@ class DonorSignup extends Component {
     }
     if (!validAccount) {
       console.log("You can't use this account number. Make sure to import this account into your MetaMask wallet first.")
+      this.setState({ invalidAcctMsg: true })
       return
     }
     let match = false;
@@ -66,7 +67,7 @@ class DonorSignup extends Component {
       users[users.length] = updates;
     }
     this.props.loginHandler(this.state.wallet);
-    this.props.history.push('/market');
+    this.props.history.push('/donate');
     // window.location = '/market?type=d'
   }
 
@@ -75,11 +76,30 @@ class DonorSignup extends Component {
       <div>
         <div>
           <form onSubmit={this.handleSubmit}>
+            {this.state.invalidAcctMsg &&
+              <div className="invalidMsg">
+                Something went wrong. Is your Ethereum account address correct? Is Metamask connected?
+              </div>
+            }
             <label>
               Name:
                 <input type="text"
                 value={this.state.name}
                 onChange={(e) => this.handleChange('name', e)}
+              />
+            </label>
+            <label>
+              Email address:
+                <input type="text"
+                value={this.state.email}
+                onChange={(e) => this.handleChange('email', e)}
+              />
+            </label>
+            <label>
+              Country:
+                <input type="text"
+                value={this.state.country}
+                onChange={(e) => this.handleChange('country', e)}
               />
             </label>
             <label>
@@ -89,7 +109,7 @@ class DonorSignup extends Component {
                      onChange={(e) => this.handleChange('wallet', e)}
               />
             </label>
-            <input type="submit" value="Sign up" />
+            <input type="submit" className='form-btn' value="Sign up" />
           </form>
         </div>
       </div>
