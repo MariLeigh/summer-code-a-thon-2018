@@ -12,7 +12,7 @@ exports.items = [
     "location": "Seattle, WA",
     "deliveryRadius": "",
     "deliveryFee": "",
-    "requests": ["0x559c7dcd5f1fd32925569f9baabc77b039df9dcr", "0x559c7dcd5f1fd32925569f9baabc77b039df9ded"]
+    "requests": ["0x559c7dcd5f1fd32925569f9baabc77b039df9ded"]
   },
   {
     "id": "2",
@@ -86,7 +86,7 @@ exports.items = [
     "location": "Seattle, WA",
     "deliveryRadius": "",
     "deliveryFee": "",
-    "requests": ["0x559c7dcd5f1fd32925569f9baabc77b039df9dcr", "0x559c7dcd5f1fd32925569f9baabc77b039df9ded"]
+    "requests": ["0x559c7dcd5f1fd32925569f9baabc77b039df9dcr"]
   },
   {
     "id": "7",
@@ -129,7 +129,7 @@ exports.items = [
     "location": "Seattle, WA",
     "deliveryRadius": "",
     "deliveryFee": "",
-    "requests": ["0x559c7dcd5f1fd32925569f9baabc77b039df9dcs"]
+    "requests": ["0x559c7dcd5f1fd32925569f9baabc77b039df9wod"]
   },
   {
     "id": "10",
@@ -200,7 +200,7 @@ exports.users = [
     'city': 'Seattle',
     'state': 'WA',
     'country': 'USA',
-    'description': '',
+    'description': "I'm a high-energy 24 years old and working to raise my little boy Tommy.Favorite activity is walking to the local park and playing on the swing set",
     'photoUrl': '',
     'in_progress_items': ['4'],
     'completed_items': ['3', '1', '5', '4', '3']
@@ -239,6 +239,17 @@ exports.users = [
     'name': 'Carly',
     'type': ['r'],
     'description': "I'm Carly, mother of 4 amazing children and doing my best to raise them to be compassionate individuals",
+    'address': '1700 E Union St',
+    'zipcode': '98122',
+    'city': 'Seattle',
+    'state': 'WA'
+  },
+  {
+    'id': '8',
+    'wallet': '0x559c7dcd5f1fd32925569f9baabc77b039df9wod',
+    'name': 'Marie',
+    'type': ['r'],
+    'description': "I'm Marie, mother of 4 amazing children and doing my best to raise them to be compassionate individuals",
     'address': '1700 E Union St',
     'zipcode': '98122',
     'city': 'Seattle',

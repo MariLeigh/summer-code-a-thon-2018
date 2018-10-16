@@ -298,3 +298,20 @@ code {
   width: 191px;
   height: 40px;
 }
+
+.receiver-instructions {
+  width: 300px;
+  height: 346px;
+  font-size: 16px;
+  text-align: left;
+}
+
+.small-pri-btn {
+  border-radius: 100px;
+  background: linear-gradient(240.07deg, #3393B1 10.05%, #00569E 90.6%);
+  color: #FFFFFF;
+  padding: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+}

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import DonorSignup from './DonorSignup'
 import {withRouter} from "react-router-dom";
+import StoryItem from '../Market/StoryItem'
+import { items, users } from '../dummyData'
 
 class Donor extends Component {
   constructor(props) {
@@ -19,6 +21,7 @@ class Donor extends Component {
     this.backStep = this.backStep.bind(this)
     this.firstToggle = this.firstToggle.bind(this)
     this.toggleModal = this.toggleModal.bind(this)
+    this.displayItems = this.displayItems.bind(this)
   }
   nextStep() {
     this.setState({ step: this.state.step + 1 })
@@ -46,6 +49,24 @@ class Donor extends Component {
     if (e.target.className === 'fa fa-times close') this.setState({ signupModal: false })
   }
 
+  displayItems() {
+    let itemsWithRequests = items.filter(i => i.requests);
+    let requestStory = []
+    let k = 0
+    for (let i = 0; i < itemsWithRequests.length; i++) {
+      for (let j = 0; j < itemsWithRequests[i].requests.length; j++) {
+        const tempObj = {
+          itemId : itemsWithRequests[i].id,
+          itemName : itemsWithRequests[i].item,
+          requester : itemsWithRequests[i].requests[j]
+        }
+        requestStory.push([k, tempObj])
+        k++
+      }
+    }
+    return requestStory
+  }
+
   render() {
     return (
       <div>
@@ -67,9 +88,9 @@ class Donor extends Component {
             <div className="v-m">
               <h2>Discover stories</h2>
               <div className="grid">
-                {/* {this.displayItems().map(item =>
-                  <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser} />
-                )} */}
+                {this.displayItems().map(([key, story]) =>
+                  <StoryItem key={key} {...story} userType={this.state.userType} currentUser={this.props.currentUser} />
+                )}
               </div>
             </div>
             <div className="get-started top-btm">

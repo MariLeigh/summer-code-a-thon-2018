@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import ReceiverSignup from './ReceiverSignup'
 import {withRouter} from 'react-router-dom';
+import MarketItem from '../Market/MarketItem'
+import { items } from '../dummyData'
+import '../Market/Market.css'
 
 class Receiver extends Component {
   constructor(props) {
@@ -16,9 +19,14 @@ class Receiver extends Component {
     this.nextStep = this.nextStep.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.displayItems = this.displayItems.bind(this);
   }
   nextStep() {
     this.setState({ step: this.state.step + 1 })
+  }
+
+  displayItems() {
+    return items
   }
 
   handleChange(event) {
@@ -35,39 +43,51 @@ class Receiver extends Component {
       <div>
         {this.state.step === 0 &&
           <div>
-            <h1>
-              Be a RemitMart Receiver
-            </h1>
-            <p>
-              Sign up as a vendor to supply goods to those in need. You'll be able to list items for sale, and specify your distribution locations.
+            <div className="v">
+              {/* <h1 className="fin-title">
+                Become a RemitMart Partner
+            </h1> */}
+              <p>
+                We are excited to have you join our community of receivers! To proceed with your food order, we’ll need a little bit of information from you.
             </p>
-            <h2>
-              Install Metamask
-            </h2>
-            <p>
-              MetaMask is a third-party extension/add-on available through Google Chrome and Mozilla Firefox; it is necessary to use our application.
-            </p>
-            <p>
-              Your MetaMask account number will be how we identify you, please keep an extra copy of your account number and seed passphrase!
-            </p>
-            <p>
-              Watch this video to learn how to install MetaMask:
-            </p>
-            <iframe width="364.25" height="193.75" src="https://www.youtube.com/embed/6Gf_kRE4MJU" frameborder="0" allow="autoplay; encrypted-media" allowFullScreen>
-            </iframe>
-            <br></br>
-            <button onClick={() => this.nextStep()}>
-              Next step
-            </button>
-            <button onClick={() => {
-              this.props.loginHandler("0x559c7dcd5f1fd32925569f9baabc77b039df9dcr");
-              this.props.history.push('/Market')
-            }}>
-              Sign in as testUser
-            </button>
+              <div>
+                <button className="gradient-btn" onClick={() => this.nextStep()}>
+                  Log into MetaMask to get started
+              </button>
+              </div>
+            </div>
+            <div className="v-m">
+              <h2>Browse marketplace</h2>
+              <div className="grid">
+                {this.displayItems().map(item =>
+                  <MarketItem key={item.id} {...item} userType={this.state.userType} currentUser={this.props.currentUser} />
+                )}
+              </div>
+            </div>
+            <div className="get-started top-btm">
+              <button className="fin-btn meta-btn" onClick={() => this.nextStep()}>
+                Get started with MetaMask
+              </button>
+            </div>
           </div>
         }
         {this.state.step === 1 &&
+          <div className="v">
+            <h1>
+              Sign up
+            </h1>
+            <div className="receiver-instructions">
+              <p>
+                Below are the steps you’ll need to follow to sign up for MetaMask, to receieve food.
+              </p>
+              <p>1) Install MetaMask on your device</p>
+              <p>2) Create a MetaMask account</p>
+              <p>3) Confirm</p>
+            </div>
+            <div className="small-pri-btn" onClick={() => this.nextStep()}>Continue</div>
+          </div>
+        }
+        {this.state.step === 2 &&
           <div>
             <h1>
               Receiver Set up
@@ -95,7 +115,7 @@ class Receiver extends Component {
           </button>
           </div>
         }
-        {this.state.step === 2 &&
+        {this.state.step === 3 &&
           <div>
             <ReceiverSignup setUserType={this.setUserType} currentUser={this.state.currentUser}
                             loginHandler={this.props.loginHandler} validAccounts={this.state.validAccounts}

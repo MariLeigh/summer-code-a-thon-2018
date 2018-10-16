@@ -3,7 +3,7 @@ import MarketItem from './MarketItem'
 import './Market.css'
 import {items} from '../dummyData'
 import '../Dash.css'
-
+import queryString from 'query-string'
 import {withRouter} from 'react-router-dom';
 
 class Market extends Component {
@@ -27,8 +27,8 @@ class Market extends Component {
   }
 
   componentDidMount() {
-    // const query = queryString.parse(window.location.search);
-    // if (query.type && !this.state.userType) this.setUserType(query.type)
+    const query = queryString.parse(window.location.search);
+    if (query.type && !this.state.userType) this.setUserType(query.type)
   }
 
   displayItems() {
