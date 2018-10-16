@@ -52,7 +52,7 @@ class Receiver extends Component {
             </p>
               <div>
                 <button className="gradient-btn" onClick={() => this.nextStep()}>
-                  Log into MetaMask to get started
+                  Continue to Sign Up
               </button>
               </div>
             </div>
@@ -66,7 +66,7 @@ class Receiver extends Component {
             </div>
             <div className="get-started top-btm">
               <button className="fin-btn meta-btn" onClick={() => this.nextStep()}>
-                Get started with MetaMask
+                Continue to Sign Up
               </button>
             </div>
           </div>
