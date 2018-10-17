@@ -30,10 +30,14 @@ class Navbar extends Component {
   render() {
     return (
       <div className="nav">
-        <span><img src={require("../images/logo.svg")} className="nav-title nav-logo"></img><a href="/" className="nav-title nav-name" onClick={(event) => {
-          event.preventDefault();
-          this.props.history.push('/');
-        }}>RemitMart</a></span>
+        <span>
+          <div onClick={(event) => {
+            event.preventDefault();
+            this.props.history.push('/');}}>
+            <img src={require("../images/logo.svg")} className="nav-title nav-logo"></img>
+            <span className="nav-title nav-name">RemitMart</span>
+          </div>
+        </span>
         <div className="nav-right">
           {!this.state.vendorView && !this.state.donorView && !this.state.receiverView &&
             <div>
